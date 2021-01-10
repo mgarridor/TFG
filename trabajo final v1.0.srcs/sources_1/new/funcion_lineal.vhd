@@ -35,15 +35,15 @@ entity funcion_lineal is
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
            x : in signed (11 downto 0);
-           a : in unsigned (11 downto 0);
-           b : in unsigned (11 downto 0);
+           a : in unsigned (8 downto 0);
+           b : in unsigned (8 downto 0);
            y : out unsigned (11 downto 0));
 end funcion_lineal;
 
 architecture Behavioral of funcion_lineal is
 
-signal r1_reg,r1_next: signed(24 downto 0);
-signal y_temp:signed(25 downto 0);
+signal r1_reg,r1_next: signed(18 downto 0);
+signal y_temp:signed(12 downto 0);
 signal control:std_logic;
 begin
 
@@ -61,11 +61,11 @@ end process;
 process(control,r1_reg,a,b,x)
 begin
 
-r1_next<=signed('0'& a)*x;
-y_temp<= signed("00000000000000"& b) + r1_reg;
+r1_next<=signed('0'& a)*x(11 downto 3);
+y_temp<= signed('0'& b&"000") + r1_reg(18 downto 10);
 
 end process;
 
-y<=unsigned(y_temp(24 downto 13));
+y<=unsigned(y_temp(11 downto 0));
 
 end Behavioral;

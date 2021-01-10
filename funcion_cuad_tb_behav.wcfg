@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="985369fs"></ZoomStartTime>
-      <ZoomEndTime time="985374fs"></ZoomEndTime>
-      <Cursor1Time time="985371fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000001fs"></ZoomEndTime>
+      <Cursor1Time time="30193fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="203"></NameColumnWidth>
-      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
+   <WVObjectSize size="10" />
    <wvobject type="logic" fp_name="/funcion_cuad_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -30,9 +30,9 @@
    <wvobject type="array" fp_name="/funcion_cuad_tb/x">
       <obj_property name="ElementShortName">x[11:0]</obj_property>
       <obj_property name="ObjectShortName">x[11:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
       <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
-      <obj_property name="radix_fractionWidth">9</obj_property>
+      <obj_property name="radix_fractionWidth">8</obj_property>
       <obj_property name="radix_otherWidth">0</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/funcion_cuad_tb/a">
@@ -47,6 +47,9 @@
       <obj_property name="ElementShortName">b[11:0]</obj_property>
       <obj_property name="ObjectShortName">b[11:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">13</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/funcion_cuad_tb/c">
       <obj_property name="ElementShortName">c[11:0]</obj_property>
@@ -56,13 +59,29 @@
    <wvobject type="array" fp_name="/funcion_cuad_tb/y">
       <obj_property name="ElementShortName">y[11:0]</obj_property>
       <obj_property name="ObjectShortName">y[11:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
       <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
-      <obj_property name="radix_fractionWidth">0</obj_property>
+      <obj_property name="radix_fractionWidth">12</obj_property>
       <obj_property name="radix_otherWidth">0</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/funcion_cuad_tb/clk_period">
       <obj_property name="ElementShortName">clk_period</obj_property>
       <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/funcion_cuad_tb/UUT/r1_reg">
+      <obj_property name="ElementShortName">r1_reg[26:0]</obj_property>
+      <obj_property name="ObjectShortName">r1_reg[26:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">23</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/funcion_cuad_tb/UUT/r2_reg">
+      <obj_property name="ElementShortName">r2_reg[12:0]</obj_property>
+      <obj_property name="ObjectShortName">r2_reg[12:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">12</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
    </wvobject>
 </wave_config>
