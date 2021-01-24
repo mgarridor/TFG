@@ -32,18 +32,31 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity funcion_lineal is
+    generic (nbits:natural);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
            x : in signed (11 downto 0);
-           a : in unsigned (8 downto 0);
-           b : in unsigned (8 downto 0);
-           y : out unsigned (11 downto 0));
+           a : in unsigned (nbits-1 downto 0);
+           b : in unsigned (nbits-1 downto 0);
+           y : out unsigned (nbits-1 downto 0);
+           ready:out std_logic);
 end funcion_lineal;
+
+--entity funcion_lineal is
+--    Port ( clk : in STD_LOGIC;
+--           reset : in STD_LOGIC;
+--           x : in signed (11 downto 0);
+--           a : in unsigned (8 downto 0);
+--           b : in unsigned (8 downto 0);
+--           y : out unsigned (11 downto 0));
+--end funcion_lineal;
 
 architecture Behavioral of funcion_lineal is
 
-signal r1_reg,r1_next: signed(18 downto 0);
-signal y_temp:signed(12 downto 0);
+signal r1_reg,r1_next: signed(nbits+12 downto 0);
+--signal r1_reg,r1_next: signed(19 downto 0);
+
+signal y_temp:signed(nbits downto 0);
 signal control:std_logic;
 begin
 
@@ -61,11 +74,14 @@ end process;
 process(control,r1_reg,a,b,x)
 begin
 
-r1_next<=signed('0'& a)*x(11 downto 3);
-y_temp<= signed('0'& b&"000") + r1_reg(18 downto 10);
+--x*a
+r1_next<=signed('0'& a)*x;
+--b+ x*a
+y_temp<= signed('0'& b) + signed((r1_reg(nbits+12)&std_logic_vector(r1_reg(nbits+9 downto 10))));
 
 end process;
 
-y<=unsigned(y_temp(11 downto 0));
-
+y<=unsigned(y_temp(nbits-1 downto 0));
+    
+ready<=control;
 end Behavioral;

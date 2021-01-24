@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sun Jan 10 17:56:11 2021
-# Process ID: 32338
+# Start of session at: Fri Jan 22 12:26:48 2021
+# Process ID: 22468
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.runs/synth_1
 # Command line: vivado -log funcion_activacion.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion.tcl
 # Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.runs/synth_1/funcion_activacion.vds
@@ -17,56 +17,33 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200
 INFO: [Device 21-403] Loading part xc7a200tfbg676-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 32409
+INFO: [Synth 8-7075] Helper process launched with PID 22531
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2296.211 ; gain = 0.000 ; free physical = 138 ; free virtual = 4801
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 154 ; free virtual = 5593
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'funcion_activacion' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:37]
-INFO: [Synth 8-3491] module 'funcion_cuadratica' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:34' bound to instance 'funcion_cuad' of component 'funcion_cuadratica' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:189]
-INFO: [Synth 8-638] synthesizing module 'funcion_cuadratica' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:44]
-INFO: [Synth 8-256] done synthesizing module 'funcion_cuadratica' (1#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:44]
-INFO: [Synth 8-3491] module 'funcion_lineal' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:34' bound to instance 'funcion_lin' of component 'funcion_lineal' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:200]
-INFO: [Synth 8-638] synthesizing module 'funcion_lineal' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:43]
-INFO: [Synth 8-256] done synthesizing module 'funcion_lineal' (2#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:43]
-WARNING: [Synth 8-614] signal 'x' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:212]
-WARNING: [Synth 8-614] signal 'negativo' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:212]
-WARNING: [Synth 8-614] signal 'control_4T' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:237]
-WARNING: [Synth 8-614] signal 'control_8T' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:237]
-WARNING: [Synth 8-614] signal 'control_16T' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:237]
-WARNING: [Synth 8-614] signal 'control_T' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a1_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a1_8' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a1_16' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b1_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b1_8' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b1_16' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a2_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a2_8' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'a2_16' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b2_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b2_8' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'b2_16' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'c2_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'c2_8' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'c2_16' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:361]
-WARNING: [Synth 8-614] signal 'negativo' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:427]
-WARNING: [Synth 8-614] signal 'b1' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:427]
-WARNING: [Synth 8-614] signal 'a2' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:427]
-WARNING: [Synth 8-614] signal 'c2' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:427]
-INFO: [Synth 8-256] done synthesizing module 'funcion_activacion' (3#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:37]
+INFO: [Synth 8-638] synthesizing module 'funcion_activacion' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:40]
+	Parameter nbits_totales bound to: 4 - type: integer 
+	Parameter control_lineal bound to: 1'b1 
+	Parameter control_T bound to: 2'b00 
+	Parameter nbits bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'funcion_lineal' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:34' bound to instance 'funcion_lin_4T' of component 'funcion_lineal' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:359]
+INFO: [Synth 8-638] synthesizing module 'funcion_lineal' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:53]
+	Parameter nbits bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'funcion_lineal' (1#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_lineal.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'funcion_activacion' (2#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:40]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2296.211 ; gain = 0.000 ; free physical = 923 ; free virtual = 5590
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 937 ; free virtual = 6385
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2296.211 ; gain = 0.000 ; free physical = 919 ; free virtual = 5586
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 930 ; free virtual = 6379
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2296.211 ; gain = 0.000 ; free physical = 919 ; free virtual = 5586
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 930 ; free virtual = 6379
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2296.211 ; gain = 0.000 ; free physical = 909 ; free virtual = 5577
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 923 ; free virtual = 6372
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -75,57 +52,41 @@ Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/N
 Finished Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/Nexys4DDR_Master.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2328.098 ; gain = 0.000 ; free physical = 817 ; free virtual = 5499
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 833 ; free virtual = 6296
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2328.098 ; gain = 0.000 ; free physical = 817 ; free virtual = 5500
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 833 ; free virtual = 6296
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 876 ; free virtual = 5555
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 893 ; free virtual = 6356
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 876 ; free virtual = 5556
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 893 ; free virtual = 6356
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 876 ; free virtual = 5556
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 893 ; free virtual = 6356
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-327] inferring latch for variable 'a2_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-WARNING: [Synth 8-327] inferring latch for variable 'c2_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-WARNING: [Synth 8-327] inferring latch for variable 'b1_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:430]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 863 ; free virtual = 5547
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 884 ; free virtual = 6350
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   12 Bit       Adders := 1     
-	   2 Input    2 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
 +---Registers : 
-	               27 Bit    Registers := 1     
-	               19 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
 +---Muxes : 
-	   4 Input   15 Bit        Muxes := 1     
-	   2 Input   12 Bit        Muxes := 4     
-	  11 Input   12 Bit        Muxes := 2     
-	   4 Input   12 Bit        Muxes := 2     
-	   8 Input   11 Bit        Muxes := 1     
-	   8 Input   10 Bit        Muxes := 1     
-	  11 Input    9 Bit        Muxes := 2     
-	   4 Input    9 Bit        Muxes := 2     
-	   2 Input    9 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -142,27 +103,21 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP funcion_cuad/r1_next, operation Mode is: A*B.
-DSP Report: operator funcion_cuad/r1_next is absorbed into DSP funcion_cuad/r1_next.
-DSP Report: Generating DSP funcion_lin/r1_reg0, operation Mode is: A*B.
-DSP Report: operator funcion_lin/r1_reg0 is absorbed into DSP funcion_lin/r1_reg0.
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'a2_reg[11]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
+DSP Report: Generating DSP lineal_4_tramos.funcion_lin_4T/r1_reg0, operation Mode is: A*B.
+DSP Report: operator lineal_4_tramos.funcion_lin_4T/r1_reg0 is absorbed into DSP lineal_4_tramos.funcion_lin_4T/r1_reg0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 845 ; free virtual = 5538
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 867 ; free virtual = 6341
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 DSP: Preliminary Mapping	Report (see note below)
-+-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name        | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|funcion_cuadratica | A*B         | 15     | 12     | -      | -      | 27     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|funcion_lineal     | A*B         | 10     | 9      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-+-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|funcion_lineal | A*B         | 12     | 5      | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -172,19 +127,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 697 ; free virtual = 5399
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 709 ; free virtual = 6190
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 697 ; free virtual = 5399
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 709 ; free virtual = 6190
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 694 ; free virtual = 5396
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 704 ; free virtual = 6185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -202,64 +157,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 1st driver pin 'r1_reg0_i_1/O' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:67]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 2nd driver pin 'c2_reg[11]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 3rd driver pin 'a2_reg[3]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 4th driver pin 'a2_reg[10]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 5th driver pin 'a2_reg[6]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 6th driver pin 'a2_reg[0]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[8] with 7th driver pin 'b1_reg[8]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:430]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin a2[1] with 1st driver pin 'a2_reg[2]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin a2[1] with 2nd driver pin 'a2_reg[2]_i_2/O' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:67]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin a2[1] with 3rd driver pin 'a2_reg[1]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:431]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 1st driver pin 'c2_reg[2]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 2nd driver pin 'c2_reg[5]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 3rd driver pin 'c2_reg[8]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 4th driver pin 'c2_reg[8]_i_2/O' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:67]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 5th driver pin 'c2_reg[6]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 6th driver pin 'c2_reg[3]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin c2[0] with 7th driver pin 'c2_reg[0]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:432]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[1] with 1st driver pin 'b1_reg[4]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:430]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[1] with 2nd driver pin 'y0_carry_i_1/O' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_cuadratica.vhd:67]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin b1[1] with 3rd driver pin 'b1_reg[1]/Q' [/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.srcs/sources_1/new/funcion_activacion.vhd:430]
-
-Report Check Netlist: 
-+------+------------------+-------+---------+-------+------------------+
-|      |Item              |Errors |Warnings |Status |Description       |
-+------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        4|Failed |Multi driven nets |
-+------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -275,43 +203,36 @@ Report Cell Usage:
 +------+--------+------+
 |      |Cell    |Count |
 +------+--------+------+
-|1     |BUFG    |     2|
-|2     |CARRY4  |     6|
-|3     |DSP48E1 |     2|
-|4     |LUT1    |     9|
-|5     |LUT2    |    20|
-|6     |LUT3    |     6|
-|7     |LUT4    |     7|
-|8     |LUT5    |    25|
-|9     |LUT6    |     3|
-|10    |FDCE    |    13|
-|11    |FDPE    |     2|
-|12    |LD      |    16|
-|13    |IBUF    |    15|
-|14    |OBUF    |    12|
+|1     |BUFG    |     1|
+|2     |DSP48E1 |     1|
+|3     |LUT1    |     1|
+|4     |LUT2    |     1|
+|5     |LUT3    |     3|
+|6     |LUT5    |     1|
+|7     |FDCE    |     2|
+|8     |IBUF    |    14|
+|9     |OBUF    |     4|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2328.098 ; gain = 31.887 ; free physical = 692 ; free virtual = 5394
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 702 ; free virtual = 6184
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 23 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2328.098 ; gain = 0.000 ; free physical = 754 ; free virtual = 5457
-Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 2328.105 ; gain = 31.887 ; free physical = 754 ; free virtual = 5457
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 766 ; free virtual = 6249
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.047 ; gain = 31.887 ; free physical = 766 ; free virtual = 6249
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2328.105 ; gain = 0.000 ; free physical = 836 ; free virtual = 5544
-INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.047 ; gain = 0.000 ; free physical = 848 ; free virtual = 6334
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2328.105 ; gain = 0.000 ; free physical = 776 ; free virtual = 5484
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.047 ; gain = 0.000 ; free physical = 790 ; free virtual = 6276
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 16 instances were transformed.
-  LD => LDCE: 16 instances
+No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-22 Infos, 28 Warnings, 23 Critical Warnings and 0 Errors encountered.
+19 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:36 . Memory (MB): peak = 2328.105 ; gain = 32.023 ; free physical = 928 ; free virtual = 5637
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:36 . Memory (MB): peak = 2318.047 ; gain = 32.023 ; free physical = 942 ; free virtual = 6429
 INFO: [Common 17-1381] The checkpoint '/home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.runs/synth_1/funcion_activacion.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file funcion_activacion_utilization_synth.rpt -pb funcion_activacion_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jan 10 17:56:58 2021...
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 22 12:27:36 2021...

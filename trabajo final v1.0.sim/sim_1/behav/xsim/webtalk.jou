@@ -2,10 +2,10 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Jan  7 12:48:48 2021
-# Process ID: 58917
+# Start of session at: Sun Jan 24 20:13:25 2021
+# Process ID: 13297
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.sim/sim_1/behav/xsim
-# Command line: wbtcv -mode batch -source /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.sim/sim_1/behav/xsim/xsim.dir/funcion_cuad_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv -mode batch -source /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.sim/sim_1/behav/xsim/xsim.dir/funcion_lineal_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.sim/sim_1/behav/xsim/webtalk.jou
 #-----------------------------------------------------------

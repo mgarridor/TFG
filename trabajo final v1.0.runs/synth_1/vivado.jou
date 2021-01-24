@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sun Jan 10 17:56:11 2021
-# Process ID: 32338
+# Start of session at: Fri Jan 22 12:26:48 2021
+# Process ID: 22468
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.runs/synth_1
 # Command line: vivado -log funcion_activacion.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion.tcl
 # Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo final v1.0/trabajo final v1.0.runs/synth_1/funcion_activacion.vds

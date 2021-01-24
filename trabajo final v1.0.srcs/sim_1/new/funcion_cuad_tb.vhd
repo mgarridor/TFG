@@ -37,36 +37,42 @@ end funcion_cuad_tb;
 
 architecture Behavioral of funcion_cuad_tb is
 component funcion_cuadratica is
+    generic(nbits:natural);
     Port ( clk : in std_logic;
            reset:in std_logic;
            x : in signed (11 downto 0);
-           a : in signed (11 downto 0);
-           b : in unsigned (11 downto 0);
-           c : in unsigned (11 downto 0);
-           y : out unsigned (11 downto 0));
+           a : in signed (nbits-1 downto 0);
+           b : in unsigned (nbits-1 downto 0);
+           c : in unsigned (nbits-1 downto 0);
+           y : out unsigned (nbits-1 downto 0);
+           ready: out std_logic);
 end component;
 
-
+constant num_bits:natural:=7;
 signal clk : std_logic;
 signal reset: std_logic;
 signal x : signed (11 downto 0);
-signal a : signed (11 downto 0);
-signal b : unsigned (11 downto 0);
-signal c : unsigned (11 downto 0);
-signal y : unsigned (11 downto 0);
+signal a : signed (num_bits-1 downto 0);
+signal b : unsigned (num_bits-1 downto 0);
+signal c : unsigned (num_bits-1 downto 0);
+signal y : unsigned (num_bits-1 downto 0);
+signal ready: std_logic;
 
 constant clk_period : time := 84 ns; 
 
 begin
 
-UUT:funcion_cuadratica port map(
+UUT:funcion_cuadratica 
+generic map(nbits=>num_bits)
+port map(
 clk=>clk, 
 reset=>reset,
 x=>x,
 a=>a, 
 b=>b,
 c=>c,
-y=>y
+y=>y,
+ready=>ready
 ); 
 
 
@@ -82,12 +88,12 @@ end process;
 process
 begin
  x<="000100000000";
- a<="100000000000";
- b<="100000000000";
- c<="100000000000";
+ a<="1000000";
+ b<="1000000";
+ c<="1000000";
 
  reset<='1';
- wait for 10 ns;
+ wait for 100 ns;
  reset<='0';
  wait;
 end process;
