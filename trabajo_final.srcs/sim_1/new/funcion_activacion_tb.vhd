@@ -21,15 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity funcion_activacion_tb is
 --  Port ( );
@@ -85,6 +77,10 @@ begin
 
  x<="001100000000";
  
+ reset<='1';
+ wait for 10 ns;
+ reset<='0';
+ wait for 500 ns;
  reset<='1';
  wait for 10 ns;
  reset<='0';

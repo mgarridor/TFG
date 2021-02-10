@@ -41,8 +41,8 @@ end funcion_activacion;
 architecture Behavioral of funcion_activacion is
 
 --notacion: paramx_tramos_indice
---4 tramos
 
+--4 tramos
 constant a1_4_1:unsigned:="0000";
 constant a1_4_2:unsigned:="0111";
 
@@ -152,7 +152,6 @@ signal c2_8:unsigned(8 downto 0);
 signal c2_16:unsigned(11 downto 0);
 
 
-
 signal b1_final_4:unsigned(3 downto 0);
 signal c2_final_4:unsigned(6 downto 0);
 signal a2_final_4:signed(6 downto 0);
@@ -210,6 +209,20 @@ component funcion_lineal is
 end component;
 begin
 
+--Control de multiplexores
+--Si el numero es negativo, los parametros se niegan y pasan a ser su simetrico. 
+--Algunos tienen antisimetria que controlo al elegir esos parametros.
+
+negativo<=x(11);
+control_4T<=x(10) when negativo='1' else
+            not(x(10));
+control_8T<=x(10)&x(9) when negativo='1' else
+            not(x(10)&x(9));
+control_16T<=x(10)&x(9)&x(8) when negativo='1' else 
+            not(x(10)&x(9)&x(8));
+
+--Se genera un circuito u otro dependiendo de las señales de control
+
 cuadratica_4_tramos:
 if control_lineal='0' and control_T="00" generate
 
@@ -243,7 +256,8 @@ c2_4<=  c2_4_1 when '0',
         c2_4_2 when others;        
            
 c2_final_4<=c2_4 when negativo='1' or c2_4="1000000" else
-    not(c2_4);      
+    not(c2_4);  
+        
 --resultado    
 y<=y_cuad_4;
 end generate;
@@ -272,7 +286,8 @@ a2_8<=  a2_8_1 when "00",
         a2_8_4 when others;
  
 a2_final_8<=a2_8 when negativo='1' else
-    not(a2_8);        
+    not(a2_8);   
+         
 --b2
 with control_8T select       
 b2_8<=  b2_8_1 when "00",
@@ -322,7 +337,8 @@ a2_16<= a2_16_1 when "000",
         a2_16_8 when others;  
 
 a2_final_16<=a2_16 when negativo='1' else
-    not(a2_16);        
+    not(a2_16);  
+          
 --b2
 with control_16T select
 b2_16<= b2_16_1 when "000",  
@@ -367,6 +383,7 @@ b=>b1_final_4,
 ready=>ready
 
 );
+
 --a1
 with control_4T select
 a1_4<=  a1_4_1 when '0',
@@ -464,14 +481,6 @@ b1_final_16<=b1_16 when negativo='1' or b1_16="1000000" else
 y<=y_lin_16;            
 
 end generate;
-----Si el numero es negativo, si los parametros se niegan pasan a ser su simetrico. 
-----Algunos tienen antisimetria que controlo al elegirlos.
-negativo<=x(11);
-control_4T<=x(10) when negativo='1' else
-            not(x(10));
-control_8T<=x(10)&x(9) when negativo='1' else
-            not(x(10)&x(9));
-control_16T<=x(10)&x(9)&x(8) when negativo='1' else 
-            not(x(10)&x(9)&x(8));
+
 
 end behavioral;

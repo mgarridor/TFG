@@ -21,15 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity funcion_cuadratica is
     generic(nbits:natural:=12);
@@ -45,27 +37,27 @@ entity funcion_cuadratica is
 
 architecture Behavioral of funcion_cuadratica is
 
-
+--señales de control
+signal primer_ciclo:std_logic:='1';
 signal control:std_logic_vector(1 downto 0);
 
+--señales de entrada a multiplicador o sumador
 signal multa:signed(nbits+2 downto 0);
-
 signal suma:signed(nbits downto 0);
-
 signal sumb:signed(nbits downto 0);
 
-
+--registros
 signal r1_reg,r1_next: signed(nbits+14 downto 0);
 signal r2_reg,r2_next: signed(nbits downto 0);
 
 
+
 begin
-
-
 
 --registro de entrada
 process(clk,reset)
 begin
+--reset asincrono
     if(reset = '1')then
         r1_reg<= (others=>'0');
         r2_reg<= (others=>'0');
@@ -81,12 +73,9 @@ process(a,b,c,x,r1_reg,r2_reg,control)
 begin
 
 --multiplexadores del multiplicador
-
 --x*b       
 --x*a 
 --(x*a)*x 
-
-
 case control is 
     --b de x*b (añado 1 cero a la izda y 2 a la dcha) 
     when "00" =>multa<=signed('0'&std_logic_vector(b)&"00");
@@ -99,10 +88,8 @@ case control is
 end case;
 
 ----multiplexadores del sumador
-
 --(x*b)+c = r1+c 
 --(x^2*b)+(x*b)+c = r1+r2
-
 
 case control(1) is 
     --c de r1+c (añado 1 cero a la izquierda como bit de signo)
@@ -118,17 +105,26 @@ case control(0) is
     when others =>sumb<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-4 downto 11)));
 end case;
 
+--control para que la señal ready no se active en el primer ciclo
+if control="01" and reset='0' then
+    primer_ciclo<='0';
 
---multiplexador de la salida para que solo muestre el resultado cuando ha terminado de operar
-
-
+elsif reset='1' then 
+    primer_ciclo<='1';
+end if;
 end process;
-y<=unsigned(r2_reg(nbits-1 downto 0));
+
 --funciones
-ready<='1' when control="11"and reset='0' else
+
+--la señal ready solo se activa cuando ha terminado de operar
+ready<='1' when control="00" and primer_ciclo='0' else
         '0';
 
 r1_next<=(x*multa);
 r2_next<=sumb+suma;
+
+--salida
+y<=unsigned(r2_reg(nbits-1 downto 0));
+
 
 end Behavioral;

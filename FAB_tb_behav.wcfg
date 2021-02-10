@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="FAB_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="FAB_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="697555fs"></ZoomStartTime>
+      <ZoomEndTime time="1060490fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="131"></NameColumnWidth>
+      <ValueColumnWidth column_width="161"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject type="array" fp_name="/FAB_tb/A">
+      <obj_property name="ElementShortName">A[3:0]</obj_property>
+      <obj_property name="ObjectShortName">A[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/B">
+      <obj_property name="ElementShortName">B[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/left">
+      <obj_property name="ElementShortName">left[6:0]</obj_property>
+      <obj_property name="ObjectShortName">left[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/bottomL">
+      <obj_property name="ElementShortName">bottomL</obj_property>
+      <obj_property name="ObjectShortName">bottomL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/bottom">
+      <obj_property name="ElementShortName">bottom[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bottom[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/bottom4">
+      <obj_property name="ElementShortName">bottom4</obj_property>
+      <obj_property name="ObjectShortName">bottom4</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/right">
+      <obj_property name="ElementShortName">right[6:0]</obj_property>
+      <obj_property name="ObjectShortName">right[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/sum">
+      <obj_property name="ElementShortName">sum[4:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/top">
+      <obj_property name="ElementShortName">top[3:0]</obj_property>
+      <obj_property name="ObjectShortName">top[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/top4">
+      <obj_property name="ElementShortName">top4</obj_property>
+      <obj_property name="ObjectShortName">top4</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/topR">
+      <obj_property name="ElementShortName">topR</obj_property>
+      <obj_property name="ObjectShortName">topR</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Cl">
+      <obj_property name="ElementShortName">Cl</obj_property>
+      <obj_property name="ObjectShortName">Cl</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Cr">
+      <obj_property name="ElementShortName">Cr</obj_property>
+      <obj_property name="ObjectShortName">Cr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Ct">
+      <obj_property name="ElementShortName">Ct</obj_property>
+      <obj_property name="ObjectShortName">Ct</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Cb">
+      <obj_property name="ElementShortName">Cb</obj_property>
+      <obj_property name="ObjectShortName">Cb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Ma">
+      <obj_property name="ElementShortName">Ma</obj_property>
+      <obj_property name="ObjectShortName">Ma</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/FAB_tb/Mb">
+      <obj_property name="ElementShortName">Mb</obj_property>
+      <obj_property name="ObjectShortName">Mb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/solucion">
+      <obj_property name="ElementShortName">solucion[7:0]</obj_property>
+      <obj_property name="ObjectShortName">solucion[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/comp/Afinal">
+      <obj_property name="ElementShortName">Afinal[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Afinal[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/FAB_tb/comp/Bfinal">
+      <obj_property name="ElementShortName">Bfinal[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Bfinal[4:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+</wave_config>
