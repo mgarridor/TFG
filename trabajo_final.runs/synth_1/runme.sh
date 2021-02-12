@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log mult_8x8.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_8x8.tcl
+EAStep vivado -log mult_4x4.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_4x4.tcl
