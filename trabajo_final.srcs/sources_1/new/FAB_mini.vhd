@@ -143,7 +143,7 @@ control1<=Ma and Mb;
 
 temp1<=left and (Cl&Cl&Cl);
 
-temp2<=(B(1) and not(Cl) and not(Cb) and Mb) or bottomL;
+temp2<=(B(1) and not(Cl) and not(Cb) and Mb) or (bottomL and Cb and Cl);
 
 temp3<= bottom(0) and Cb;
 
