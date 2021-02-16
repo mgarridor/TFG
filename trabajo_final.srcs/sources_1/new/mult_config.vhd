@@ -32,9 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity mult_config is
-    generic(control : STD_LOGIC_VECTOR (1 downto 0);
-            size : natural);
-    
+    generic(control : STD_LOGIC_VECTOR (1 downto 0):="00"
+           );
     Port ( A : in STD_LOGIC_VECTOR (31 downto 0);
            B : in STD_LOGIC_VECTOR (31 downto 0);
            S : out STD_LOGIC_VECTOR (63 downto 0);
@@ -44,10 +43,6 @@ entity mult_config is
 end mult_config;
 
 architecture Behavioral of mult_config is
-
-
-
-
 component FAB_mini is
     Port ( A : in STD_LOGIC_VECTOR (1 downto 0);
            B : in STD_LOGIC_VECTOR (1 downto 0);
@@ -174,19 +169,14 @@ signal top11:std_logic_vector(1 downto 0);
 signal top12:std_logic_vector(1 downto 0);
 signal top13:std_logic_vector(1 downto 0);
 signal top14:std_logic_vector(1 downto 0);
-signal top21:std_logic_vector(1 downto 0);
-signal top22:std_logic_vector(1 downto 0);
-signal top23:std_logic_vector(1 downto 0);
-signal top24:std_logic_vector(1 downto 0);
-signal top31:std_logic_vector(1 downto 0);
-signal top32:std_logic_vector(1 downto 0);
-signal top33:std_logic_vector(1 downto 0);
-signal top34:std_logic_vector(1 downto 0);
-signal top41:std_logic_vector(1 downto 0);
-signal top42:std_logic_vector(1 downto 0);
-signal top43:std_logic_vector(1 downto 0);
-signal top44:std_logic_vector(1 downto 0);
 
+signal Ct21,Ct22,Ct23,Ct24,Ct31,Ct32,Ct33,Ct34,Ct41,Ct42,Ct43,Ct44:std_logic;
+signal Cl12,Cl13,Cl14,Cl22,Cl23,Cl24,Cl32,Cl33,Cl34,Cl42,Cl43,Cl44:std_logic;
+signal Cb11,Cb12,Cb13,Cb14,Cb21,Cb22,Cb23,Cb24,Cb31,Cb32,Cb33,Cb34:std_logic;
+signal Cr11,Cr12,Cr13,Cr21,Cr22,Cr23,Cr31,Cr32,Cr33,Cr41,Cr42,Cr43:std_logic;
+
+signal Ma11,Ma12,Ma13,Ma21,Ma22,Ma23,Ma31,Ma32,Ma33,Ma41,Ma42,Ma43:std_logic;
+signal Mb11,Mb12,Mb13,Mb14,Mb21,Mb22,Mb23,Mb24,Mb31,Mb32,Mb33,Mb34:std_logic;
 
 begin
 
@@ -205,14 +195,13 @@ port map(
     top4=>'0',
     topR=>open,
     Cl=>'0',
-    Cr=>'1',
+    Cr=>Cr11,
     Ct=>'0',
-    Cb=>'1',
-    Ma=>'0',
-    Mb=>'0'
+    Cb=>Cb11,
+    Ma=>Ma11,
+    Mb=>Mb11
 );
-no completo
-solo C y M
+
 comp21: FAB_mini
 port map(
     A=>A21,
@@ -223,18 +212,17 @@ port map(
     bottom4=>conn21_31_2,
     right=>conn21_22,
     sum=>sum21,
-    top=>top21,
+    top=>conn11_21,
     top4=>conn11_21_2,
     topR=>conn21_12,
     Cl=>'0',
-    Cr=>'1',
-    Ct=>'1',
-    Cb=>'0',
-    Ma=>'0',
-    Mb=>Mb
+    Cr=>Cr21,
+    Ct=>Ct21,
+    Cb=>Cb21,
+    Ma=>Ma21,
+    Mb=>Mb21
 );
-no completo
-solo C y M
+
 
 comp31: FAB_mini 
 port map(
@@ -246,18 +234,16 @@ port map(
     bottom4=>conn31_41_2,
     right=>conn31_32,
     sum=>sum31,
-    top=>top31,
+    top=>conn21_31,
     top4=>conn21_31_2,
     topR=>conn31_22,
     Cl=>'0',
-    Cr=>'1',
-    Ct=>'1',
-    Cb=>'0',
-    Ma=>'0',
-    Mb=>Mb
+    Cr=>Cr31,
+    Ct=>Ct31,
+    Cb=>Cb31,
+    Ma=>Ma31,
+    Mb=>Mb31
 );
-no completo
-solo C y M
 
 comp41: FAB_mini 
 port map(
@@ -273,14 +259,12 @@ port map(
     top4=>conn31_41_2,
     topR=>conn41_32,
     Cl=>'0',
-    Cr=>'1',
-    Ct=>'1',
+    Cr=>Cr41,
+    Ct=>Ct41,
     Cb=>'0',
-    Ma=>'0',
+    Ma=>Ma41,
     Mb=>Mb
 );
-no completo
-solo C y M
 
 --segunda columna
 
@@ -297,15 +281,13 @@ port map(
     top=>top12,
     top4=>'0',
     topR=>open,
-    Cl=>'1',
-    Cr=>'0',
+    Cl=>Cl12,
+    Cr=>Cr12,
     Ct=>'0',
-    Cb=>'1',
-    Ma=>Ma,
-    Mb=>'0'
+    Cb=>Cb12,
+    Ma=>Ma12,
+    Mb=>Mb12
 );
-no completo
-solo C y M
 
 comp22: FAB_mini 
 port map(
@@ -320,15 +302,13 @@ port map(
     top=>conn12_22,
     top4=>conn12_22_2,
     topR=>conn22_13,
-    Cl=>'1',
-    Cr=>'0',
-    Ct=>'1',
-    Cb=>'0',
-    Ma=>Ma,
-    Mb=>Mb
+    Cl=>Cl22,
+    Cr=>Cr22,
+    Ct=>Ct22,
+    Cb=>Cb22,
+    Ma=>Ma22,
+    Mb=>Mb22
 );
-no completo
-solo C y M
 
 comp32: FAB_mini 
 port map(
@@ -340,18 +320,16 @@ port map(
     bottom4=>conn32_42_2,
     right=>conn32_33,
     sum=>sum32,
-    top=>top32,
+    top=>conn22_32,
     top4=>conn22_32_2,
     topR=>conn32_23,
-    Cl=>'1',
-    Cr=>'0',
-    Ct=>'0',
-    Cb=>'1',
-    Ma=>Ma,
-    Mb=>'0'
+    Cl=>Cl32,
+    Cr=>Cr32,
+    Ct=>Ct32,
+    Cb=>Cb32,
+    Ma=>Ma32,
+    Mb=>Mb32
 );
-no completo
-solo C y M
 
 comp42: FAB_mini 
 port map(
@@ -363,18 +341,16 @@ port map(
     bottom4=>open,
     right=>conn42_43,
     sum=>sum42,
-    top=>top42,
+    top=>conn32_42,
     top4=>conn32_42_2,
     topR=>conn42_33,
-    Cl=>'1',
-    Cr=>'0',
-    Ct=>'1',
+    Cl=>Cl42,
+    Cr=>Cr42,
+    Ct=>Ct42,
     Cb=>'0',
-    Ma=>Ma,
+    Ma=>Ma42,
     Mb=>Mb
 );
-no completo
-solo C y M
 
 --tercera columna
 
@@ -391,15 +367,13 @@ port map(
     top=>top13,
     top4=>'0',
     topR=>open,
-    Cl=>'0',
-    Cr=>'1',
+    Cl=>Cl13,
+    Cr=>Cr13,
     Ct=>'0',
-    Cb=>'1',
-    Ma=>'0',
-    Mb=>'0'
+    Cb=>Cb13,
+    Ma=>Ma13,
+    Mb=>Mb13
 );
-no completo
-solo C y M
 
 comp23: FAB_mini
 port map(
@@ -411,18 +385,16 @@ port map(
     bottom4=>conn23_33_2,
     right=>conn23_24,
     sum=>sum23,
-    top=>top23,
+    top=>conn13_23,
     top4=>conn13_23_2,
     topR=>conn23_14,
-    Cl=>'0',
-    Cr=>'1',
-    Ct=>'0',
-    Cb=>'1',
-    Ma=>'0',
-    Mb=>'0'
+    Cl=>Cl23,
+    Cr=>Cr23,
+    Ct=>Ct23,
+    Cb=>Cb23,
+    Ma=>Ma23,
+    Mb=>Mb23
 );
-no completo
-solo C y M
 
 comp33: FAB_mini
 port map(
@@ -434,18 +406,16 @@ port map(
     bottom4=>conn33_43_2,
     right=>conn33_34,
     sum=>sum33,
-    top=>top33,
+    top=>conn23_33,
     top4=>conn23_33_2,
     topR=>conn33_24,
-    Cl=>'0',
-    Cr=>'1',
-    Ct=>'0',
-    Cb=>'1',
-    Ma=>'0',
-    Mb=>'0'
+    Cl=>Cl33,
+    Cr=>Cr33,
+    Ct=>Ct33,
+    Cb=>Cb33,
+    Ma=>Ma33,
+    Mb=>Mb33
 );
-no completo
-solo C y M
 
 comp43: FAB_mini
 port map(
@@ -457,18 +427,17 @@ port map(
     bottom4=>open,
     right=>conn43_44,
     sum=>sum43,
-    top=>top43,
+    top=>conn33_43,
     top4=>conn33_43_2,
     topR=>conn43_34,
-    Cl=>'0',
-    Cr=>'1',
-    Ct=>'0',
-    Cb=>'1',
-    Ma=>'0',
-    Mb=>'0'
+    Cl=>Cl43,
+    Cr=>Cr43,
+    Ct=>Ct43,
+    Cb=>'0',
+    Ma=>Ma43,
+    Mb=>Mb
 );
-no completo
-solo C y M
+
 --cuarta columna
 
 comp14: FAB_mini 
@@ -484,15 +453,13 @@ port map(
     top=>top14,
     top4=>'0',
     topR=>open,
-    Cl=>'1',
+    Cl=>Cl14,
     Cr=>'0',
     Ct=>'0',
-    Cb=>'1',
+    Cb=>Cb14,
     Ma=>Ma,
-    Mb=>'0'
+    Mb=>Mb14
 );
-no completo
-solo C y M
 
 comp24: FAB_mini 
 port map(
@@ -504,18 +471,16 @@ port map(
     bottom4=>conn24_34_2,
     right=>open,
     sum=>sum24,
-    top=>top24,
+    top=>conn14_24,
     top4=>conn14_24_2,
     topR=>open,
-    Cl=>'1',
+    Cl=>Cl24,
     Cr=>'0',
-    Ct=>'0',
-    Cb=>'1',
+    Ct=>Ct24,
+    Cb=>Cb24,
     Ma=>Ma,
-    Mb=>'0'
+    Mb=>Mb24
 );
-no completo
-solo C y M
 
 comp34: FAB_mini 
 port map(
@@ -527,18 +492,16 @@ port map(
     bottom4=>conn34_44_2,
     right=>open,
     sum=>sum34,
-    top=>top34,
+    top=>conn24_34,
     top4=>conn24_34_2,
-    topR=>open,
-    Cl=>'1',
+    topR=>open,    
+    Cl=>Cl34,
     Cr=>'0',
-    Ct=>'0',
-    Cb=>'1',
+    Ct=>Ct34,
+    Cb=>Cb34,
     Ma=>Ma,
-    Mb=>'0'
+    Mb=>Mb34
 );
-no completo
-solo C y M
 
 comp44: FAB_mini 
 port map(
@@ -550,19 +513,16 @@ port map(
     bottom4=>open,
     right=>open,
     sum=>sum44,
-    top=>top44,
+    top=>conn34_44,
     top4=>conn34_44_2,
     topR=>open,
-    Cl=>'1',
+    Cl=>Cl44,
     Cr=>'0',
-    Ct=>'0',
-    Cb=>'1',
+    Ct=>Ct44,
+    Cb=>'0',
     Ma=>Ma,
-    Mb=>'0'
+    Mb=>Mb
 );
-no completo;
-solo C y M;
-
 
 --control
 --  si 00 => 1 multiplicador 8x8
@@ -575,8 +535,9 @@ solo C y M;
 --``si 10 => 16 multiplicadores 4x4
 --  si 11 => 64 multiplicadores 2x2
 
-process(A,B,Ma,Mb)
+process(A,B,Ma,Mb,top11,top12,top13,top14,sum14,sum24,sum34,sum44,sum12,sum22,sum32,sum42)--poner todos los sum y top o cambiar a combinacional
 begin
+
 if control="00" then
         
     A11<=A(1 downto 0);
@@ -624,7 +585,88 @@ if control="00" then
     S(11 downto 10)<=sum24(2 downto 1);
     S(13 downto 12)<=sum34(2 downto 1);
     S(15 downto 14)<=sum44(2 downto 1);
-    
+    S(63 downto 16)<=(others=>'0');
+--control
+Ct21<='1';
+Ct22<='1';
+Ct23<='1';
+Ct24<='1';
+Ct31<='1';
+Ct32<='1';
+Ct33<='1';
+Ct34<='1';
+Ct41<='1';
+Ct42<='1';
+Ct43<='1';
+Ct44<='1';
+
+Cl12<='1';
+Cl13<='1';
+Cl14<='1';
+Cl22<='1';
+Cl23<='1';
+Cl24<='1';
+Cl32<='1';
+Cl33<='1';
+Cl34<='1';
+Cl42<='1';
+Cl43<='1';
+Cl44<='1';
+
+Cb11<='1';
+Cb12<='1';
+Cb13<='1';
+Cb14<='1';
+Cb21<='1';
+Cb22<='1';
+Cb23<='1';
+Cb24<='1';
+Cb31<='1';
+Cb32<='1';
+Cb33<='1';
+Cb34<='1';
+
+Cr11<='1';
+Cr12<='1';
+Cr13<='1';
+Cr21<='1';
+Cr22<='1';
+Cr23<='1';
+Cr31<='1';
+Cr32<='1';
+Cr33<='1';
+Cr41<='1';
+Cr42<='1';
+Cr43<='1';  
+
+--bits de signo
+Ma11<='0';
+Ma12<='0';
+Ma13<='0';
+Ma21<='0';
+Ma22<='0';
+Ma23<='0';
+Ma31<='0';
+Ma32<='0';
+Ma33<='0';
+Ma41<='0';
+Ma42<='0';
+Ma43<='0';
+
+Mb11<='0';
+Mb12<='0';
+Mb13<='0';
+Mb14<='0';
+Mb21<='0';
+Mb22<='0';
+Mb23<='0';
+Mb24<='0';
+Mb31<='0';
+Mb32<='0';
+Mb33<='0';
+Mb34<='0';
+
+
 elsif control="01" then
     
 A11<=A(1 downto 0);
@@ -676,16 +718,96 @@ S(13 downto 11)<=sum14;
 S(15 downto 14)<=sum24(2 downto 1);
 
 --resultados 3 multiplicacion
-S(17 downto 16)<=top31;
-S(18)<=top32(0);
+S(17 downto 16)<=conn21_31;
+S(18)<=conn22_32(0);
 S(21 downto 19)<=sum32;
-S(23 downto 22)<=sum34(2 downto 1);
+S(23 downto 22)<=sum42(2 downto 1);
 
 --resultados 4 multiplicacion
-S(25 downto 24)<=top33;
-S(26)<=top34(0);
-S(29 downto 27)<=sum42;
+S(25 downto 24)<=conn23_33;
+S(26)<=conn24_34(0);
+S(29 downto 27)<=sum34;
 S(31 downto 30)<=sum44(2 downto 1);
+S(63 downto 32)<=(others=>'0');
+
+Ct21<='1';
+Ct22<='1';
+Ct23<='1';
+Ct24<='1';
+Ct31<='0';
+Ct32<='0';
+Ct33<='0';
+Ct34<='0';
+Ct41<='1';
+Ct42<='1';
+Ct43<='1';
+Ct44<='1';
+
+Cl12<='1';
+Cl13<='0';
+Cl14<='1';
+Cl22<='1';
+Cl23<='0';
+Cl24<='1';
+Cl32<='1';
+Cl33<='0';
+Cl34<='1';
+Cl42<='1';
+Cl43<='0';
+Cl44<='1';
+
+Cb11<='1';
+Cb12<='1';
+Cb13<='1';
+Cb14<='1';
+Cb21<='0';
+Cb22<='0';
+Cb23<='0';
+Cb24<='0';
+Cb31<='1';
+Cb32<='1';
+Cb33<='1';
+Cb34<='1';
+
+Cr11<='1';
+Cr12<='0';
+Cr13<='1';
+Cr21<='1';
+Cr22<='0';
+Cr23<='1';
+Cr31<='1';
+Cr32<='0';
+Cr33<='1';
+Cr41<='1';
+Cr42<='0';
+Cr43<='1';
+
+--bits de signo
+Ma11<='0';
+Ma12<=Ma;
+Ma13<='0';
+Ma21<='0';
+Ma22<=Ma;
+Ma23<='0';
+Ma31<='0';
+Ma32<=Ma;
+Ma33<='0';
+Ma41<='0';
+Ma42<=Ma;
+Ma43<='0';
+
+Mb11<='0';
+Mb12<='0';
+Mb13<='0';
+Mb14<='0';
+Mb21<=Mb;
+Mb22<=Mb;
+Mb23<=Mb;
+Mb24<=Mb;
+Mb31<='0';
+Mb32<='0';
+Mb33<='0';
+Mb34<='0';
 
 elsif (control="10") then
     
@@ -725,7 +847,6 @@ B43<=B(29 downto 28);
 A44<=A(31 downto 30);
 B44<=B(31 downto 30);
 
-
 --resultados 1 multiplicacion
 S(0)<=top11(0);
 S(3 downto 1)<=sum11;
@@ -743,68 +864,134 @@ S(12)<=top14(0);
 S(15 downto 13)<=sum14;
 
 --resultados 5 multiplicacion
-S(16)<=top21(0);
+S(16)<=conn11_21(0);
 S(19 downto 17)<=sum21;
 
 --resultados 6 multiplicacion
-S(20)<=top22(0);
+S(20)<=conn12_22(0);
 S(23 downto 21)<=sum22;
 
 --resultados 7 multiplicacion
-S(24)<=top23(0);
+S(24)<=conn13_23(0);
 S(27 downto 25)<=sum23;
 
 --resultados 8 multiplicacion
-S(28)<=top24(0);
+S(28)<=conn14_24(0);
 S(31 downto 29)<=sum24;
 
 --resultados 9 multiplicacion
-S(32)<=top31(0);
+S(32)<=conn21_31(0);
 S(35 downto 33)<=sum31;
 
 --resultados 10 multiplicacion
-S(36)<=top32(0);
+S(36)<=conn22_32(0);
 S(39 downto 37)<=sum32;
 
 --resultados 11 multiplicacion
-S(40)<=top33(0);
+S(40)<=conn23_33(0);
 S(43 downto 41)<=sum33;
 
 --resultados 12 multiplicacion
-S(44)<=top34(0);
+S(44)<=conn24_34(0);
 S(47 downto 45)<=sum34;
 
 --resultados 13 multiplicacion
-S(48)<=top41(0);
+S(48)<=conn31_41(0);
 S(51 downto 49)<=sum41;
 
 --resultados 14 multiplicacion
-S(52)<=top42(0);
+S(52)<=conn32_42(0);
 S(55 downto 53)<=sum42;
 
 --resultados 15 multiplicacion
-S(56)<=top43(0);
+S(56)<=conn33_43(0);
 S(59 downto 57)<=sum43;
 
 --resultados 16 multiplicacion
-S(60)<=top44(0);
+S(60)<=conn34_44(0);
 S(63 downto 61)<=sum44;
 
+--control 
+Ct21<='0';
+Ct22<='0';
+Ct23<='0';
+Ct24<='0';
+Ct31<='0';
+Ct32<='0';
+Ct33<='0';
+Ct34<='0';
+Ct41<='0';
+Ct42<='0';
+Ct43<='0';
+Ct44<='0';
+
+Cl12<='0';
+Cl13<='0';
+Cl14<='0';
+Cl22<='0';
+Cl23<='0';
+Cl24<='0';
+Cl32<='0';
+Cl33<='0';
+Cl34<='0';
+Cl42<='0';
+Cl43<='0';
+Cl44<='0';
+
+Cb11<='0';
+Cb12<='0';
+Cb13<='0';
+Cb14<='0';
+Cb21<='0';
+Cb22<='0';
+Cb23<='0';
+Cb24<='0';
+Cb31<='0';
+Cb32<='0';
+Cb33<='0';
+Cb34<='0';
+
+Cr11<='0';
+Cr12<='0';
+Cr13<='0';
+Cr21<='0';
+Cr22<='0';
+Cr23<='0';
+Cr31<='0';
+Cr32<='0';
+Cr33<='0';
+Cr41<='0';
+Cr42<='0';
+Cr43<='0';
+
+--bits de signo
+Ma11<=Ma;
+Ma12<=Ma;
+Ma13<=Ma;
+Ma21<=Ma;
+Ma22<=Ma;
+Ma23<=Ma;
+Ma31<=Ma;
+Ma32<=Ma;
+Ma33<=Ma;
+Ma41<=Ma;
+Ma42<=Ma;
+Ma43<=Ma;
+
+Mb11<=Mb;
+Mb12<=Mb;
+Mb13<=Mb;
+Mb14<=Mb;
+Mb21<=Mb;
+Mb22<=Mb;
+Mb23<=Mb;
+Mb24<=Mb;
+Mb31<=Mb;
+Mb32<=Mb;
+Mb33<=Mb;
+Mb34<=Mb;
 end if;
 end process;
-
-
-
---control Cb,Cl,Ct,Cr
-
-
-
-
-
-
-
-
-
 
 
 end Behavioral;
