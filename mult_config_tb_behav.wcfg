@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="45201fs"></ZoomEndTime>
-      <Cursor1Time time="0fs"></Cursor1Time>
+      <ZoomEndTime time="837054fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="131"></NameColumnWidth>
-      <ValueColumnWidth column_width="157"></ValueColumnWidth>
+      <ValueColumnWidth column_width="153"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="7" />
    <wvobject type="array" fp_name="/mult_config_tb/A">
       <obj_property name="ElementShortName">A[31:0]</obj_property>
       <obj_property name="ObjectShortName">A[31:0]</obj_property>
@@ -42,65 +42,12 @@
       <obj_property name="ElementShortName">Mb</obj_property>
       <obj_property name="ObjectShortName">Mb</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/A41">
-      <obj_property name="ElementShortName">A41[3:0]</obj_property>
-      <obj_property name="ObjectShortName">A41[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject type="logic" fp_name="/mult_config_tb/correcto">
+      <obj_property name="ElementShortName">correcto</obj_property>
+      <obj_property name="ObjectShortName">correcto</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/B41">
-      <obj_property name="ElementShortName">B41[3:0]</obj_property>
-      <obj_property name="ObjectShortName">B41[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/S41">
-      <obj_property name="ElementShortName">S41[7:0]</obj_property>
-      <obj_property name="ObjectShortName">S41[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp21/A">
-      <obj_property name="ElementShortName">A[1:0]</obj_property>
-      <obj_property name="ObjectShortName">A[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp21/B">
-      <obj_property name="ElementShortName">B[1:0]</obj_property>
-      <obj_property name="ObjectShortName">B[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp12/A">
-      <obj_property name="ElementShortName">A[1:0]</obj_property>
-      <obj_property name="ObjectShortName">A[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp12/B">
-      <obj_property name="ElementShortName">B[1:0]</obj_property>
-      <obj_property name="ObjectShortName">B[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp22/A">
-      <obj_property name="ElementShortName">A[1:0]</obj_property>
-      <obj_property name="ObjectShortName">A[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp22/B">
-      <obj_property name="ElementShortName">B[1:0]</obj_property>
-      <obj_property name="ObjectShortName">B[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/conn11_12">
-      <obj_property name="ElementShortName">conn11_12[2:0]</obj_property>
-      <obj_property name="ObjectShortName">conn11_12[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp12/sum">
-      <obj_property name="ElementShortName">sum[2:0]</obj_property>
-      <obj_property name="ObjectShortName">sum[2:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/mult_config_tb/comp/comp12/top">
-      <obj_property name="ElementShortName">top[1:0]</obj_property>
-      <obj_property name="ObjectShortName">top[1:0]</obj_property>
+   <wvobject type="array" fp_name="/mult_config_tb/solucion2">
+      <obj_property name="ElementShortName">solucion2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">solucion2[63:0]</obj_property>
    </wvobject>
 </wave_config>
