@@ -15,6 +15,6 @@ Compiling architecture behavioral of entity xil_defaultlib.FA [fa_default]
 Compiling architecture behavioral of entity xil_defaultlib.basico1 [basico1_default]
 Compiling architecture behavioral of entity xil_defaultlib.basico2 [basico2_default]
 Compiling architecture behavioral of entity xil_defaultlib.FAB_mini [fab_mini_default]
-Compiling architecture behavioral of entity xil_defaultlib.mult_config [\mult_config(control="10")\]
+Compiling architecture behavioral of entity xil_defaultlib.mult_config [mult_config_default]
 Compiling architecture behavioral of entity xil_defaultlib.mult_config_tb
 Built simulation snapshot mult_config_tb_behav

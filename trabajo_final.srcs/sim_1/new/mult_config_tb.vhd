@@ -63,7 +63,7 @@ signal correcto:std_logic;
 --  si 00 => 1 multiplicador 8x8
 --  si 01 => 4 multiplicadores 4x4
 --``si 10 => 16 multiplicadores 2x2
-constant control:std_logic_vector(1 downto 0):="10";
+constant control:std_logic_vector(1 downto 0):="00";
 constant Ma : std_logic:='1';
 constant Mb : std_logic:='1';
 begin
@@ -89,22 +89,22 @@ if control="00" then
     A(7 downto 0)<="10000000";
     
     B(31 downto 8)<=(others=>'0');
-    B(7 downto 0)<="10000000";
+    B(7 downto 0)<="01000000";
 
 elsif control="01" then
 
 --4 multiplexores de 4 bits
     A(31 downto 15)<=(others=>'0');
-    A(3 downto 0)<="1000";
-    A(7 downto 4)<="1000";
-    A(11 downto 8)<="1000";
-    A(15 downto 12)<="1000";
+    A(3 downto 0)<="0010";
+    A(7 downto 4)<="0010";
+    A(11 downto 8)<="0010";
+    A(15 downto 12)<="0010";
     
     B(31 downto 15)<=(others=>'0');
-    B(3 downto 0)<="1000";
-    B(7 downto 4)<="1000";
-    B(11 downto 8)<="1000";
-    B(15 downto 12)<="1000";
+    B(3 downto 0)<="0010";
+    B(7 downto 4)<="0010";
+    B(11 downto 8)<="0010";
+    B(15 downto 12)<="0010";
 
 --16 multiplicadores de 2 bits
 else
@@ -116,9 +116,11 @@ wait for 10 ns;
 
 --bucle que prueba distintas combinaciones de A y B
 for i in 0 to 10000 loop 
-A<=std_logic_vector(unsigned(A)+128);
-B<=std_logic_vector(unsigned(B)+256);
+A<=std_logic_vector(unsigned(A)+1);
+B<=std_logic_vector(unsigned(B)+50);
 
+--A<=std_logic_vector(unsigned(A)+1+32+250+4096);
+--B<=std_logic_vector(unsigned(B)+3+64+500+2500);
 wait for 50 ns;
 end loop;
 
@@ -189,16 +191,16 @@ B216<=B(31 downto 30);
 
 -----------------comprobacion de resultados correctos (cambiar unsigned/signed dependiendo de Ma y Mb)-------------------
 
----------------1 multiplicador 8 bits
-----con signo
---solucion8(15 downto 0)<=std_logic_vector(signed(A8)*signed(B8));
+-------------1 multiplicador 8 bits
+--con signo
+solucion8(15 downto 0)<=std_logic_vector(signed(A8)*signed(B8));
 
-----sin signo
+--sin signo
 --solucion8(15 downto 0)<=std_logic_vector(unsigned(A8)*unsigned(B8));
 
---solucion8(63 downto 16)<=(others=>'0');
---correcto<='1' when solucion8=S else
---          '0';
+solucion8(63 downto 16)<=(others=>'0');
+correcto<='1' when solucion8=S else
+          '0';
           
 ---------------4 multiplicadores de 4 bits        
 ----con signo  
@@ -219,22 +221,22 @@ B216<=B(31 downto 30);
 
 --16 multiplicadores 2 bits
 --con signo
-solucion2(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
-solucion2(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
-solucion2(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
-solucion2(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
-solucion2(19 downto 16)<=std_logic_vector(signed(A25)*signed(B25));
-solucion2(23 downto 20)<=std_logic_vector(signed(A26)*signed(B26));
-solucion2(27 downto 24)<=std_logic_vector(signed(A27)*signed(B27));
-solucion2(31 downto 28)<=std_logic_vector(signed(A28)*signed(B28));
-solucion2(35 downto 32)<=std_logic_vector(signed(A29)*signed(B29));
-solucion2(39 downto 36)<=std_logic_vector(signed(A210)*signed(B210));
-solucion2(43 downto 40)<=std_logic_vector(signed(A211)*signed(B211));
-solucion2(47 downto 44)<=std_logic_vector(signed(A212)*signed(B212));
-solucion2(51 downto 48)<=std_logic_vector(signed(A213)*signed(B213));
-solucion2(55 downto 52)<=std_logic_vector(signed(A214)*signed(B214));
-solucion2(59 downto 56)<=std_logic_vector(signed(A215)*signed(B215));
-solucion2(63 downto 60)<=std_logic_vector(signed(A216)*signed(B216));
+--solucion2(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
+--solucion2(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
+--solucion2(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
+--solucion2(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
+--solucion2(19 downto 16)<=std_logic_vector(signed(A25)*signed(B25));
+--solucion2(23 downto 20)<=std_logic_vector(signed(A26)*signed(B26));
+--solucion2(27 downto 24)<=std_logic_vector(signed(A27)*signed(B27));
+--solucion2(31 downto 28)<=std_logic_vector(signed(A28)*signed(B28));
+--solucion2(35 downto 32)<=std_logic_vector(signed(A29)*signed(B29));
+--solucion2(39 downto 36)<=std_logic_vector(signed(A210)*signed(B210));
+--solucion2(43 downto 40)<=std_logic_vector(signed(A211)*signed(B211));
+--solucion2(47 downto 44)<=std_logic_vector(signed(A212)*signed(B212));
+--solucion2(51 downto 48)<=std_logic_vector(signed(A213)*signed(B213));
+--solucion2(55 downto 52)<=std_logic_vector(signed(A214)*signed(B214));
+--solucion2(59 downto 56)<=std_logic_vector(signed(A215)*signed(B215));
+--solucion2(63 downto 60)<=std_logic_vector(signed(A216)*signed(B216));
 
 ----sin signo
 --solucion2(3 downto 0)<=std_logic_vector(unsigned(A21)*unsigned(B21));
@@ -254,7 +256,7 @@ solucion2(63 downto 60)<=std_logic_vector(signed(A216)*signed(B216));
 --solucion2(59 downto 56)<=std_logic_vector(unsigned(A215)*unsigned(B215));
 --solucion2(63 downto 60)<=std_logic_vector(unsigned(A216)*unsigned(B216));
 
-correcto<='1' when solucion2=S else
-          '0';
+--correcto<='1' when solucion2=S else
+--          '0';
           
 end Behavioral;
