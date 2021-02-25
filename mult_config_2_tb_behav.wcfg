@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="mult_config_2_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="mult_config_2_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1500001fs"></ZoomEndTime>
+      <Cursor1Time time="1500000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="162"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="31" />
+   <wvobject type="array" fp_name="/mult_config_2_tb/A">
+      <obj_property name="ElementShortName">A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B">
+      <obj_property name="ElementShortName">B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S">
+      <obj_property name="ElementShortName">S[15:0]</obj_property>
+      <obj_property name="ObjectShortName">S[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mult_config_2_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mult_config_2_tb/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/control">
+      <obj_property name="ElementShortName">control[1:0]</obj_property>
+      <obj_property name="ObjectShortName">control[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/comp/contador">
+      <obj_property name="ElementShortName">contador[1:0]</obj_property>
+      <obj_property name="ObjectShortName">contador[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/solucion">
+      <obj_property name="ElementShortName">solucion[15:0]</obj_property>
+      <obj_property name="ObjectShortName">solucion[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mult_config_2_tb/correcto">
+      <obj_property name="ElementShortName">correcto</obj_property>
+      <obj_property name="ObjectShortName">correcto</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A21">
+      <obj_property name="ElementShortName">A21[1:0]</obj_property>
+      <obj_property name="ObjectShortName">A21[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B21">
+      <obj_property name="ElementShortName">B21[1:0]</obj_property>
+      <obj_property name="ObjectShortName">B21[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S21">
+      <obj_property name="ElementShortName">S21[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S21[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A22">
+      <obj_property name="ElementShortName">A22[1:0]</obj_property>
+      <obj_property name="ObjectShortName">A22[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B22">
+      <obj_property name="ElementShortName">B22[1:0]</obj_property>
+      <obj_property name="ObjectShortName">B22[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S22">
+      <obj_property name="ElementShortName">S22[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S22[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A23">
+      <obj_property name="ElementShortName">A23[1:0]</obj_property>
+      <obj_property name="ObjectShortName">A23[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B23">
+      <obj_property name="ElementShortName">B23[1:0]</obj_property>
+      <obj_property name="ObjectShortName">B23[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S23">
+      <obj_property name="ElementShortName">S23[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S23[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A24">
+      <obj_property name="ElementShortName">A24[1:0]</obj_property>
+      <obj_property name="ObjectShortName">A24[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B24">
+      <obj_property name="ElementShortName">B24[1:0]</obj_property>
+      <obj_property name="ObjectShortName">B24[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S24">
+      <obj_property name="ElementShortName">S24[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S24[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mult_config_2_tb/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A41">
+      <obj_property name="ElementShortName">A41[3:0]</obj_property>
+      <obj_property name="ObjectShortName">A41[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B41">
+      <obj_property name="ElementShortName">B41[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B41[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S41">
+      <obj_property name="ElementShortName">S41[7:0]</obj_property>
+      <obj_property name="ObjectShortName">S41[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A42">
+      <obj_property name="ElementShortName">A42[3:0]</obj_property>
+      <obj_property name="ObjectShortName">A42[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B42">
+      <obj_property name="ElementShortName">B42[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B42[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S42">
+      <obj_property name="ElementShortName">S42[7:0]</obj_property>
+      <obj_property name="ObjectShortName">S42[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/A8">
+      <obj_property name="ElementShortName">A8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A8[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/B8">
+      <obj_property name="ElementShortName">B8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B8[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mult_config_2_tb/S8">
+      <obj_property name="ElementShortName">S8[15:0]</obj_property>
+      <obj_property name="ObjectShortName">S8[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

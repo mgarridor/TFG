@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 12.02.2021 12:39:13
+-- Create Date: 24.02.2021 13:26:27
 -- Design Name: 
--- Module Name: mult_config - Behavioral
+-- Module Name: mult_config_3 - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -32,9 +32,9 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity mult_config_2 is
-    Port ( A : in STD_LOGIC_VECTOR (31 downto 0);
-           B : in STD_LOGIC_VECTOR (31 downto 0);
-           S : out STD_LOGIC_VECTOR (63 downto 0);
+    Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
+           B : in STD_LOGIC_VECTOR (7 downto 0);
+           S : out STD_LOGIC_VECTOR (15 downto 0);
            Ma : in std_logic;
            Mb : in std_logic;
            control : in STD_LOGIC_VECTOR (1 downto 0);
@@ -45,6 +45,7 @@ entity mult_config_2 is
 end mult_config_2;
 
 architecture Behavioral of mult_config_2 is
+
 component FAB_mini is
     Port ( A : in STD_LOGIC_VECTOR (1 downto 0);
            B : in STD_LOGIC_VECTOR (1 downto 0);
@@ -65,44 +66,38 @@ component FAB_mini is
            Mb : in STD_LOGIC);
 end component;
 
-
-signal left_1,left_2,left_3,left_4:std_logic_vector(2 downto 0);
-signal right_1,right_2,right_3,right_4:std_logic_vector(2 downto 0);
+signal left_1,left_2,left_3,left_4:std_logic_vector(2 downto 0):="000";
+signal right_1,right_2,right_3,right_4:std_logic_vector(2 downto 0):="000";
 
 signal top_1,top_2,top_3,top_4:std_logic_vector(1 downto 0);
 
-signal top2_1,top2_2,top2_3,top2_4:std_logic;
+signal top2_2,top2_3,top2_4:std_logic;
 
 signal topR_2,topR_3,topR_4:std_logic;
-signal bottomL_1,bottomL_2,bottomL_3:std_logic;
+signal bottomL_1,bottomL_2,bottomL_3:std_logic:='0';
 
 signal sum_1,sum_2,sum_3,sum_4:std_logic_vector(2 downto 0);
 
 --entradas
-signal A1,A2,A3,A4:std_logic_vector(1 downto 0);
+signal A1,A2,A3,A4:std_logic_vector(1 downto 0):="00";
 
-signal B1,B2,B3,B4:std_logic_vector(1 downto 0);
-
---salidas
-signal sum1:std_logic_vector(2 downto 0);
-signal sum2:std_logic_vector(2 downto 0);
-signal sum3:std_logic_vector(2 downto 0);
-signal sum4:std_logic_vector(2 downto 0);
+signal B1,B2,B3,B4:std_logic_vector(1 downto 0):="00";
 
 --controles de posicion
 signal Ct2,Ct3,Ct4:std_logic;
-signal Cl1,Cl2,Cl3,Cl4:std_logic;
+signal Cl:std_logic;
 signal Cb1,Cb2,Cb3:std_logic;
-signal Cr1,Cr2,Cr3,Cr4:std_logic;
+signal Cr:std_logic;
 
 signal contador:unsigned(1 downto 0);
+signal primera_cuenta:std_logic;
 
 --controles de signo
-signal Ma11,Ma12,Ma13,Ma21,Ma22,Ma23,Ma31,Ma32,Ma33,Ma41,Ma42,Ma43:std_logic;
-signal Mb11,Mb12,Mb13,Mb14,Mb21,Mb22,Mb23,Mb24,Mb31,Mb32,Mb33,Mb34:std_logic;
+signal Ma1,Ma2,Ma3,Ma4:std_logic;
+signal Mb1,Mb2,Mb3:std_logic;
 
-
-
+--soluciones
+signal S1,S2,S3,S4,S5,S6,S7,S8: std_logic_vector(1 downto 0):="00";
 
 begin
 
@@ -118,14 +113,14 @@ port map(
     right=>right_1,
     sum=>sum_1,
     top=>top_1,
-    top4=>top2_1,
+    top4=>'0',
     topR=>open,
-    Cl=>Cl1,
-    Cr=>Cr1,
+    Cl=>Cl,
+    Cr=>Cr,
     Ct=>'0',
     Cb=>Cb1,
-    Ma=>Ma11,
-    Mb=>Mb11
+    Ma=>Ma1,
+    Mb=>Mb1
 );
 
 comp2: FAB_mini
@@ -141,12 +136,12 @@ port map(
     top=>top_2,
     top4=>top2_2,
     topR=>topR_2,
-    Cl=>Cl2,
-    Cr=>Cr2,
+    Cl=>Cl,
+    Cr=>Cr,
     Ct=>Ct2,
     Cb=>Cb2,
-    Ma=>Ma21,
-    Mb=>Mb21
+    Ma=>Ma2,
+    Mb=>Mb2
 );
 
 comp3: FAB_mini 
@@ -162,12 +157,12 @@ port map(
     top=>top_3,
     top4=>top2_3,
     topR=>topR_3,
-    Cl=>Cl3,
-    Cr=>Cr3,
+    Cl=>Cl,
+    Cr=>Cr,
     Ct=>Ct3,
     Cb=>Cb3,
-    Ma=>Ma31,
-    Mb=>Mb31
+    Ma=>Ma3,
+    Mb=>Mb3
 );
 
 comp4: FAB_mini 
@@ -183,11 +178,11 @@ port map(
     top=>top_4,
     top4=>top2_4,
     topR=>topR_4,
-    Cl=>Cl4,
-    Cr=>Cr4,
+    Cl=>Cl,
+    Cr=>Cr,
     Ct=>Ct4,
     Cb=>'0',
-    Ma=>Ma41,
+    Ma=>Ma4,
     Mb=>Mb
 );
 
@@ -196,31 +191,45 @@ process(clk,reset)
 begin
 --reset asincrono
     if(reset = '1')then
-    
-        right_1<= (others=>'0');
-        right_2<= (others=>'0');
-        right_3<= (others=>'0');
-        right_4<= (others=>'0');
+                   
+        left_1<= (others=>'0');
+        left_2<= (others=>'0');
+        left_3<= (others=>'0');
+        left_4<= (others=>'0');
         
-        topR_2<= '0';
-        topR_3<= '0';
-        topR_4<= '0';
+        bottomL_1<= '0';
+        bottomL_2<= '0';
+        bottomL_3<= '0';
         
-        contador<="00";
-        
+        if control="00" then
+            contador<="11";
+        elsif control="01" then
+            contador<="01";
+        end if;
+        primera_cuenta<='1';
     elsif (rising_edge(clk))then
     
-        right_1<= left_1;
-        right_2<= left_2;
-        right_3<= left_3;
-        right_4<= left_4;
+        left_1<= right_1;
+        left_2<= right_2;
+        left_3<= right_3;
+        left_4<= right_4;
         
-        topR_2<= bottomL_1;
-        topR_3<= bottomL_2;
-        topR_4<= bottomL_3;
+        bottomL_1<= topR_2;
+        bottomL_2<= topR_3;
+        bottomL_3<= topR_4;
         
-        contador<=contador+1;
-                
+        if control="00" then
+            contador<=contador+1;
+        elsif control="01" then
+            if contador="00" then
+                contador<="01";
+            else
+                contador<="00";
+            end if;
+        else 
+            contador<="00";
+        end if;    
+        primera_cuenta<='0';  
     end if;
 end process;
 
@@ -230,84 +239,207 @@ end process;
 --  si 01 => 4 multiplicadores 4x4
 --``si 10 => 16 multiplicadores 2x2
      
-    --entradas  
-process(clk)
+--entradas  
+process(clk,contador,A,B,control,top_1,top_2,top_3,top_4,sum_1,sum_2,sum_3,sum_4,Ma,Mb)
 begin 
- 
-if contador="00" then
-    A1<=A(1 downto 0);
-elsif contador="01" and control="00" then
-    A1<=A(3 downto 2);
-elsif contador="10" and control="00" then
-    A1<=A(5 downto 4);
-elsif contador="11" and control="00" then
-    A1<=A(7 downto 6);
+ --A
+ --control 00
+     if contador="00" and control="00" then
+        A1<=A(1 downto 0);
+        A2<=A(1 downto 0);
+        A3<=A(1 downto 0);
+        A4<=A(1 downto 0);
+    elsif contador="01" and control="00" then
+        A1<=A(3 downto 2);
+        A2<=A(3 downto 2);
+        A3<=A(3 downto 2);
+        A4<=A(3 downto 2);
+    elsif contador="10" and control="00" then
+        A1<=A(5 downto 4);
+        A2<=A(5 downto 4);
+        A3<=A(5 downto 4);
+        A4<=A(5 downto 4);
+    elsif contador="11" and control="00" then
+        A1<=A(7 downto 6);
+        A2<=A(7 downto 6);
+        A3<=A(7 downto 6);
+        A4<=A(7 downto 6);
+    end if;
+--control 01     
+    if contador="00" and control="01" then
+        A1<=A(1 downto 0);
+        A2<=A(1 downto 0);
+        A3<=A(5 downto 4);
+        A4<=A(5 downto 4);
+    elsif contador="01" and control="01" then
+        A1<=A(3 downto 2);
+        A2<=A(3 downto 2);
+        A3<=A(7 downto 6);
+        A4<=A(7 downto 6);
+    end if;  
     
-elsif contador(0)='0' and control="01" then
-    A1<=A(3 downto 2);
-elsif contador="10" and control="01" then
-    A1<=A(5 downto 4);
-elsif contador="11" and control="00" then
-    A1<=A(7 downto 6);  
- 
- 
- 
- 
-if(control="00")then
-    if(contador="00") then
-    A1<=A(1 downto 0);
-    A2<=A(1 downto 0);
-    A3<=A(1 downto 0);
-    A3<=A(1 downto 0);
+--control 10      
+    if control="10" then
+        A1<=A(1 downto 0);
+        A2<=A(3 downto 2);
+        A3<=A(5 downto 4);
+        A4<=A(7 downto 6);
+    end if;    
     
-    B1<=B(1 downto 0);
-    B1<=B(3 downto 2);
-    B1<=B(5 downto 4);
-    B1<=B(7 downto 6);
+--B
+--control 00 01 10
+        B1<=B(1 downto 0);
+        B2<=B(3 downto 2);
+        B3<=B(5 downto 4);
+        B4<=B(7 downto 6);       
+
+--soluciones
+--control 00
+    if contador="00" and control="00"then
+        S1<=top_1;
+        
+    elsif contador="01" and control="00"then
+        S2<=top_1;
+    elsif contador="10" and control="00"then
+        S3<=top_1;    
+    elsif contador="11" and control="00"then
+        S8<=sum_4(2 downto 1);
+        S7<=sum_3(2 downto 1);
+        S6<=sum_2(2 downto 1);
+        S5<=sum_1(2 downto 1);
+        S4<=sum_1(0)&top_1(0);
+        
     end if;
     
-    if(contador="01") then
-    A1<=A(3 downto 2);
-    A2<=A(3 downto 2);
-    A3<=A(3 downto 2);
-    A3<=A(3 downto 2);
-    
-    B1<=B(1 downto 0);
-    B1<=B(3 downto 2);
-    B1<=B(5 downto 4);
-    B1<=B(7 downto 6);
-    end if;
-
-    if(contador="10") then
-    A1<=A(5 downto 4);
-    A2<=A(5 downto 4);
-    A3<=A(5 downto 4);
-    A3<=A(5 downto 4);
-    
-    B1<=B(1 downto 0);
-    B1<=B(3 downto 2);
-    B1<=B(5 downto 4);
-    B1<=B(7 downto 6);
+    --control 01
+    if contador="00" and control="01" then
+        S1<=top_1;
+        S5<=top_3;
+    elsif contador="01" and control="01" then
+        S4<=sum_2(2 downto 1);
+        S3<=sum_1(2 downto 1);
+        S2<=sum_1(0) & top_1(0);
+        
+        S8<=sum_4(2 downto 1);
+        S7<=sum_3(2 downto 1);
+        S6<=sum_3(0) & top_3(0);
     end if;
     
-    if(contador="11") then
-    A1<=A(7 downto 6);
-    A2<=A(7 downto 6);
-    A3<=A(7 downto 6);
-    A3<=A(7 downto 6);
+    --control 10
+    if control="10" then
+        S1<=sum_1(0) & top_1(0);
+        S2<=sum_1(2 downto 1);
+        S3<=sum_2(0) & top_2(0);
+        S4<=sum_2(2 downto 1);
+        S5<=sum_3(0) & top_3(0);
+        S6<=sum_3(2 downto 1);
+        S7<=sum_4(0) & top_4(0);
+        S8<=sum_4(2 downto 1); 
+    end if;
     
-    B1<=B(1 downto 0);
-    B1<=B(3 downto 2);
-    B1<=B(5 downto 4);
-    B1<=B(7 downto 6);
-    end if;   
+    --Ma,Mb
+    if (control="00" and contador/="11") or
+       (control="01" and contador="00") then
+        Ma1<='0';
+        Ma2<='0';
+        Ma3<='0';
+        Ma4<='0';
+        
+    else
+        Ma1<=Ma;
+        Ma2<=Ma;
+        Ma3<=Ma;
+        Ma4<=Ma;  
+        
+    end if;
+    --Mb
+    if control="00" then
+        Mb1<='0';
+        Mb2<='0';
+        Mb3<='0';
+    elsif control="01" then
+        Mb1<='0';
+        Mb2<=Mb;
+        Mb3<='0';
+    else 
+        Mb1<=Mb;
+        Mb2<=Mb;
+        Mb3<=Mb;
+    end if;
+    --Cl
+    if  (control="00" and contador="00") or 
+        (control="01" and contador(0)='0') or 
+        control="10" then
+        
+        Cl<='0';
+    else 
+        Cl<='1';
+    end if;
     
-end if;
-
-
-
-
-
-
+    --Cr
+    if  (control="00" and contador="11") or 
+        (control="01" and contador(0)='1') or 
+        control="10" then
+        
+        Cr<='0';
+    else 
+        Cr<='1';
+    end if;
+    
+    --Ct
+    if  control="01" then
+        Ct2<='1';
+        Ct3<='0';
+        Ct4<='1';
+    elsif control="10" then
+        Ct2<='0';
+        Ct3<='0';
+        Ct4<='0';
+    elsif control="00" then
+        Ct2<='1';
+        Ct3<='1';
+        Ct4<='1';
+    end if;
+    
+    --Cb
+    if  control="01" then
+        Cb1<='1';
+        Cb2<='0';
+        Cb3<='1';
+    elsif control="10" then
+        Cb1<='0';
+        Cb2<='0';
+        Cb3<='0';
+    elsif control="00" then
+        Cb1<='1';
+        Cb2<='1';
+        Cb3<='1';
+    end if;
+    
 end process;
+
+--process (clk)
+--begin
+--    if contador="00" or (contador="10" and control="01") or control="10" then
+--        right_1<= (others=>'0');
+--        right_2<= (others=>'0');
+--        right_3<= (others=>'0');
+--        right_4<= (others=>'0');
+        
+--        topR_2<= '0';
+--        topR_3<= '0';
+--        topR_4<= '0';
+--        primera_cuenta<='1';
+        
+--end if;    
+--end process;
+
+ready<= '1' when ((contador="11" and control="00" )or 
+                 (contador="01" and control="01") or 
+                 (control="10")) and primera_cuenta='0' else
+        '0';
+        
+S<=S8 & S7 & S6 & S5 & S4 & S3 & S2 & S1;
+
 end Behavioral;
+

@@ -86,12 +86,7 @@ signal control1:std_logic;
 signal Afinal,Bfinal:std_logic_vector(2 downto 0);
 
 signal conn00_10:std_logic;
-signal conn01_11:std_logic;
-signal conn02_12:std_logic;
-signal conn03_13:std_logic;
 signal conn01_10:std_logic;
-signal conn02_11:std_logic;
-signal conn03_12:std_logic;
 
 begin
 
