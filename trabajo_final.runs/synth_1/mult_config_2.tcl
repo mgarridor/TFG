@@ -70,8 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xc7a200tfbg676-2
+create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -80,7 +81,6 @@ set_property webtalk.parent_dir /home/matiaspc/Escritorio/universidad/tfg/trabaj
 set_property parent.project_path /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part xilinx.com:ac701:part0:1.4 [current_project]
 set_property ip_output_repo /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
@@ -108,7 +108,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top mult_config_2 -part xc7a200tfbg676-2
+synth_design -top mult_config_2 -part xc7a100tcsg324-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

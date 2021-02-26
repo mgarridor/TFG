@@ -97,7 +97,13 @@ signal Ma1,Ma2,Ma3,Ma4:std_logic;
 signal Mb1,Mb2,Mb3:std_logic;
 
 --soluciones
-signal S1,S2,S3,S4,S5,S6,S7,S8: std_logic_vector(1 downto 0):="00";
+signal S4,S6,S7,S8: std_logic_vector(1 downto 0);
+signal S1_reg,S1_next : std_logic_vector(1 downto 0);
+signal S2_reg,S2_next : std_logic_vector(1 downto 0);
+signal S3_reg,S3_next : std_logic_vector(1 downto 0);
+signal S5_reg,S5_next : std_logic_vector(1 downto 0);
+
+
 
 begin
 
@@ -187,7 +193,7 @@ port map(
 );
 
 --registro de entrada
-process(clk,reset)
+process(clk,reset,control)
 begin
 --reset asincrono
     if(reset = '1')then
@@ -201,6 +207,10 @@ begin
         bottomL_2<= '0';
         bottomL_3<= '0';
         
+        S1_reg<=(others=>'0');
+        S2_reg<=(others=>'0');
+        S3_reg<=(others=>'0');
+        S5_reg<=(others=>'0');
         if control="00" then
             contador<="11";
         elsif control="01" then
@@ -217,6 +227,13 @@ begin
         bottomL_1<= topR_2;
         bottomL_2<= topR_3;
         bottomL_3<= topR_4;
+        
+        S1_reg<=S1_next;
+        S2_reg<=S2_next;
+        S3_reg<=S3_next;
+        S5_reg<=S5_next;
+        
+        
         
         if control="00" then
             contador<=contador+1;
@@ -240,8 +257,9 @@ end process;
 --``si 10 => 16 multiplicadores 2x2
      
 --entradas  
-process(clk,contador,A,B,control,top_1,top_2,top_3,top_4,sum_1,sum_2,sum_3,sum_4,Ma,Mb)
+process(clk,contador,A,B,control,top_1,top_2,top_3,top_4,sum_1,sum_2,sum_3,sum_4,Ma,Mb,S1_reg,S2_reg,S3_reg,S5_reg)
 begin 
+
  --A
  --control 00
      if contador="00" and control="00" then
@@ -264,9 +282,8 @@ begin
         A2<=A(7 downto 6);
         A3<=A(7 downto 6);
         A4<=A(7 downto 6);
-    end if;
 --control 01     
-    if contador="00" and control="01" then
+    elsif contador="00" and control="01" then
         A1<=A(1 downto 0);
         A2<=A(1 downto 0);
         A3<=A(5 downto 4);
@@ -276,14 +293,18 @@ begin
         A2<=A(3 downto 2);
         A3<=A(7 downto 6);
         A4<=A(7 downto 6);
-    end if;  
     
 --control 10      
-    if control="10" then
+    elsif control="10" then
         A1<=A(1 downto 0);
         A2<=A(3 downto 2);
         A3<=A(5 downto 4);
         A4<=A(7 downto 6);
+    else
+        A1<=(others=>'0');
+        A2<=(others=>'0');
+        A3<=(others=>'0');
+        A4<=(others=>'0');
     end if;    
     
 --B
@@ -296,45 +317,83 @@ begin
 --soluciones
 --control 00
     if contador="00" and control="00"then
-        S1<=top_1;
-        
+        S1_next<=top_1;     
+        S2_next<="00";
+        S3_next<="00";
+        S4<=(others=>'0');
+        S5_next<=(others=>'0');
+        S6<=(others=>'0');
+        S7<=(others=>'0');
+        S8<=(others=>'0'); 
     elsif contador="01" and control="00"then
-        S2<=top_1;
+        S1_next<=S1_reg;
+        S2_next<=top_1;
+        S3_next<="00";
+        S4<=(others=>'0');
+        S5_next<=(others=>'0');
+        S6<=(others=>'0');
+        S7<=(others=>'0');
+        S8<=(others=>'0');    
+                 
     elsif contador="10" and control="00"then
-        S3<=top_1;    
+        S1_next<=S1_reg;
+        S2_next<=S2_reg;
+        S3_next<=top_1;
+        S4<=(others=>'0');
+        S5_next<=(others=>'0');
+        S6<=(others=>'0');
+        S7<=(others=>'0');
+        S8<=(others=>'0'); 
+                 
     elsif contador="11" and control="00"then
+        S1_next<=S1_reg;
+        S2_next<=S2_reg;
+        S3_next<=S3_reg;
         S8<=sum_4(2 downto 1);
         S7<=sum_3(2 downto 1);
         S6<=sum_2(2 downto 1);
-        S5<=sum_1(2 downto 1);
+        S5_next<=sum_1(2 downto 1);
         S4<=sum_1(0)&top_1(0);
-        
-    end if;
-    
+            
     --control 01
-    if contador="00" and control="01" then
-        S1<=top_1;
-        S5<=top_3;
+    elsif contador="00" and control="01" then
+        S1_next<=top_1;
+        S2_next<=(others=>'0');
+        S3_next<=(others=>'0');
+        S4<=(others=>'0');
+        S5_next<=top_3;
+        S6<=(others=>'0');
+        S7<=(others=>'0');
+        S8<=(others=>'0');     
     elsif contador="01" and control="01" then
+        S1_next<=S1_reg;
+        S2_next<=sum_1(0) & top_1(0);
+        S3_next<=sum_1(2 downto 1);
         S4<=sum_2(2 downto 1);
-        S3<=sum_1(2 downto 1);
-        S2<=sum_1(0) & top_1(0);
-        
-        S8<=sum_4(2 downto 1);
-        S7<=sum_3(2 downto 1);
+        S5_next<=S5_reg;
         S6<=sum_3(0) & top_3(0);
-    end if;
-    
+        S7<=sum_3(2 downto 1);
+        S8<=sum_4(2 downto 1);
+        
     --control 10
-    if control="10" then
-        S1<=sum_1(0) & top_1(0);
-        S2<=sum_1(2 downto 1);
-        S3<=sum_2(0) & top_2(0);
+    elsif control="10" then
+        S1_next<=sum_1(0) & top_1(0);
+        S2_next<=sum_1(2 downto 1);
+        S3_next<=sum_2(0) & top_2(0);
         S4<=sum_2(2 downto 1);
-        S5<=sum_3(0) & top_3(0);
+        S5_next<=sum_3(0) & top_3(0);
         S6<=sum_3(2 downto 1);
         S7<=sum_4(0) & top_4(0);
         S8<=sum_4(2 downto 1); 
+    else
+        S1_next<=(others=>'0');
+        S2_next<=(others=>'0');
+        S3_next<=(others=>'0');
+        S4<=(others=>'0');
+        S5_next<=(others=>'0');
+        S6<=(others=>'0');
+        S7<=(others=>'0');
+        S8<=(others=>'0'); 
     end if;
     
     --Ma,Mb
@@ -395,7 +454,7 @@ begin
         Ct2<='0';
         Ct3<='0';
         Ct4<='0';
-    elsif control="00" then
+    else
         Ct2<='1';
         Ct3<='1';
         Ct4<='1';
@@ -410,7 +469,7 @@ begin
         Cb1<='0';
         Cb2<='0';
         Cb3<='0';
-    elsif control="00" then
+    else
         Cb1<='1';
         Cb2<='1';
         Cb3<='1';
@@ -418,28 +477,12 @@ begin
     
 end process;
 
---process (clk)
---begin
---    if contador="00" or (contador="10" and control="01") or control="10" then
---        right_1<= (others=>'0');
---        right_2<= (others=>'0');
---        right_3<= (others=>'0');
---        right_4<= (others=>'0');
-        
---        topR_2<= '0';
---        topR_3<= '0';
---        topR_4<= '0';
---        primera_cuenta<='1';
-        
---end if;    
---end process;
-
 ready<= '1' when ((contador="11" and control="00" )or 
                  (contador="01" and control="01") or 
                  (control="10")) and primera_cuenta='0' else
         '0';
         
-S<=S8 & S7 & S6 & S5 & S4 & S3 & S2 & S1;
+S<=S8 & S7 & S6 & S5_next & S4 & S3_next & S2_next & S1_next;
 
 end Behavioral;
 
