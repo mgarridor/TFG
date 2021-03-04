@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log mult_config_2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_config_2.tcl" );
+         "-log funcion_cuadratica.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_cuadratica.tcl" );
 
 
 

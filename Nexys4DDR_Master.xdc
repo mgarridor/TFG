@@ -264,7 +264,7 @@ set_property -dict {PACKAGE_PIN E3 IOSTANDARD LVCMOS33} [get_ports clk]
 
 
 
-create_clock -period 0.010 -name clk -waveform {0.000 0.005} [get_ports clk]
+create_clock -period 11.000 -name clk -waveform {0.000 5.500} [get_ports clk]
 set_input_delay -clock [get_clocks clk] -min -add_delay 2.000 [get_ports {A[*]}]
 set_input_delay -clock [get_clocks clk] -max -add_delay 2.000 [get_ports {A[*]}]
 set_input_delay -clock [get_clocks clk] -min -add_delay 2.000 [get_ports {B[*]}]
@@ -281,5 +281,8 @@ set_output_delay -clock [get_clocks clk] -min -add_delay 0.000 [get_ports {S[*]}
 set_output_delay -clock [get_clocks clk] -max -add_delay 2.000 [get_ports {S[*]}]
 set_output_delay -clock [get_clocks clk] -min -add_delay 0.000 [get_ports ready]
 set_output_delay -clock [get_clocks clk] -max -add_delay 2.000 [get_ports ready]
+
+
+
 
 

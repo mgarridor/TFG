@@ -36,25 +36,40 @@ component funcion_activacion is
             );
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           x : in signed (11 downto 0);
+           x : in signed (nbits_totales-1 downto 0);
            y : out unsigned (nbits_totales-1 downto 0);
            ready: out std_logic
            );
 end component;
 
+--señales de control
+
+--control_lineal='1' -> función lineal
+----control_T= "00" -> 4 tramos -> 4 bits
+----control_T= "01" -> 8 tramos -> 6 bits
+----control_T= "10" -> 16 tramos -> 7 bits
+
+--control_lineal='0' -> funcion cuadrática
+----control_T= "00" -> 4 tramos -> 7 bits
+----control_T= "01" -> 8 tramos -> 9 bits
+----control_T= "10" -> 16 tramos -> 12 bits
+constant nbits:natural:=12;
+constant control_lineal:std_logic:='0';
+constant control_T:std_logic_vector:="10";
+
 signal clk : std_logic;
 signal reset: std_logic;
-signal x : signed (11 downto 0);
-signal y : unsigned (11 downto 0);
+signal x : signed (nbits-1 downto 0):="001100000000";
+signal y : unsigned (nbits-1 downto 0);
 signal ready:std_logic;
 constant clk_period : time := 84 ns; 
 
 begin
 
 UUT:funcion_activacion 
-generic map(nbits_totales=>12,
-            control_lineal=>'0',
-            control_T=>"10")
+generic map(nbits_totales=>nbits,
+            control_lineal=>control_lineal,
+            control_T=>control_T)
 Port map(clk=>clk,
         reset =>reset,
         x =>x,
@@ -74,8 +89,6 @@ end process;
 
 process
 begin
-
- x<="001100000000";
  
  reset<='1';
  wait for 10 ns;

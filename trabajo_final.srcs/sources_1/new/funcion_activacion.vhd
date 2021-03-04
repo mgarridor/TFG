@@ -18,21 +18,31 @@
 -- 
 ----------------------------------------------------------------------------------
 
+--señales de control
+
+--control_lineal='1' -> función lineal
+----control_T= "00" -> 4 tramos -> 4 bits
+----control_T= "01" -> 8 tramos -> 6 bits
+----control_T= "10" -> 16 tramos -> 7 bits
+
+--control_lineal='0' -> funcion cuadrática
+----control_T= "00" -> 4 tramos -> 7 bits
+----control_T= "01" -> 8 tramos -> 9 bits
+----control_T= "10" -> 16 tramos -> 12 bits
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
---use ieee.std_logic_signed.all;
 
 
 entity funcion_activacion is
-    generic(nbits_totales:natural:=9;
-            control_lineal:std_logic:='0';
-            control_T:std_logic_vector(1 downto 0):="01"
+    generic(nbits_totales:natural:=7;
+            control_lineal:std_logic:='1';
+            control_T:std_logic_vector(1 downto 0):="00"
             );
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           x : in signed (11 downto 0);
+           x : in signed (nbits_totales-1 downto 0);
            y : out unsigned (nbits_totales-1 downto 0);
            ready:out std_logic
            );
@@ -186,7 +196,7 @@ component funcion_cuadratica
     generic(nbits:natural);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in signed (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
            c : in unsigned (nbits-1 downto 0);
@@ -200,7 +210,7 @@ component funcion_lineal is
     generic(nbits:natural);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in unsigned (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
            y : out unsigned (nbits-1 downto 0);
@@ -213,13 +223,10 @@ begin
 --Si el numero es negativo, los parametros se niegan y pasan a ser su simetrico. 
 --Algunos tienen antisimetria que controlo al elegir esos parametros.
 
-negativo<=x(11);
-control_4T<=x(10) when negativo='1' else
-            not(x(10));
-control_8T<=x(10)&x(9) when negativo='1' else
-            not(x(10)&x(9));
-control_16T<=x(10)&x(9)&x(8) when negativo='1' else 
-            not(x(10)&x(9)&x(8));
+negativo<=x(x'left);
+
+
+
 
 --Se genera un circuito u otro dependiendo de las señales de control
 
@@ -238,7 +245,9 @@ b=>b2_4,
 c=>c2_final_4,
 ready=>ready
 );
-
+--control
+control_4T<=x(x'left-1) when negativo='1' else
+            not(x(x'left-1));
 --a2
 with control_4T select
 a2_4<=  a2_4_1 when '0',
@@ -277,7 +286,9 @@ b=>b2_8,
 c=>c2_final_8,
 ready=>ready
 );
-
+--control
+control_8T<=x(x'left-1)&x(x'left-2) when negativo='1' else
+            not(x(x'left-1)&x(x'left-2));
 --a2
 with control_8T select       
 a2_8<=  a2_8_1 when "00",
@@ -324,7 +335,9 @@ b=>b2_16,
 c=>c2_final_16,
 ready=>ready
 );
-
+--control
+control_16T<=x(x'left-1)&x(x'left-2)&x(x'left-3) when negativo='1' else 
+            not(x(x'left-1)&x(x'left-2)&x(x'left-3));
 --a2        
 with control_16T select
 a2_16<= a2_16_1 when "000",  
@@ -383,7 +396,9 @@ b=>b1_final_4,
 ready=>ready
 
 );
-
+--control
+control_4T<=x(x'left-1) when negativo='1' else
+            not(x(x'left-1));
 --a1
 with control_4T select
 a1_4<=  a1_4_1 when '0',
@@ -415,7 +430,9 @@ a=>a1_8,
 b=>b1_final_8,
 ready=>ready
 );
-
+--control
+control_8T<=x(x'left-1)&x(x'left-2) when negativo='1' else
+            not(x(x'left-1)&x(x'left-2));
 --a1
 with control_8T select       
 a1_8<=  a1_8_1 when "00",
@@ -451,7 +468,9 @@ a=>a1_16,
 b=>b1_final_16,
 ready=>ready
 );
-
+--control
+control_16T<=x(x'left-1)&x(x'left-2)&x(x'left-3) when negativo='1' else 
+            not(x(x'left-1)&x(x'left-2)&x(x'left-3));
 --a1        
 with control_16T select
 a1_16<= a1_16_1 when "000",  

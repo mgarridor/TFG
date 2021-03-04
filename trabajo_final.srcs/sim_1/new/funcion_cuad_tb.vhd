@@ -40,7 +40,7 @@ component funcion_cuadratica is
     generic(nbits:natural);
     Port ( clk : in std_logic;
            reset:in std_logic;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in signed (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
            c : in unsigned (nbits-1 downto 0);
@@ -51,10 +51,10 @@ end component;
 constant num_bits:natural:=7;
 signal clk : std_logic;
 signal reset: std_logic;
-signal x : signed (11 downto 0);
-signal a : signed (num_bits-1 downto 0);
-signal b : unsigned (num_bits-1 downto 0);
-signal c : unsigned (num_bits-1 downto 0);
+signal x : signed (num_bits-1 downto 0):="0001000";
+signal a : signed (num_bits-1 downto 0):="0100000";
+signal b : unsigned (num_bits-1 downto 0):="1000000";
+signal c : unsigned (num_bits-1 downto 0):="1000000";
 signal y : unsigned (num_bits-1 downto 0);
 signal ready: std_logic;
 
@@ -87,10 +87,7 @@ end process;
 
 process
 begin
- x<="000100000000";
- a<="1000000";
- b<="1000000";
- c<="1000000";
+
 
  reset<='1';
  wait for 100 ns;

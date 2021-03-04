@@ -1,0 +1,278 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Mar  4 17:27:29 2021
+# Process ID: 84371
+# Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
+# Command line: vivado -log funcion_cuadratica.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_cuadratica.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_cuadratica.vds
+# Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source funcion_cuadratica.tcl -notrace
+create_project: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2286.023 ; gain = 0.023 ; free physical = 781 ; free virtual = 4928
+Command: synth_design -top funcion_cuadratica -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 84444
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 803 ; free virtual = 4272
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'funcion_cuadratica' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd:38]
+	Parameter nbits bound to: 12 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'funcion_cuadratica' (1#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd:38]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 898 ; free virtual = 4378
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 884 ; free virtual = 4371
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 884 ; free virtual = 4371
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2286.152 ; gain = 0.000 ; free physical = 878 ; free virtual = 4366
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'A[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:268]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {A[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:268]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'A[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:269]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {A[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:269]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'B[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:270]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {B[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:270]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'B[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:271]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {B[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:271]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'control[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:272]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {control[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:272]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'control[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:273]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports {control[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:273]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'Ma'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:274]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports Ma]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:274]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'Ma'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:275]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports Ma]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:275]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'Mb'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:276]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports Mb]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:276]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'Mb'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:277]
+CRITICAL WARNING: [Vivado 12-4739] set_input_delay:No valid object(s) found for '-objects [get_ports Mb]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:277]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'S[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:280]
+CRITICAL WARNING: [Vivado 12-4739] set_output_delay:No valid object(s) found for '-objects [get_ports {S[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:280]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'S[*]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:281]
+CRITICAL WARNING: [Vivado 12-4739] set_output_delay:No valid object(s) found for '-objects [get_ports {S[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:281]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/funcion_cuadratica_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/funcion_cuadratica_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 773 ; free virtual = 4280
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 773 ; free virtual = 4280
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 830 ; free virtual = 4343
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 830 ; free virtual = 4344
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 830 ; free virtual = 4343
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'primer_ciclo_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd:110]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 817 ; free virtual = 4338
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               27 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input   15 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP r1_next, operation Mode is: A*B.
+DSP Report: operator r1_next is absorbed into DSP r1_next.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 802 ; free virtual = 4330
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping	Report (see note below)
++-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name        | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|funcion_cuadratica | A*B         | 15     | 12     | -      | -      | 27     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++-------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 643 ; free virtual = 4180
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 641 ; free virtual = 4178
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 643 ; free virtual = 4181
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 634 ; free virtual = 4178
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 634 ; free virtual = 4178
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 633 ; free virtual = 4177
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 633 ; free virtual = 4177
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 633 ; free virtual = 4177
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 633 ; free virtual = 4177
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     2|
+|2     |CARRY4  |     3|
+|3     |DSP48E1 |     1|
+|4     |LUT1    |     1|
+|5     |LUT2    |     2|
+|6     |LUT3    |    12|
+|7     |LUT5    |     3|
+|8     |LUT6    |    24|
+|9     |FDCE    |    13|
+|10    |FDPE    |     2|
+|11    |LDC     |     1|
+|12    |IBUF    |    50|
+|13    |OBUF    |    13|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.039 ; gain = 31.887 ; free physical = 633 ; free virtual = 4177
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2318.039 ; gain = 0.000 ; free physical = 695 ; free virtual = 4240
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 2318.047 ; gain = 31.887 ; free physical = 695 ; free virtual = 4240
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.047 ; gain = 0.000 ; free physical = 771 ; free virtual = 4323
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.047 ; gain = 0.000 ; free physical = 714 ; free virtual = 4266
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  LDC => LDCE: 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+17 Infos, 13 Warnings, 12 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2318.047 ; gain = 32.023 ; free physical = 867 ; free virtual = 4417
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_cuadratica.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file funcion_cuadratica_utilization_synth.rpt -pb funcion_cuadratica_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Mar  4 17:28:28 2021...

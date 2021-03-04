@@ -27,7 +27,7 @@ entity funcion_lineal is
     generic (nbits:natural);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in unsigned (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
            y : out unsigned (nbits-1 downto 0);
@@ -36,7 +36,7 @@ end funcion_lineal;
 
 architecture Behavioral of funcion_lineal is
 
-signal r1_reg,r1_next: signed(nbits+12 downto 0);
+signal r1_reg,r1_next: signed(nbits+nbits downto 0);
 
 signal y_temp:signed(nbits downto 0);
 signal control:std_logic;
@@ -61,7 +61,7 @@ begin
 --x*a
 r1_next<=signed('0'& a)*x;
 --b + (x*a)
-y_temp<= signed('0'& b) + signed((r1_reg(nbits+12)&std_logic_vector(r1_reg(nbits+9 downto 10))));
+y_temp<= signed('0'& b) + signed((r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-3 downto nbits-2))));
 
 --control para que la señal ready no se active en el primer ciclo
 if control='0' and reset='0' then

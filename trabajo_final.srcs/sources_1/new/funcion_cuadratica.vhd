@@ -27,7 +27,7 @@ entity funcion_cuadratica is
     generic(nbits:natural:=12);
     Port ( clk : in std_logic;
            reset:in std_logic;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in signed (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
            c : in unsigned (nbits-1 downto 0);
@@ -42,12 +42,12 @@ signal primer_ciclo:std_logic:='1';
 signal control:std_logic_vector(1 downto 0);
 
 --señales de entrada a multiplicador o sumador
-signal multa:signed(nbits+2 downto 0);
+signal multa:signed(nbits+2 downto 0):=(others=>'0');
 signal suma:signed(nbits downto 0);
 signal sumb:signed(nbits downto 0);
 
 --registros
-signal r1_reg,r1_next: signed(nbits+14 downto 0);
+signal r1_reg,r1_next: signed(nbits+nbits+2 downto 0);
 signal r2_reg,r2_next: signed(nbits downto 0);
 
 
@@ -61,15 +61,17 @@ begin
     if(reset = '1')then
         r1_reg<= (others=>'0');
         r2_reg<= (others=>'0');
-        control<="11";
+        control<="00";
+        primer_ciclo<='1';
     elsif (rising_edge(clk))then
         r1_reg<=r1_next;
         r2_reg<=r2_next;
         control<=std_logic_vector(unsigned(control)+1);
+        primer_ciclo<='0';
     end if;
 end process;
 
-process(a,b,c,x,r1_reg,r2_reg,control)
+process(a,b,c,x,r1_reg,r2_reg,control,reset)
 begin
 
 --multiplexadores del multiplicador
@@ -79,12 +81,12 @@ begin
 case control is 
     --b de x*b (añado 1 cero a la izda y 2 a la dcha) 
     when "00" =>multa<=signed('0'&std_logic_vector(b)&"00");
-    --a de x*a (añado 4 bits de signo a la izda)
-    when "01" =>multa<=signed(a(a'left)&a(a'left)&a(a'left)&a(a'left)&std_logic_vector(a(nbits-2 downto 0)));
-    --x*a de x*a*x (añado el bit de signo y recorto 9 bits de la dcha)
-    when "10" =>multa<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-5 downto 8)));
+    --a de x*a (añado 3 bits de signo a la izda)
+    when "01" =>multa<=signed(a(a'left)&a(a'left)&a(a'left)&std_logic_vector(a));
+    --x*a de x*a*x (añado el bit de signo y recorto 9 bits de la dcha y 4 de la izda)
+    when "10" =>multa<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-5 downto nbits-4)));
     --no importante
-    when others =>multa<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-5 downto 8)));
+    when others =>multa<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-5 downto nbits-4)));
 end case;
 
 ----multiplexadores del sumador
@@ -102,16 +104,16 @@ case control(0) is
     --cuando control es 00 y 10 el registro se mantiene (se suma con 0)
     when '0' =>sumb<=(others=>'0');
     --en los otros casos, sera (x*b) o (x*a*x), en ambos casos r1
-    when others =>sumb<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-4 downto 11)));
+    when others =>sumb<=signed(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-4 downto nbits-1)));
 end case;
 
 --control para que la señal ready no se active en el primer ciclo
-if control="01" and reset='0' then
-    primer_ciclo<='0';
+--if control="00" and reset='0' then
+--    primer_ciclo<='0';
 
-elsif reset='1' then 
-    primer_ciclo<='1';
-end if;
+--elsif reset='1' then 
+--    primer_ciclo<='1';
+--end if;
 end process;
 
 --funciones
