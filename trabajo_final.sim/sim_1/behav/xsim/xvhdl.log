@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'funcion_cuadratica'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sim_1/new/mult_conf_3_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'mult_config_3_tb'

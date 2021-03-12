@@ -71,12 +71,12 @@ signal solucion:std_logic_vector(15 downto 0);
 
 signal correcto:std_logic;
 
-constant clk_period : time := 1 ps; 
+constant clk_period : time := 100 ns; 
 --control de la simulacion
 --  si 00 => 1 multiplicador 8x8
---  si 01 => 4 multiplicadores 4x4
---``si 10 => 16 multiplicadores 2x2
-constant control:std_logic_vector(1 downto 0):="10";
+--  si 01 => 2 multiplicadores 4x4
+--``si 10 => 4 multiplicadores 2x2
+constant control:std_logic_vector(1 downto 0):="01";
 constant Ma : std_logic:='1';
 constant Mb : std_logic:='1';
 
@@ -129,7 +129,7 @@ if control="00" then
     end loop;
 elsif control="01" then
 
---4 multiplexores de 4 bits
+--2 multiplexores de 4 bits
     A(3 downto 0)<="0010";
     A(7 downto 4)<="0010";
 
@@ -145,7 +145,7 @@ elsif control="01" then
 
     end loop;
     
---16 multiplicadores de 2 bits
+--4 multiplicadores de 2 bits
 else
     A<=(others=>'0');
     B<=(others=>'0');
@@ -204,8 +204,8 @@ S24<=S(15 downto 12);
 
 --2 multiplicadores de 4 bits        
 ----con signo  
---solucion(7 downto 0)<=std_logic_vector(signed(A41)*signed(B41));
---solucion(15 downto 8)<=std_logic_vector(signed(A42)*signed(B42));
+solucion(7 downto 0)<=std_logic_vector(signed(A41)*signed(B41));
+solucion(15 downto 8)<=std_logic_vector(signed(A42)*signed(B42));
 
 ----sin signo
 --solucion(7 downto 0)<=std_logic_vector(unsigned(A41)*unsigned(B41));
@@ -214,10 +214,10 @@ S24<=S(15 downto 12);
 
 --8 multiplicadores 2 bits
 --con signo
-solucion(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
-solucion(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
-solucion(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
-solucion(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
+--solucion(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
+--solucion(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
+--solucion(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
+--solucion(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
 
 
 ----sin signo

@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Mar  4 17:27:29 2021
-# Process ID: 84371
+# Start of session at: Fri Mar 12 17:25:34 2021
+# Process ID: 73042
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
-# Command line: vivado -log funcion_cuadratica.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_cuadratica.tcl
-# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_cuadratica.vds
+# Command line: vivado -log mult_config_3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_config_3.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/mult_config_3.vds
 # Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source funcion_cuadratica.tcl -notrace
+source mult_config_3.tcl -notrace

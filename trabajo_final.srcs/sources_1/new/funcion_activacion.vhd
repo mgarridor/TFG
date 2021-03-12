@@ -37,7 +37,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity funcion_activacion is
     generic(nbits_totales:natural:=7;
-            control_lineal:std_logic:='1';
+            control_lineal:std_logic:='0';
             control_T:std_logic_vector(1 downto 0):="00"
             );
     Port ( clk : in STD_LOGIC;
@@ -206,6 +206,7 @@ component funcion_cuadratica
 end component;
 
 
+
 component funcion_lineal is
     generic(nbits:natural);
     Port ( clk : in STD_LOGIC;
@@ -224,8 +225,6 @@ begin
 --Algunos tienen antisimetria que controlo al elegir esos parametros.
 
 negativo<=x(x'left);
-
-
 
 
 --Se genera un circuito u otro dependiendo de las señales de control

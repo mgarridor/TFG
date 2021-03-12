@@ -1,0 +1,268 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Mar 12 17:25:34 2021
+# Process ID: 73042
+# Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
+# Command line: vivado -log mult_config_3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_config_3.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/mult_config_3.vds
+# Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source mult_config_3.tcl -notrace
+Command: synth_design -top mult_config_3 -part xc7a100tcsg324-1 -directive AreaOptimized_high
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 73158
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2287.152 ; gain = 0.000 ; free physical = 130 ; free virtual = 5670
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:47]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp1' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:114]
+INFO: [Synth 8-638] synthesizing module 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:54]
+INFO: [Synth 8-3491] module 'basico1' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico1.vhd:34' bound to instance 'basico00' of component 'basico1' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'basico1' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico1.vhd:43]
+INFO: [Synth 8-3491] module 'FA' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FA.vhd:34' bound to instance 'UUT' of component 'FA' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico1.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'FA' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FA.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'FA' (1#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FA.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'basico1' (2#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico1.vhd:43]
+INFO: [Synth 8-3491] module 'basico2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:34' bound to instance 'basico01' of component 'basico2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:103]
+INFO: [Synth 8-638] synthesizing module 'basico2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:44]
+INFO: [Synth 8-3491] module 'FA' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FA.vhd:34' bound to instance 'UUT' of component 'FA' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'basico2' (3#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:44]
+INFO: [Synth 8-3491] module 'basico2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:34' bound to instance 'basico10' of component 'basico2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:114]
+INFO: [Synth 8-3491] module 'basico2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd:34' bound to instance 'basico11' of component 'basico2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:124]
+INFO: [Synth 8-256] done synthesizing module 'FAB_mini' (4#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:54]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp2' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:135]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp3' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:156]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp4' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:177]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp5' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:199]
+INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp6' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:220]
+WARNING: [Synth 8-614] signal 'control' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:293]
+INFO: [Synth 8-256] done synthesizing module 'mult_config_3' (5#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:47]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2287.152 ; gain = 0.000 ; free physical = 912 ; free virtual = 6459
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2287.152 ; gain = 0.000 ; free physical = 909 ; free virtual = 6456
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2287.152 ; gain = 0.000 ; free physical = 909 ; free virtual = 6456
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2287.152 ; gain = 0.000 ; free physical = 901 ; free virtual = 6449
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]
+Finished Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mult_config_3_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/mult_config_3_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2319.035 ; gain = 0.000 ; free physical = 813 ; free virtual = 6362
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2319.035 ; gain = 0.000 ; free physical = 813 ; free virtual = 6362
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 879 ; free virtual = 6428
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 879 ; free virtual = 6428
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 879 ; free virtual = 6428
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mult_config_3'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:281]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_next_state_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:281]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                   00000000010000 |                             0000
+                     e81 |                   00010000000000 |                             0111
+                     e82 |                   00100000000000 |                             1000
+                     e83 |                   01000000000000 |                             1001
+                     e84 |                   00000100000000 |                             1010
+                     e41 |                   00000010000000 |                             1011
+                     e42 |                   00000001000000 |                             1100
+                      e2 |                   00000000001000 |                             1101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'mult_config_3'
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_next_state_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:281]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 868 ; free virtual = 6421
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    4 Bit       Adders := 6     
++---XORs : 
+	   2 Input      1 Bit         XORs := 72    
++---Registers : 
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   8 Input   14 Bit        Muxes := 1     
+	   3 Input   14 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 31    
+	   3 Input    2 Bit        Muxes := 4     
+	   4 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 22    
+	   4 Input    1 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 873 ; free virtual = 6430
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 758 ; free virtual = 6316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 698 ; free virtual = 6255
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 698 ; free virtual = 6255
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |BUFG |     1|
+|2     |LUT1 |     8|
+|3     |LUT2 |    16|
+|4     |LUT3 |    23|
+|5     |LUT4 |    22|
+|6     |LUT5 |    46|
+|7     |LUT6 |    52|
+|8     |FDCE |    23|
+|9     |FDPE |     1|
+|10    |FDRE |     8|
+|11    |LD   |     8|
+|12    |IBUF |    30|
+|13    |OBUF |    25|
++------+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.035 ; gain = 31.883 ; free physical = 696 ; free virtual = 6256
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2319.035 ; gain = 0.000 ; free physical = 750 ; free virtual = 6311
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 2319.043 ; gain = 31.883 ; free physical = 750 ; free virtual = 6311
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2319.043 ; gain = 0.000 ; free physical = 837 ; free virtual = 6398
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2319.043 ; gain = 0.000 ; free physical = 782 ; free virtual = 6342
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  LD => LDCE: 8 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+39 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:45 . Memory (MB): peak = 2319.043 ; gain = 32.023 ; free physical = 965 ; free virtual = 6525
+INFO: [Common 17-1381] The checkpoint '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/mult_config_3.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file mult_config_3_utilization_synth.rpt -pb mult_config_3_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 12 17:26:31 2021...

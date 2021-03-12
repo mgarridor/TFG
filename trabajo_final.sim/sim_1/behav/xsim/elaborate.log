@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /home/matiaspc/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 1d7e73df8fab4e408e5bee25fd65c24c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot funcion_activacion_tb_behav xil_defaultlib.funcion_activacion_tb -log elaborate.log 
+Running: /home/matiaspc/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 1d7e73df8fab4e408e5bee25fd65c24c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot mult_config_3_tb_behav xil_defaultlib.mult_config_3_tb -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -11,7 +11,10 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
-Compiling architecture behavioral of entity xil_defaultlib.funcion_cuadratica [funcion_cuadratica_default]
-Compiling architecture behavioral of entity xil_defaultlib.funcion_activacion [\funcion_activacion(nbits_totale...]
-Compiling architecture behavioral of entity xil_defaultlib.funcion_activacion_tb
-Built simulation snapshot funcion_activacion_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.FA [fa_default]
+Compiling architecture behavioral of entity xil_defaultlib.basico1 [basico1_default]
+Compiling architecture behavioral of entity xil_defaultlib.basico2 [basico2_default]
+Compiling architecture behavioral of entity xil_defaultlib.FAB_mini [fab_mini_default]
+Compiling architecture behavioral of entity xil_defaultlib.mult_config_3 [mult_config_3_default]
+Compiling architecture behavioral of entity xil_defaultlib.mult_config_3_tb
+Built simulation snapshot mult_config_3_tb_behav

@@ -105,6 +105,7 @@ signal S5_reg,S5_next : std_logic_vector(1 downto 0);
 
 
 
+
 begin
 
 --primera columna
@@ -192,6 +193,7 @@ port map(
     Mb=>Mb
 );
 
+
 --registro de entrada
 process(clk,reset,control)
 begin
@@ -234,7 +236,6 @@ begin
         S5_reg<=S5_next;
         
         
-        
         if control="00" then
             contador<=contador+1;
         elsif control="01" then
@@ -245,7 +246,7 @@ begin
             end if;
         else 
             contador<="00";
-        end if;    
+        end if; 
         primera_cuenta<='0';  
     end if;
 end process;
@@ -255,233 +256,260 @@ end process;
 --  si 00 => 1 multiplicador 8x8
 --  si 01 => 4 multiplicadores 4x4
 --``si 10 => 16 multiplicadores 2x2
+    
+    
+--A 
+ 
+ A1<=A(1 downto 0) when contador="00" else
+     A(3 downto 2) when contador="01" else
+     A(5 downto 4) when contador="10" else
+     A(7 downto 6) ;
      
---entradas  
-process(clk,contador,A,B,control,top_1,top_2,top_3,top_4,sum_1,sum_2,sum_3,sum_4,Ma,Mb,S1_reg,S2_reg,S3_reg,S5_reg)
-begin 
+ A2<=A(1 downto 0) when (control="00" or control="01") and contador="00"  else
+     A(3 downto 2) when contador="01" or control="10" else
+     A(5 downto 4) when control="00" and contador="10" else
+     A(7 downto 6);
+ 
+ A3<=A(1 downto 0) when control="00" and contador="00"  else
+     A(3 downto 2) when control="00" and contador="01" else
+     A(5 downto 4) when (control="00" and contador="10" )or (control="01" and contador="00") or control="10" else
+     A(7 downto 6);
 
- --A
- --control 00
-     if contador="00" and control="00" then
-        A1<=A(1 downto 0);
-        A2<=A(1 downto 0);
-        A3<=A(1 downto 0);
-        A4<=A(1 downto 0);
-    elsif contador="01" and control="00" then
-        A1<=A(3 downto 2);
-        A2<=A(3 downto 2);
-        A3<=A(3 downto 2);
-        A4<=A(3 downto 2);
-    elsif contador="10" and control="00" then
-        A1<=A(5 downto 4);
-        A2<=A(5 downto 4);
-        A3<=A(5 downto 4);
-        A4<=A(5 downto 4);
-    elsif contador="11" and control="00" then
-        A1<=A(7 downto 6);
-        A2<=A(7 downto 6);
-        A3<=A(7 downto 6);
-        A4<=A(7 downto 6);
---control 01     
-    elsif contador="00" and control="01" then
-        A1<=A(1 downto 0);
-        A2<=A(1 downto 0);
-        A3<=A(5 downto 4);
-        A4<=A(5 downto 4);
-    elsif contador="01" and control="01" then
-        A1<=A(3 downto 2);
-        A2<=A(3 downto 2);
-        A3<=A(7 downto 6);
-        A4<=A(7 downto 6);
-    
---control 10      
-    elsif control="10" then
-        A1<=A(1 downto 0);
-        A2<=A(3 downto 2);
-        A3<=A(5 downto 4);
-        A4<=A(7 downto 6);
-    else
-        A1<=(others=>'0');
-        A2<=(others=>'0');
-        A3<=(others=>'0');
-        A4<=(others=>'0');
-    end if;    
-    
---B
+ A4<=A(1 downto 0) when control="00" and contador="00"  else
+     A(3 downto 2) when control="00" and contador="01" else
+     A(5 downto 4) when (control="00" and contador="10" )or (control="01" and contador="00") else
+     A(7 downto 6);
+----B
 --control 00 01 10
         B1<=B(1 downto 0);
         B2<=B(3 downto 2);
         B3<=B(5 downto 4);
-        B4<=B(7 downto 6);       
+        B4<=B(7 downto 6);  
+    
+        
+--soluciones  
+S1_next<=top_1 when (control="00" or control="01") and contador="00"  else
+         S1_reg when (control="00" or control="01") and contador/="00" else
+         sum_1(0) & top_1(0);
+         
+S2_next<=top_1 when control="00" and contador="01" else
+         S2_reg when control="00" and (contador="10" or contador="11") else
+         sum_1(0) & top_1(0) when control="01" and contador="01" else
+         sum_1(2 downto 1) when control="10" else
+         (others=>'0');
 
---soluciones
---control 00
-    if contador="00" and control="00"then
-        S1_next<=top_1;     
-        S2_next<="00";
-        S3_next<="00";
-        S4<=(others=>'0');
-        S5_next<=(others=>'0');
-        S6<=(others=>'0');
-        S7<=(others=>'0');
-        S8<=(others=>'0'); 
-    elsif contador="01" and control="00"then
-        S1_next<=S1_reg;
-        S2_next<=top_1;
-        S3_next<="00";
-        S4<=(others=>'0');
-        S5_next<=(others=>'0');
-        S6<=(others=>'0');
-        S7<=(others=>'0');
-        S8<=(others=>'0');    
-                 
-    elsif contador="10" and control="00"then
-        S1_next<=S1_reg;
-        S2_next<=S2_reg;
-        S3_next<=top_1;
-        S4<=(others=>'0');
-        S5_next<=(others=>'0');
-        S6<=(others=>'0');
-        S7<=(others=>'0');
-        S8<=(others=>'0'); 
-                 
-    elsif contador="11" and control="00"then
-        S1_next<=S1_reg;
-        S2_next<=S2_reg;
-        S3_next<=S3_reg;
-        S8<=sum_4(2 downto 1);
-        S7<=sum_3(2 downto 1);
-        S6<=sum_2(2 downto 1);
-        S5_next<=sum_1(2 downto 1);
-        S4<=sum_1(0)&top_1(0);
-            
-    --control 01
-    elsif contador="00" and control="01" then
-        S1_next<=top_1;
-        S2_next<=(others=>'0');
-        S3_next<=(others=>'0');
-        S4<=(others=>'0');
-        S5_next<=top_3;
-        S6<=(others=>'0');
-        S7<=(others=>'0');
-        S8<=(others=>'0');     
-    elsif contador="01" and control="01" then
-        S1_next<=S1_reg;
-        S2_next<=sum_1(0) & top_1(0);
-        S3_next<=sum_1(2 downto 1);
-        S4<=sum_2(2 downto 1);
-        S5_next<=S5_reg;
-        S6<=sum_3(0) & top_3(0);
-        S7<=sum_3(2 downto 1);
-        S8<=sum_4(2 downto 1);
-        
-    --control 10
-    elsif control="10" then
-        S1_next<=sum_1(0) & top_1(0);
-        S2_next<=sum_1(2 downto 1);
-        S3_next<=sum_2(0) & top_2(0);
-        S4<=sum_2(2 downto 1);
-        S5_next<=sum_3(0) & top_3(0);
-        S6<=sum_3(2 downto 1);
-        S7<=sum_4(0) & top_4(0);
-        S8<=sum_4(2 downto 1); 
-    else
-        S1_next<=(others=>'0');
-        S2_next<=(others=>'0');
-        S3_next<=(others=>'0');
-        S4<=(others=>'0');
-        S5_next<=(others=>'0');
-        S6<=(others=>'0');
-        S7<=(others=>'0');
-        S8<=(others=>'0'); 
-    end if;
+S3_next<=top_1 when control="00" and contador="10" else
+         S3_reg when control="00" and contador="11" else
+         sum_1(2 downto 1) when control="01" and control="01" else
+         sum_2(0) & top_2(0) when control="10" else
+         (others=>'0');
+         
+S4<=sum_1(0)&top_1(0) when control="00" and contador="11" else
+    sum_2(2 downto 1) when (control="01" and contador="01") or control="10" else
+    (others=>'0');
     
-    --Ma,Mb
-    if (control="00" and contador/="11") or
-       (control="01" and contador="00") then
-        Ma1<='0';
-        Ma2<='0';
-        Ma3<='0';
-        Ma4<='0';
-        
-    else
-        Ma1<=Ma;
-        Ma2<=Ma;
-        Ma3<=Ma;
-        Ma4<=Ma;  
-        
-    end if;
-    --Mb
-    if control="00" then
-        Mb1<='0';
-        Mb2<='0';
-        Mb3<='0';
-    elsif control="01" then
-        Mb1<='0';
-        Mb2<=Mb;
-        Mb3<='0';
-    else 
-        Mb1<=Mb;
-        Mb2<=Mb;
-        Mb3<=Mb;
-    end if;
-    --Cl
-    if  (control="00" and contador="00") or 
-        (control="01" and contador(0)='0') or 
-        control="10" then
-        
-        Cl<='0';
-    else 
-        Cl<='1';
-    end if;
-    
-    --Cr
-    if  (control="00" and contador="11") or 
-        (control="01" and contador(0)='1') or 
-        control="10" then
-        
-        Cr<='0';
-    else 
-        Cr<='1';
-    end if;
-    
-    --Ct
-    if  control="01" then
-        Ct2<='1';
-        Ct3<='0';
-        Ct4<='1';
-    elsif control="10" then
-        Ct2<='0';
-        Ct3<='0';
-        Ct4<='0';
-    else
-        Ct2<='1';
-        Ct3<='1';
-        Ct4<='1';
-    end if;
-    
-    --Cb
-    if  control="01" then
-        Cb1<='1';
-        Cb2<='0';
-        Cb3<='1';
-    elsif control="10" then
-        Cb1<='0';
-        Cb2<='0';
-        Cb3<='0';
-    else
-        Cb1<='1';
-        Cb2<='1';
-        Cb3<='1';
-    end if;
-    
-end process;
+S5_next<=sum_1(2 downto 1) when control="00" and contador="11" else
+         top_3 when control="01" and contador="00" else
+         S5_reg when control="01" and contador="01" else
+         sum_3(0) & top_3(0) when control="10" else
+         (others=>'0');
 
+S6<=sum_2(2 downto 1) when control="00" and contador="11" else
+    sum_3(0) & top_3(0) when control="01" and contador="01" else
+    sum_3(2 downto 1) when control="10" else
+    (others=>'0');
+    
+S7<=sum_3(2 downto 1) when (control="00" and contador="11") or (control="01" and contador="01") else
+    sum_4(0) & top_4(0) when control="10" else
+    (others=>'0');  
+    
+S8<=sum_4(2 downto 1) when (control="00" and contador="11") or (control="01" and contador="01") or control="10" else
+    (others=>'0');    
+    
+
+--Ma
+Ma1<='0' when (control="00" and contador/="11") or 
+              (control="01" and contador="00") else
+    Ma;
+Ma2<='0' when (control="00" and contador/="11") or 
+              (control="01" and contador="00") else
+    Ma;
+Ma3<='0' when (control="00" and contador/="11") or 
+              (control="01" and contador="00") else
+    Ma;
+Ma4<='0' when (control="00" and contador/="11") or 
+              (control="01" and contador="00") else
+    Ma;
+    
+
+--Mb
+Mb1<='0' when control/="10" else
+     Mb;
+Mb2<='0' when control="00" else
+     Mb;
+Mb3<='0' when control/="10" else
+     Mb;
+
+
+
+--Cl
+ Cl<='0' when  (control="00" and contador="00") or 
+               (control="01" and contador(0)='0') or 
+               control="10" else
+     '1';
+--Cr   
+ Cr<='0' when  (control="00" and contador="11") or 
+               (control="01" and contador(0)='1') or 
+               control="10" else
+     '1';
+--Ct
+  Ct2<='0' when control="10" else
+       '1';  
+  Ct3<='0' when control="01" or control="10" else
+       '1';
+  Ct4<='0' when control="10" else
+       '1';  
+--Cb
+  Cb1<='0' when control="10" else
+       '1'; 
+  Cb2<='0' when control="01" or control="10" else
+       '1';
+  Cb3<='0' when control="10" else
+       '1';  
+
+--ready
 ready<= '1' when ((contador="11" and control="00" )or 
                  (contador="01" and control="01") or 
                  (control="10")) and primera_cuenta='0' else
         '0';
+   
+    
+     
+----A 
+ 
+-- A1<=A(1 downto 0) when contador="00" else
+--     A(3 downto 2) when contador="01" else
+--     A(5 downto 4) when contador="10" else
+--     A(7 downto 6) ;
+     
+-- A2<=A(1 downto 0) when (control="00" or control="01") and contador="00"  else
+--     A(3 downto 2) when contador="01" or control="10" else
+--     A(5 downto 4) when control="00" and contador="10" else
+--     A(7 downto 6);
+ 
+-- A3<=A(1 downto 0) when control="00" and contador="00"  else
+--     A(3 downto 2) when control="00" and contador="01" else
+--     A(5 downto 4) when (control="00" and contador="10" )or (control="01" and contador="00") or control="10" else
+--     A(7 downto 6);
+
+-- A4<=A(1 downto 0) when control="00" and contador="00"  else
+--     A(3 downto 2) when control="00" and contador="01" else
+--     A(5 downto 4) when (control="00" and contador="10" )or (control="01" and contador="00") else
+--     A(7 downto 6);
+------B
+----control 00 01 10
+--        B1<=B(1 downto 0);
+--        B2<=B(3 downto 2);
+--        B3<=B(5 downto 4);
+--        B4<=B(7 downto 6);     
         
+----soluciones  
+--S1_next<=top_1 when (control="00" or control="01") and contador="00"  else
+--         S1_reg when (control="00" or control="01") and contador/="00" else
+--         sum_1(0) & top_1(0);
+         
+--S2_next<=top_1 when control="00" and contador="01" else
+--         S2_reg when control="00" and (contador="10" or contador="11") else
+--         sum_1(0) & top_1(0) when control="01" and contador="01" else
+--         sum_1(2 downto 1) when control="10" else
+--         (others=>'0');
+
+--S3_next<=top_1 when control="00" and contador="10" else
+--         S3_reg when control="00" and contador="11" else
+--         sum_1(2 downto 1) when control="01" and control="01" else
+--         sum_2(0) & top_2(0) when control="10" else
+--         (others=>'0');
+         
+--S4<=sum_1(0)&top_1(0) when control="00" and contador="11" else
+--    sum_2(2 downto 1) when (control="01" and contador="01") or control="10" else
+--    (others=>'0');
+    
+--S5_next<=sum_1(2 downto 1) when control="00" and contador="11" else
+--         top_3 when control="01" and contador="00" else
+--         S5_reg when control="01" and contador="01" else
+--         sum_3(0) & top_3(0) when control="10" else
+--         (others=>'0');
+
+--S6<=sum_2(2 downto 1) when control="00" and contador="11" else
+--    sum_3(0) & top_3(0) when control="01" and contador="01" else
+--    sum_3(2 downto 1) when control="10" else
+--    (others=>'0');
+    
+--S7<=sum_3(2 downto 1) when (control="00" and contador="11") or (control="01" and contador="01") else
+--    sum_4(0) & top_4(0) when control="10" else
+--    (others=>'0');  
+    
+--S8<=sum_4(2 downto 1) when (control="00" and contador="11") or (control="01" and contador="01") or control="10" else
+--    (others=>'0');    
+    
+
+----Ma
+--Ma1<='0' when (control="00" and contador/="11") or 
+--              (control="01" and contador="00") else
+--    Ma;
+--Ma2<='0' when (control="00" and contador/="11") or 
+--              (control="01" and contador="00") else
+--    Ma;
+--Ma3<='0' when (control="00" and contador/="11") or 
+--              (control="01" and contador="00") else
+--    Ma;
+--Ma4<='0' when (control="00" and contador/="11") or 
+--              (control="01" and contador="00") else
+--    Ma;
+    
+
+----Mb
+--Mb1<='0' when control/="10" else
+--     Mb;
+--Mb2<='0' when control="00" else
+--     Mb;
+--Mb3<='0' when control/="10" else
+--     Mb;
+
+
+
+----Cl
+-- Cl<='0' when  (control="00" and contador="00") or 
+--               (control="01" and contador(0)='0') or 
+--               control="10" else
+--     '1';
+----Cr   
+-- Cr<='0' when  (control="00" and contador="11") or 
+--               (control="01" and contador(0)='1') or 
+--               control="10" else
+--     '1';
+----Ct
+--  Ct2<='0' when control="10" else
+--       '1';  
+--  Ct3<='0' when control="01" or control="10" else
+--       '1';
+--  Ct4<='0' when control="10" else
+--       '1';  
+----Cb
+--  Cb1<='0' when control="10" else
+--       '1'; 
+--  Cb2<='0' when control="01" or control="10" else
+--       '1';
+--  Cb3<='0' when control="10" else
+--       '1';  
+
+----ready
+--ready<= '1' when ((contador="11" and control="00" )or 
+--                 (contador="01" and control="01") or 
+--                 (control="10")) and primera_cuenta='0' else
+--        '0';
+
+--solucion completa   
 S<=S8 & S7 & S6 & S5_next & S4 & S3_next & S2_next & S1_next;
 
 end Behavioral;
