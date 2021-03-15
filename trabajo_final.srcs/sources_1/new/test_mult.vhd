@@ -32,14 +32,30 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity test_mult is
-    Port ( A8 : in signed (7 downto 0);
-           B8 : in signed (7 downto 0);
-           S8 : out signed (15 downto 0));
+    Port ( A : in signed (11 downto 0);
+           B : in signed (11 downto 0);
+           S : out signed (23 downto 0);
+           clk : in std_logic);
 end test_mult;
 
 architecture Behavioral of test_mult is
-
+signal S_reg,S_next : signed (23 downto 0);
 begin
-S8<=A8*B8;
 
+process(clk)
+begin
+    if (rising_edge(clk))then
+    
+        S_reg<=S_next;
+        
+        
+    end if;
+end process;
+
+process(A,B)
+begin 
+S_next<=A*B;
+end process;
+
+S<=S_reg;
 end Behavioral;

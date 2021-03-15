@@ -79,7 +79,7 @@ constant clk_period : time := 100 ns;
 --  si 00 => 1 multiplicador 8x8
 --  si 01 => 2 multiplicadores 4x4
 --``si 10 => 4 multiplicadores 2x2
-constant control:std_logic_vector(1 downto 0):="10";
+constant control:std_logic_vector(1 downto 0):="11";
 constant Ma : std_logic:='1';
 constant Mb : std_logic:='1';
 
@@ -154,7 +154,7 @@ elsif control="01" then
     end loop;
     
 --6 multiplicadores de 2 bits
-else
+elsif control="10" then
     A<=(others=>'0');
     B<=(others=>'0');
     wait for clk_period/2;
@@ -163,6 +163,18 @@ else
     B<=std_logic_vector(unsigned(B)+3+64+500+2500+8000+18000);
     wait for t3;
 
+    end loop;
+else
+    
+    A<="100000000000";
+    B<="010000000000";
+    
+    wait for clk_period/2;
+    ----bucle que prueba distintas combinaciones de A y B
+    for i in 0 to 1000 loop 
+    A<=std_logic_vector(unsigned(A)+3);
+    B<=std_logic_vector(unsigned(B)+50);
+    wait for t4;
     end loop;
 end if;
 
@@ -218,7 +230,7 @@ S26<=S(23 downto 20);
 
 --1 multiplicador 12 bits
 --con signo
---solucion<=std_logic_vector(signed(A12)*signed(B12));
+solucion<=std_logic_vector(signed(A12)*signed(B12));
 
 --sin signo
 --solucion<=std_logic_vector(unsigned(A12)*unsigned(B12));
@@ -227,9 +239,10 @@ S26<=S(23 downto 20);
 --1 multiplicador 8 bits
 --con signo
 --solucion(15 downto 0)<=std_logic_vector(signed(A8)*signed(B8));
-
+--solucion(23 downto 16)<=(others=>'0');
 --sin signo
 --solucion(15 downto 0)<=std_logic_vector(unsigned(A8)*unsigned(B8));
+--solucion(23 downto 16)<=(others=>'0');
 
 
 --2 multiplicadores de 4 bits        
@@ -245,12 +258,12 @@ S26<=S(23 downto 20);
 
 --8 multiplicadores 2 bits
 --con signo
-solucion(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
-solucion(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
-solucion(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
-solucion(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
-solucion(19 downto 16)<=std_logic_vector(signed(A25)*signed(B25));
-solucion(23 downto 20)<=std_logic_vector(signed(A26)*signed(B26));
+--solucion(3 downto 0)<=std_logic_vector(signed(A21)*signed(B21));
+--solucion(7 downto 4)<=std_logic_vector(signed(A22)*signed(B22));
+--solucion(11 downto 8)<=std_logic_vector(signed(A23)*signed(B23));
+--solucion(15 downto 12)<=std_logic_vector(signed(A24)*signed(B24));
+--solucion(19 downto 16)<=std_logic_vector(signed(A25)*signed(B25));
+--solucion(23 downto 20)<=std_logic_vector(signed(A26)*signed(B26));
 
 ----sin signo
 --solucion(3 downto 0)<=std_logic_vector(unsigned(A21)*unsigned(B21));

@@ -6,4 +6,4 @@
 # Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 #
 
-vivado -log mult_config_3.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_config_3.tcl
+vivado -log test_mult.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source test_mult.tcl

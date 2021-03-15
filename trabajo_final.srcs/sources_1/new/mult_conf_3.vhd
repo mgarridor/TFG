@@ -104,6 +104,7 @@ signal S4_reg,S4_next : std_logic_vector(1 downto 0);
 signal S5_reg,S5_next : std_logic_vector(1 downto 0);
 signal S9_reg,S9_next : std_logic_vector(1 downto 0);
 
+
 --control
 type state_type is (idle, E121,E122,E123,E124,E125,E126,E81,E82,E83,E84,E41,E42,E2);
 signal state, next_state : state_type;
@@ -238,7 +239,7 @@ port map(
     Mb=>Mb
 );
 --registro de entrada
-process(clk,reset,control)
+process(clk,reset)
 begin
 --reset asincrono
     if(reset = '1')then
@@ -247,10 +248,14 @@ begin
         left_2<= (others=>'0');
         left_3<= (others=>'0');
         left_4<= (others=>'0');
+        left_5<= (others=>'0');
+        left_6<= (others=>'0');
         
         bottomL_1<= '0';
         bottomL_2<= '0';
         bottomL_3<= '0';
+        bottomL_4<= '0';
+        bottomL_5<= '0';
         
         S1_reg<=(others=>'0');
         S2_reg<=(others=>'0');
@@ -258,6 +263,7 @@ begin
         S4_reg<=(others=>'0');
         S5_reg<=(others=>'0');
         S9_reg<=(others=>'0');
+        
         state<=idle;
         primera_cuenta<='1';
     elsif (rising_edge(clk))then
@@ -266,17 +272,21 @@ begin
         left_2<= right_2;
         left_3<= right_3;
         left_4<= right_4;
+        left_5<= right_5;
+        left_6<= right_6;
         
         bottomL_1<= topR_2;
         bottomL_2<= topR_3;
         bottomL_3<= topR_4;
+        bottomL_4<= topR_5;
+        bottomL_5<= topR_6;
         
         S1_reg<=S1_next;
         S2_reg<=S2_next;
         S3_reg<=S3_next;
-        S4_reg<=S5_next;
-        S5_reg<=S3_next;
-        S9_reg<=S5_next;
+        S4_reg<=S4_next;
+        S5_reg<=S5_next;
+        S9_reg<=S9_next;
         
         state<=next_state;
         primera_cuenta<='0';  
@@ -302,6 +312,8 @@ begin
             next_state<= E41;
         elsif control="10" then
             next_state<= E2;
+        else
+            next_state<= E121;
         end if;
     
     when E121=>
@@ -352,7 +364,7 @@ begin
         else 
             next_state<= E121;
         end if;         
-    when E2=>            
+    when others=>            
         if control="00" then
             next_state <= E81;
         elsif control="01" then
@@ -384,7 +396,7 @@ end process;
  A3<=A(1 downto 0) when state=E121 or state=E81 else
      A(3 downto 2) when state=E122 or state=E82 else
      A(5 downto 4) when state=E123 or state=E83 or state=E41 or state=E2 else
-     A(7 downto 6) when state=E124 or state=E84 else
+     A(7 downto 6) when state=E124 or state=E84 or state=E42 else
      A(9 downto 8) when state=E125 else
      A(11 downto 10);
 
@@ -442,9 +454,9 @@ S4_next<=top_1 when state=E124 else
          (others=>'0');
     
 S5_next<=top_1 when state=E125 else
-         sum_1(2 downto 1) when state=E83 else
+         sum_1(2 downto 1) when state=E84 else
          top_3 when state=E41 else
-         S5_reg when state=E42 or state=E126 else
+         S5_reg when state=E126 or state=E42 else
          sum_3(0) & top_3(0) when state=E2 else
          (others=>'0');
 
@@ -500,11 +512,11 @@ Ma6<=Ma when state=E126 or state=E84 or state=E42 or state=E2 else
 --Mb
 Mb1<=Mb when state=E2 else
      '0';
-Mb2<=Mb when state=E2 or state=E41 or state=E42 else
+Mb2<=Mb when state=E41 or state=E42 or state=E2 else
      '0';
 Mb3<=Mb when state=E2 else
      '0';
-Mb4<=Mb when state=E2 or state=E41 or state=E42 or state=E81 or state=E82 or state=E83 or state=E84 else
+Mb4<=Mb when state=E81 or state=E82 or state=E83 or state=E84 or state=E41 or state=E42 or state=E2 else
      '0';
 Mb5<=Mb when state=E2 else
      '0';
@@ -518,22 +530,22 @@ Mb5<=Mb when state=E2 else
 --Ct
   Ct2<='0' when state=E2 else
        '1';  
-  Ct3<='0' when state=E2 or state=E41 or state=E42 else
+  Ct3<='0' when state=E41 or state=E42 or state=E2 else
        '1';
   Ct4<='0' when state=E2 else
        '1';  
-  Ct5<='0' when state=E2 or state=E41 or state=E42 else
+  Ct5<='0' when state=E41 or state=E42 or state=E2 else
        '1';
   Ct6<='0' when state=E2 else
        '1';   
 --Cb
   Cb1<='0' when state=E2 else
        '1'; 
-  Cb2<='0' when state=E2 or state=E41 or state=E42 else
+  Cb2<='0' when state=E41 or state=E42 or state=E2 else
        '1';
   Cb3<='0' when state=E2 else
        '1';  
-  Cb4<='0' when state=E2 or state=E41 or state=E42 or state=E81 or state=E82 or state=E83 or state=E84 else
+  Cb4<='0' when state=E81 or state=E82 or state=E83 or state=E84 or state=E41 or state=E42 or state=E2 else
        '1';
   Cb5<='0' when state=E2 else
        '1';  

@@ -1,13 +1,13 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Fri Mar 12 17:26:31 2021
+| Date         : Mon Mar 15 20:00:12 2021
 | Host         : matiaspc running 64-bit Linux Mint 20.1
-| Command      : report_utilization -file mult_config_3_utilization_synth.rpt -pb mult_config_3_utilization_synth.pb
-| Design       : mult_config_3
+| Command      : report_utilization -file test_mult_utilization_synth.rpt -pb test_mult_utilization_synth.pb
+| Design       : test_mult
 | Device       : 7a100tcsg324-1
 | Design State : Synthesized
----------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 
 Utilization Design Information
 
@@ -30,12 +30,12 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  127 |     0 |     63400 |  0.20 |
-|   LUT as Logic          |  127 |     0 |     63400 |  0.20 |
+| Slice LUTs*             |    0 |     0 |     63400 |  0.00 |
+|   LUT as Logic          |    0 |     0 |     63400 |  0.00 |
 |   LUT as Memory         |    0 |     0 |     19000 |  0.00 |
-| Slice Registers         |   40 |     0 |    126800 |  0.03 |
-|   Register as Flip Flop |   32 |     0 |    126800 |  0.03 |
-|   Register as Latch     |    8 |     0 |    126800 | <0.01 |
+| Slice Registers         |    0 |     0 |    126800 |  0.00 |
+|   Register as Flip Flop |    0 |     0 |    126800 |  0.00 |
+|   Register as Latch     |    0 |     0 |    126800 |  0.00 |
 | F7 Muxes                |    0 |     0 |     31700 |  0.00 |
 | F8 Muxes                |    0 |     0 |     15850 |  0.00 |
 +-------------------------+------+-------+-----------+-------+
@@ -54,10 +54,10 @@ Table of Contents
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 1     |          Yes |           - |          Set |
-| 31    |          Yes |           - |        Reset |
+| 0     |          Yes |           - |          Set |
+| 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 8     |          Yes |       Reset |            - |
+| 0     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -77,11 +77,12 @@ Table of Contents
 3. DSP
 ------
 
-+-----------+------+-------+-----------+-------+
-| Site Type | Used | Fixed | Available | Util% |
-+-----------+------+-------+-----------+-------+
-| DSPs      |    0 |     0 |       240 |  0.00 |
-+-----------+------+-------+-----------+-------+
++----------------+------+-------+-----------+-------+
+|    Site Type   | Used | Fixed | Available | Util% |
++----------------+------+-------+-----------+-------+
+| DSPs           |    1 |     0 |       240 |  0.42 |
+|   DSP48E1 only |    1 |       |           |       |
++----------------+------+-------+-----------+-------+
 
 
 4. IO and GT Specific
@@ -90,7 +91,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |   55 |     0 |       210 | 26.19 |
+| Bonded IOB                  |   49 |     0 |       210 | 23.33 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         6 |  0.00 |
 | PHASER_REF                  |    0 |     0 |         6 |  0.00 |
@@ -146,18 +147,9 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |   52 |                 LUT |
-| LUT5     |   46 |                 LUT |
-| IBUF     |   30 |                  IO |
-| OBUF     |   25 |                  IO |
-| LUT3     |   23 |                 LUT |
-| FDCE     |   23 |        Flop & Latch |
-| LUT4     |   22 |                 LUT |
-| LUT2     |   16 |                 LUT |
-| LUT1     |    8 |                 LUT |
-| LDCE     |    8 |        Flop & Latch |
-| FDRE     |    8 |        Flop & Latch |
-| FDPE     |    1 |        Flop & Latch |
+| IBUF     |   25 |                  IO |
+| OBUF     |   24 |                  IO |
+| DSP48E1  |    1 |    Block Arithmetic |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 

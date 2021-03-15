@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1615566331">
-  <File Type="VDS-TIMING-PB" Name="mult_config_3_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="mult_config_3_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="mult_config_3.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="mult_config_3_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="mult_config_3_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="mult_config_3_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="mult_config_3.vds"/>
-  <File Type="REPORTS-TCL" Name="mult_config_3_reports.tcl"/>
-  <File Type="PA-TCL" Name="mult_config_3.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1615834764">
+  <File Type="VDS-TIMING-PB" Name="test_mult_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="test_mult_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="test_mult.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="test_mult_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="test_mult_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="test_mult_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="test_mult.vds"/>
+  <File Type="REPORTS-TCL" Name="test_mult_reports.tcl"/>
+  <File Type="PA-TCL" Name="test_mult.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/FA.vhd">
@@ -97,7 +97,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="mult_config_3"/>
+      <Option Name="TopModule" Val="test_mult"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
