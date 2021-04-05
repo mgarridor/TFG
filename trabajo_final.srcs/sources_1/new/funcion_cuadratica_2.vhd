@@ -31,7 +31,7 @@ entity funcion_cuadratica_2 is
            b : in unsigned (11 downto 0);
            c : in unsigned (11 downto 0);
            y : out unsigned (11 downto 0);
-           control_T : in std_logic_vector(1 downto 0);
+           control_T : in std_logic;
            ready: out std_logic);
 end funcion_cuadratica_2;
 
@@ -108,7 +108,7 @@ begin
     end if;
 end process;
 
-process(a,b,c,x,r1_reg,r2_reg,control,reset,multa,suma,sumb)
+process(a,b,c,x,r1_reg,r2_reg,control,reset,multa,suma,sumb,control_T)
 begin
 
 --multiplexadores del multiplicador
@@ -122,7 +122,7 @@ case control is
     when "01" =>multa<=a;
     --x*a de x*a*x (añado el bit de signo y recorto 9 bits de la dcha y 4 de la izda)
     when "10" =>
-            if control_T="01" then 
+            if control_T='1' then 
                 multa<= signed(r1_reg(23)&r1_reg(21 downto 11));
             else
                 multa<= signed(r1_reg(19 downto 15)&r1_reg(13 downto 7));
@@ -147,8 +147,8 @@ case control(0) is
     when '0' =>sumb<=(others=>'0');
     --en los otros casos, sera (x*b) o (x*a*x), en ambos casos r1
     when others =>
-            if control_T="01" then 
-                sumb<=signed(r1_reg(23)&r1_reg(20 downto 9));
+            if control_T='1' then 
+                sumb<=signed(r1_reg(23)&r1_reg(19 downto 8));
             else 
                 sumb<=signed(r1_reg(19 downto 15)&r1_reg(11 downto 4));
             end if;
@@ -158,7 +158,7 @@ end process;
 
 --funciones
 --control multiplicador
-control_mult<="00" when control_T="00" else
+control_mult<="00" when control_T='0' else
                 "11";
 
 
@@ -169,7 +169,8 @@ ready<='1' when control="00" and primer_ciclo='0' else
 r2_next<=sumb+suma;
 
 --salida
-y<=unsigned(r2_reg(11 downto 0));
+y<=unsigned(r2_reg(11 downto 0))when control_T='1' else
+    unsigned("0000"&r2_reg(7 downto 0));
 
 
 end Behavioral;

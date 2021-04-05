@@ -42,6 +42,7 @@ signal y_temp:signed(nbits downto 0);
 signal control:std_logic;
 
 signal primer_ciclo:std_logic:='1';
+signal sumA:std_logic_vector(nbits downto 0);
 begin
 
 process(clk,reset)
@@ -55,13 +56,15 @@ begin
     end if;
 end process;
 
+
 process(control,r1_reg,a,b,x)
 begin
 
 --x*a
 r1_next<=signed('0'& a)*x;
 --b + (x*a)
-y_temp<= signed('0'& b) + signed((r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-3 downto nbits-2))));
+
+y_temp<= signed('0'& b) + signed(sumA);
 
 --control para que la señal ready no se active en el primer ciclo
 if control='0' and reset='0' then
@@ -71,6 +74,9 @@ elsif reset='1' then
 end if;
 
 end process;
+
+sumA<=std_logic_vector(r1_reg(r1_reg'left)&std_logic_vector(r1_reg(r1_reg'left-3 downto nbits-2)));
+
 --convierto y a unsigned
 y<=unsigned(y_temp(nbits-1 downto 0));
 

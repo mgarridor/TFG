@@ -41,19 +41,21 @@ component funcion_lineal is
     generic(nbits:natural);
     Port ( clk : in std_logic;
            reset:in std_logic;
-           x : in signed (11 downto 0);
+           x : in signed (nbits-1 downto 0);
            a : in unsigned (nbits-1 downto 0);
            b : in unsigned (nbits-1 downto 0);
-           y : out unsigned (nbits-1 downto 0));
+           y : out unsigned (nbits-1 downto 0);
+           ready : out std_logic);
 end component;
 
-constant num_bits:natural:=4;
+constant num_bits:natural:=8;
 signal clk : std_logic;
 signal reset: std_logic;
-signal x : signed (11 downto 0);
+signal x : signed (num_bits-1 downto 0);
 signal a : unsigned (num_bits-1 downto 0);
 signal b : unsigned (num_bits-1 downto 0);
 signal y : unsigned (num_bits-1 downto 0);
+signal ready:std_logic;
 
 constant clk_period : time := 84 ns; 
 
@@ -67,7 +69,8 @@ reset=>reset,
 x=>x,
 a=>a, 
 b=>b,
-y=>y
+y=>y,
+ready=>ready
 ); 
 
 
@@ -82,9 +85,9 @@ end process;
 
 process
 begin
- x<="001000000000";
- a<="1000";
- b<="1000";
+ x<="10100100";
+ a<="01010100";
+ b<="00101100";
 
  reset<='1';
  wait for 10 ns;

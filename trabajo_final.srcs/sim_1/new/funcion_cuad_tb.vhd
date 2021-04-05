@@ -48,13 +48,13 @@ component funcion_cuadratica is
            ready: out std_logic);
 end component;
 
-constant num_bits:natural:=7;
+constant num_bits:natural:=8;
 signal clk : std_logic;
 signal reset: std_logic;
-signal x : signed (num_bits-1 downto 0):="0001000";
-signal a : signed (num_bits-1 downto 0):="0100000";
-signal b : unsigned (num_bits-1 downto 0):="1000000";
-signal c : unsigned (num_bits-1 downto 0):="1000000";
+signal x : signed (num_bits-1 downto 0):="00010000";
+signal a : signed (num_bits-1 downto 0):="01000000";
+signal b : unsigned (num_bits-1 downto 0):="10000000";
+signal c : unsigned (num_bits-1 downto 0):="10000000";
 signal y : unsigned (num_bits-1 downto 0);
 signal ready: std_logic;
 
@@ -90,7 +90,7 @@ begin
 
 
  reset<='1';
- wait for 100 ns;
+ wait for 10 ns;
  reset<='0';
  wait;
 end process;

@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Mar 15 19:59:27 2021
-# Process ID: 117097
+# Start of session at: Mon Apr  5 21:14:32 2021
+# Process ID: 31959
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
-# Command line: vivado -log test_mult.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source test_mult.tcl
-# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/test_mult.vds
+# Command line: vivado -log funcion_activacion_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion_2.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_activacion_2.vds
 # Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source test_mult.tcl -notrace
+source funcion_activacion_2.tcl -notrace

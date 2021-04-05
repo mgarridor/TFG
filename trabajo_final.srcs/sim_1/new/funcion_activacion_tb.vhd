@@ -53,13 +53,13 @@ end component;
 ----control_T= "00" -> 4 tramos -> 7 bits
 ----control_T= "01" -> 8 tramos -> 9 bits
 ----control_T= "10" -> 16 tramos -> 12 bits
-constant nbits:natural:=12;
+constant nbits:natural:=7;
 constant control_lineal:std_logic:='0';
-constant control_T:std_logic_vector:="10";
+constant control_T:std_logic_vector:="00";
 
 signal clk : std_logic;
 signal reset: std_logic;
-signal x : signed (nbits-1 downto 0):="001100000000";
+signal x : signed (nbits-1 downto 0):="1011100";
 signal y : unsigned (nbits-1 downto 0);
 signal ready:std_logic;
 constant clk_period : time := 84 ns; 

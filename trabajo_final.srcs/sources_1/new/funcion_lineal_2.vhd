@@ -30,7 +30,7 @@ entity funcion_lineal_2 is
            a : in unsigned (11 downto 0);
            b : in unsigned (11 downto 0);
            y : out unsigned (11 downto 0);
-           control_T : in std_logic_vector(1 downto 0);
+           control_T : in std_logic;
            ready : out std_logic);
 end funcion_lineal_2;
 
@@ -104,7 +104,7 @@ begin
     end if;
 end process;
 --control del multiplicador
-control_mult<="01" when control_T="00" else
+control_mult<="01" when control_T='0' else
               "00";
 
 
@@ -113,7 +113,7 @@ b_final<=std_logic_vector(b(7 downto 0));
 
 --sumA puede tener 16 bits (recorto hasta tener 8) o 8 (ajusto para que la codificacion esté bien).
 --repito el bit más significativo para la suma (al final lo elimino)
-sumA<=r1_reg(15)& r1_reg(15)& r1_reg(12 downto 6) when control_T="01" else
+sumA<=r1_reg(15)& r1_reg(15)& r1_reg(12 downto 6) when control_T='1' else
       r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(5 downto 2); 
 
 y_temp<= signed('0'& b_final) + signed(sumA);
@@ -121,7 +121,7 @@ y_temp<= signed('0'& b_final) + signed(sumA);
 
 --convierto y a unsigned
 
-y<="00000000"&unsigned(y_temp(3 downto 0)) when control_T="00" else
+y<="00000000"&unsigned(y_temp(3 downto 0)) when control_T='0' else
    "0000" &unsigned(y_temp(7 downto 0)) ;
 
 --ready se activa en una vez cada 2 ciclos cuando contador sea 0    
