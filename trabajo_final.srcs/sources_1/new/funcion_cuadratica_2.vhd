@@ -120,7 +120,6 @@ case control is
     when "00" =>multa<=signed('0'&std_logic_vector(b(11 downto 1)));
     --a de x*a (añado 3 bits de signo a la izda)
     when "01" =>multa<=a;
-    --x*a de x*a*x (añado el bit de signo y recorto 9 bits de la dcha y 4 de la izda)
     when "10" =>
             if control_T='1' then 
                 multa<= signed(r1_reg(23)&r1_reg(21 downto 11));
@@ -169,8 +168,7 @@ ready<='1' when control="00" and primer_ciclo='0' else
 r2_next<=sumb+suma;
 
 --salida
-y<=unsigned(r2_reg(11 downto 0))when control_T='1' else
+y<= (others=>'0') when (r2_reg(12)='1' and control_T='1') or (x(7)='1' and x<135 and control_T='0')else
+    unsigned(r2_reg(11 downto 0))when control_T='1' else
     unsigned("0000"&r2_reg(7 downto 0));
-
-
 end Behavioral;

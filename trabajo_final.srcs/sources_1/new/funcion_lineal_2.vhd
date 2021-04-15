@@ -51,7 +51,6 @@ signal sumA:std_logic_vector(8 downto 0);
 signal Ma,Mb:std_logic;
 signal ready_mult:std_logic;
 signal control_mult:std_logic_vector(1 downto 0);
-signal b_final:std_logic_vector(7 downto 0);
 
 
 component mult_config_3 is
@@ -108,15 +107,13 @@ control_mult<="01" when control_T='0' else
               "00";
 
 
---b final tiene que tener 8 bits, si b solo tiene 4 habrá 4 ceros a la izda
-b_final<=std_logic_vector(b(7 downto 0));
 
 --sumA puede tener 16 bits (recorto hasta tener 8) o 8 (ajusto para que la codificacion esté bien).
 --repito el bit más significativo para la suma (al final lo elimino)
 sumA<=r1_reg(15)& r1_reg(15)& r1_reg(12 downto 6) when control_T='1' else
       r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(7)& r1_reg(5 downto 2); 
 
-y_temp<= signed('0'& b_final) + signed(sumA);
+y_temp<= signed(std_logic_vector(b(8 downto 0))) + signed(sumA);
 
 
 --convierto y a unsigned

@@ -102,9 +102,9 @@ begin
     else
         if control_T='0' then
             x(11 downto 8)<=(others=>'0');
-            x(7 downto 0)<="10111000"; --x=2
+            x(7 downto 0)<="10010000"; --x=2
         else
-            x<="101100100100"; --x=2
+            x<="100100000000"; --x=2
         end if;
     end if; 
     reset<='1';

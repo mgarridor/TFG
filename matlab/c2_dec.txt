@@ -1,0 +1,16 @@
+constant c2_8_1:unsigned:="2.050781e-02"; 
+constant c2_8_1:unsigned:="4.370117e-02"; 
+constant c2_8_1:unsigned:="8.911133e-02"; 
+constant c2_8_1:unsigned:="1.711426e-01"; 
+constant c2_8_1:unsigned:="2.985840e-01"; 
+constant c2_8_1:unsigned:="4.416504e-01"; 
+constant c2_8_1:unsigned:="5.117188e-01"; 
+constant c2_8_1:unsigned:="5.000000e-01"; 
+constant c2_8_1:unsigned:="5.000000e-01"; 
+constant c2_8_1:unsigned:="4.880371e-01"; 
+constant c2_8_1:unsigned:="5.581055e-01"; 
+constant c2_8_1:unsigned:="7.011719e-01"; 
+constant c2_8_1:unsigned:="8.286133e-01"; 
+constant c2_8_1:unsigned:="9.106445e-01"; 
+constant c2_8_1:unsigned:="9.560547e-01"; 
+constant c2_8_1:unsigned:="9.792480e-01"; 

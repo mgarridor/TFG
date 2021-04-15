@@ -1,0 +1,16 @@
+constant b1_16_1:unsigned:="000000001"; 
+constant b1_16_1:unsigned:="000000011"; 
+constant b1_16_1:unsigned:="000000111"; 
+constant b1_16_1:unsigned:="000010000"; 
+constant b1_16_1:unsigned:="000100010"; 
+constant b1_16_1:unsigned:="001000011"; 
+constant b1_16_1:unsigned:="001101011"; 
+constant b1_16_1:unsigned:="010000000"; 
+constant b1_16_1:unsigned:="010000000"; 
+constant b1_16_1:unsigned:="010010100"; 
+constant b1_16_1:unsigned:="010111100"; 
+constant b1_16_1:unsigned:="011011101"; 
+constant b1_16_1:unsigned:="011101111"; 
+constant b1_16_1:unsigned:="011111000"; 
+constant b1_16_1:unsigned:="011111100"; 
+constant b1_16_1:unsigned:="011111110"; 

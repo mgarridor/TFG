@@ -1,0 +1,16 @@
+constant a2_8_1:signed:="000000001001"; 
+constant a2_8_1:signed:="000000011000"; 
+constant a2_8_1:signed:="000001000011"; 
+constant a2_8_1:signed:="000010110001"; 
+constant a2_8_1:signed:="000110111100"; 
+constant a2_8_1:signed:="001111010001"; 
+constant a2_8_1:signed:="010111110110"; 
+constant a2_8_1:signed:="001110001100"; 
+constant a2_8_1:signed:="110001110011"; 
+constant a2_8_1:signed:="101000001001"; 
+constant a2_8_1:signed:="110000101110"; 
+constant a2_8_1:signed:="111001000011"; 
+constant a2_8_1:signed:="111101001110"; 
+constant a2_8_1:signed:="111110111100"; 
+constant a2_8_1:signed:="111111100111"; 
+constant a2_8_1:signed:="111111110110"; 

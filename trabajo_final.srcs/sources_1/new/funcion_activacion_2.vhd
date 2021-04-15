@@ -21,14 +21,12 @@
 --señales de control
 
 --control_lineal='1' -> función lineal
-----control_T= "00" -> 4 tramos -> 4 bits
-----control_T= "01" -> 8 tramos -> 6 bits
-----control_T= "10" -> 16 tramos -> 7 bits
+----control_T= "0" -> 4 tramos -> 4 bits
+----control_T= "1" -> 16 tramos -> 8 bits
 
 --control_lineal='0' -> funcion cuadrática
-----control_T= "00" -> 4 tramos -> 7 bits
-----control_T= "01" -> 8 tramos -> 9 bits
-----control_T= "10" -> 16 tramos -> 12 bits
+----control_T= "0" -> 4 tramos -> 8 bits
+----control_T= "1" -> 16 tramos -> 12 bits
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -57,32 +55,32 @@ constant a1_4_2:unsigned:="000000000111";
 constant b1_4_1:unsigned:="000000000000";
 constant b1_4_2:unsigned:="000000001000";
 
-constant a2_4_1:signed:="000000000010";
-constant a2_4_2:signed:="000001000110";
+constant a2_4_1:signed:="000000000011";
+constant a2_4_2:signed:="000001000111";
 
 constant b2_4_1:unsigned:="000000001100";
-constant b2_4_2:unsigned:="000010000100";
+constant b2_4_2:unsigned:="000010000101";
 
 constant c2_4_1:unsigned:="000000010110";
 constant c2_4_2:unsigned:="000010000000";
 
 --16 tramos
 constant a1_16_1:unsigned:="000000000000"; 
-constant a1_16_2:unsigned:="000000000000"; 
+constant a1_16_2:unsigned:="000000000001"; 
 constant a1_16_3:unsigned:="000000000100"; 
-constant a1_16_4:unsigned:="000000001010"; 
+constant a1_16_4:unsigned:="000000001011"; 
 constant a1_16_5:unsigned:="000000011110"; 
-constant a1_16_6:unsigned:="000001001000"; 
-constant a1_16_7:unsigned:="000010011000"; 
+constant a1_16_6:unsigned:="000001001001"; 
+constant a1_16_7:unsigned:="000010011001"; 
 constant a1_16_8:unsigned:="000011101100";
 
-constant b1_16_1:unsigned:="000000000000"; 
-constant b1_16_2:unsigned:="000000000010"; 
-constant b1_16_3:unsigned:="000000000110"; 
+constant b1_16_1:unsigned:="000000000001"; 
+constant b1_16_2:unsigned:="000000000011"; 
+constant b1_16_3:unsigned:="000000000111"; 
 constant b1_16_4:unsigned:="000000010000"; 
 constant b1_16_5:unsigned:="000000100010"; 
-constant b1_16_6:unsigned:="000001000010"; 
-constant b1_16_7:unsigned:="000001101010"; 
+constant b1_16_6:unsigned:="000001000011"; 
+constant b1_16_7:unsigned:="000001101011"; 
 constant b1_16_8:unsigned:="000010000000"; 
 
 constant a2_16_1:signed:="000000001001";

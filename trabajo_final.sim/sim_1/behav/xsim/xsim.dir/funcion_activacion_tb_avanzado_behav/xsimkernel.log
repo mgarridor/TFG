@@ -1,0 +1,4 @@
+Running: xsim.dir/funcion_activacion_tb_avanzado_behav/xsimk -simmode gui -wdb funcion_activacion_tb_avanzado_behav.wdb -simrunnum 0 -socket 48793
+Design successfully loaded
+Design Loading Memory Usage: 34084 KB (Peak: 34084 KB)
+Design Loading CPU Usage: 20 ms
