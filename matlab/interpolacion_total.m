@@ -1,14 +1,18 @@
-num_tramos=4;
+num_tramos=16;
 inicio=-8;
 final=8;
-
 nbits=12;
+%Variables para 4 y 16 tramos
 if num_tramos==4 
     bitsLin=4;
     bitsCuad=8;
-elseif num_tramos==16
+    num_datos_lin=16;
+    num_datos_cuad=256;
+else
     bitsLin=8;
     bitsCuad=12;
+    num_datos_lin=256;
+    num_datos_cuad=4096;
 end
 longitud_tramos=((final-inicio)/num_tramos);
 

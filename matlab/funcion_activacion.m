@@ -1,20 +1,11 @@
 interpolacion_total;
-num_tramos=4;
 
-if num_tramos==4 
-    bitsLin=4;
-    bitsCuad=8;
-    num_datos=16;
-else
-    bitsLin=8;
-    bitsCuad=12;
-    num_datos=64;
-end
 %% Inicializo variables
 convSinTexto;
-x=-8:16/num_datos:7+(1-16/num_datos);
-yLin= zeros(1,num_datos);
-yCuad= zeros(1,num_datos);
+xLin=-8:16/num_datos_lin:7+(1-16/num_datos_lin);
+xCuad=-8:16/num_datos_cuad:7+(1-16/num_datos_cuad);
+yLin= zeros(1,num_datos_lin);
+yCuad= zeros(1,num_datos_cuad);
 
 %% Recogo los datos
 %matlab
@@ -34,32 +25,39 @@ elseif num_tramos==16
     yCuad_VHDL=load('yCuad_16.dat');
 end
 %% Hago las interpolaciones 
-    for i=1:1:num_datos
-        a1_temp=a1_matlab(ceil(i*num_tramos/num_datos));
-        b1_temp=b1_matlab(ceil(i*num_tramos/num_datos));
-        a2_temp=a2_matlab(ceil(i*num_tramos/num_datos));
-        b2_temp=b2_matlab(ceil(i*num_tramos/num_datos));
-        c2_temp=c2_matlab(ceil(i*num_tramos/num_datos));
-        
-        yLin(i)=x(i) * a1_temp + b1_temp;
-        yCuad(i)=x(i)^2 * a2_temp + x(i) * b2_temp + c2_temp;
-               
+    %Lineal
+    for i=1:1:num_datos_lin
+        a1_temp=a1_matlab(ceil(i*num_tramos/num_datos_lin));
+        b1_temp=b1_matlab(ceil(i*num_tramos/num_datos_lin));
 
+        yLin(i)=xLin(i) * a1_temp + b1_temp;
     end
-
+    %Cuadrático
+    for i=1:1:num_datos_cuad
+        a2_temp=a2_matlab(ceil(i*num_tramos/num_datos_cuad));
+        b2_temp=b2_matlab(ceil(i*num_tramos/num_datos_cuad));
+        c2_temp=c2_matlab(ceil(i*num_tramos/num_datos_cuad));
+        
+        yCuad(i)=xCuad(i)^2 * a2_temp + xCuad(i) * b2_temp + c2_temp;
+    end
+    %Calculo la función sigmoide 
+    sigmoideLin=sigmoid(xLin);
+    sigmoideCuad=sigmoid(xCuad);
+    
     %Convierto la solución para que tenga los mismos bits que VHDL
-    sigmoide=sigmoid(x);
     yLin=double(fi(yLin,0,bitsLin,4));
     yCuad=double(fi(yCuad,0,bitsCuad,4));
     %Comparo con las operaciones en Matlab
 
     % Verifico el error cometido (error cuadratico medio)
+    
+    %Comparo con El error de la misma operacion en VHDL y en Matlab
 %     errorLin= (1/num_datos)*sum((yLin'-yLineal_VHDL).^2);
 %     errorCuad= (1/num_datos)*sum((yCuad'-yCuad_VHDL).^2);
     
     %Comparo con la sigmoide perfecta
-    errorLin= (1/num_datos)*sum((sigmoide'-yLineal_VHDL).^2);
-    errorCuad= (1/num_datos)*sum((sigmoide'-yCuad_VHDL).^2);
+    errorLin= (1/num_datos_lin)*sum((sigmoideLin'-yLineal_VHDL).^2);
+    errorCuad= (1/num_datos_cuad)*sum((sigmoideCuad'-yCuad_VHDL).^2);
     
     
     %% display
@@ -69,13 +67,15 @@ end
     disp(errorCuad);
     
     subplot(2,1,1)
-    plot (x,sigmoide,'r')
+    plot (xLin,sigmoideLin,'r')
+    %plot(xLin,yLin,'r')
     hold on
-    plot (x,yLineal_VHDL,'b')
+    plot (xLin,yLineal_VHDL,'b')
     hold off
     subplot(2,1,2)
-    plot (x,sigmoide,'r')
+    plot (xCuad,sigmoideCuad,'r')
+    %plot (xCuad,yCuad,'r')
     hold on
-    plot (x,yCuad_VHDL,'b')
+    plot (xCuad,yCuad_VHDL,'b')
     hold off
     

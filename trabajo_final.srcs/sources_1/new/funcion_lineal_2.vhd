@@ -118,7 +118,8 @@ y_temp<= signed(std_logic_vector(b(8 downto 0))) + signed(sumA);
 
 --convierto y a unsigned
 
-y<="00000000"&unsigned(y_temp(3 downto 0)) when control_T='0' else
+y<=(others=>'0') when (x(3)='1' and x<=12 and control_T='0')else
+    "00000000"&unsigned(y_temp(3 downto 0)) when control_T='0' else
    "0000" &unsigned(y_temp(7 downto 0)) ;
 
 --ready se activa en una vez cada 2 ciclos cuando contador sea 0    

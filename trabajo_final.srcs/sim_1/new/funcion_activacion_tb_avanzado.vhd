@@ -86,39 +86,16 @@ begin
     wait for clk_period/2;
 end process;
 
---Valores iniciales
---process
---begin
---    if control_lineal='1' then
---        if control_T='0' then
---            x(11 downto 4)<=(others=>'0');
---            x(3 downto 0)<="1011"; --x=2
---        else
---            x(11 downto 8)<=(others=>'0');
---            x(7 downto 0)<="10111000"; --x=2
---        end if;
-    
---    else
---        if control_T='0' then
---            x(11 downto 8)<=(others=>'0');
---            x(7 downto 0)<="10111000"; --x=2
---        else
---            x<="101100100100"; --x=2
---        end if;
---    end if; 
---wait;
---end process;
-
 --señal de reset (antes de meter un valor nuevo se activa)
 process 
 begin
     reset<='1';
     --12 bits avanza de 1 en 1
-    x<=x+64;
+    --x<=x+64;
     --8 bits avanza de 1 en 1
     --x<=x+4;
     --4 bits avanza de 1 en 1
-    --x<=x+1;
+    x<=x+1;
     
     wait for 10 ns;
     reset<='0';

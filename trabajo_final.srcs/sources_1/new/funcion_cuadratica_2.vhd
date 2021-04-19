@@ -168,7 +168,7 @@ ready<='1' when control="00" and primer_ciclo='0' else
 r2_next<=sumb+suma;
 
 --salida
-y<= (others=>'0') when (r2_reg(12)='1' and control_T='1') or (x(7)='1' and x<135 and control_T='0')else
+y<= (others=>'0') when (r2_reg(12)='1' and control_T='1') or (x(7)='1' and x<150 and control_T='0')else
     unsigned(r2_reg(11 downto 0))when control_T='1' else
     unsigned("0000"&r2_reg(7 downto 0));
 end Behavioral;

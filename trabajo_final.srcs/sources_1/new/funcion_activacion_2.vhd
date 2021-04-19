@@ -50,7 +50,7 @@ architecture Behavioral of funcion_activacion_2 is
 
 --4 tramos
 constant a1_4_1:unsigned:="000000000000";
-constant a1_4_2:unsigned:="000000000111";
+constant a1_4_2:unsigned:="000000001001";
 
 constant b1_4_1:unsigned:="000000000000";
 constant b1_4_2:unsigned:="000000001000";
