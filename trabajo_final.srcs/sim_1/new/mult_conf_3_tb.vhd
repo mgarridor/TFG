@@ -50,7 +50,10 @@ component mult_config_3 is
            );
 end component;
 
-signal A,B:std_logic_vector(11 downto 0):=(others=>'0');
+--signal A,B:std_logic_vector(11 downto 0):=(others=>'0');
+signal A :std_logic_vector(11 downto 0):="100000000000";
+signal B :std_logic_vector(11 downto 0):="010000000000";
+
 signal S : STD_LOGIC_VECTOR (23 downto 0);
 signal clk: std_logic;
 signal reset: std_logic;
@@ -76,9 +79,10 @@ signal correcto:std_logic;
 
 constant clk_period : time := 100 ns; 
 --control de la simulacion
+--  si 11 => 1 multiplicador 12x12
 --  si 00 => 1 multiplicador 8x8
---  si 01 => 2 multiplicadores 4x4
---``si 10 => 4 multiplicadores 2x2
+--  si 01 => 3 multiplicadores 4x4
+--``si 10 => 6 multiplicadores 2x2
 constant control:std_logic_vector(1 downto 0):="11";
 constant Ma : std_logic:='1';
 constant Mb : std_logic:='1';
@@ -116,70 +120,98 @@ begin
     reset<='1';
     wait for clk_period/50;
     reset<='0';
+    
+--if control="00" then
+--    A(11 downto 8)<="0000";
+--    B(11 downto 8)<="0000";
+    
+--    A(7 downto 0)<="10000000";
+--    B(7 downto 0)<="01000000";
+ 
+--elsif control="01" then
 
+----3 multiplexores de 4 bits
+--    A(3 downto 0)<="0010";
+--    A(7 downto 4)<="0010";
+--    A(11 downto 8)<="0010";
 
+--    B(3 downto 0)<="0010";
+--    B(7 downto 4)<="0010";
+--    B(11 downto 8)<="0010";
+
+----6 multiplicadores de 2 bits
+--elsif control="10" then
+--    A<=(others=>'0');
+--    B<=(others=>'0');
+
+--else
+    
+--    A<="100000000000";
+--    B<="010000000000";
+    
+--end if;
+wait;
+end process;
+
+process(ready,clk)
+begin
 --1 multiplexor de 8 bits
 if control="00" then
-    A(11 downto 8)<="0000";
-    B(11 downto 8)<="0000";
-    
-    A(7 downto 0)<="10000000";
-    B(7 downto 0)<="01000000";
-    
-    wait for clk_period/2;
+
+--    wait for clk_period/2;
     ----bucle que prueba distintas combinaciones de A y B
     for i in 0 to 10000 loop 
+     if (rising_edge(clk)and ready='1') then
     A<=std_logic_vector(unsigned(A)+1);
     B<=std_logic_vector(unsigned(B)+50);
-    wait for t1;
+    end if;
+--    wait for t1;
     end loop;
 elsif control="01" then
 
 --3 multiplexores de 4 bits
-    A(3 downto 0)<="0010";
-    A(7 downto 4)<="0010";
-    A(11 downto 8)<="0010";
 
-    B(3 downto 0)<="0010";
-    B(7 downto 4)<="0010";
-    B(11 downto 8)<="0010";
-
-    wait for clk_period/2;
+--    wait for clk_period/2;
     ----bucle que prueba distintas combinaciones de A y B
     for i in 0 to 10000 loop 
+     if (rising_edge(clk)and ready='1') then
     A<=std_logic_vector(unsigned(A)+1+32+250+4096);
     B<=std_logic_vector(unsigned(B)+3+64+500+5500);
-    wait for t2;
+    end if;
+--    wait for t2;
 
     end loop;
     
 --6 multiplicadores de 2 bits
 elsif control="10" then
-    A<=(others=>'0');
-    B<=(others=>'0');
-    wait for clk_period/2;
+
+--    wait for clk_period/2;
     for i in 0 to 10000 loop 
+     if (rising_edge(clk)and ready='1') then
     A<=std_logic_vector(unsigned(A)+1+32+250+4096+15000+20000);
     B<=std_logic_vector(unsigned(B)+3+64+500+2500+8000+18000);
-    wait for t3;
+    end if;
+--    wait for t3;
 
     end loop;
 else
-    
-    A<="100000000000";
-    B<="010000000000";
-    
-    wait for clk_period/2;
+    if reset='0' then
+
+--    wait for clk_period/2;
     ----bucle que prueba distintas combinaciones de A y B
     for i in 0 to 1000 loop 
+     if (rising_edge(clk)and ready='1') then
     A<=std_logic_vector(unsigned(A)+3);
     B<=std_logic_vector(unsigned(B)+50);
-    wait for t4;
+    end if;
+
+--    wait for t4;
     end loop;
+        end if;
 end if;
 
 
-wait;
+--wait;
 end process;
 
 --conexiones de las señales de entrada

@@ -33,9 +33,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity neurona is
     Port ( x : in std_logic_vector (11 downto 0);
+           w : in std_logic_vector (11 downto 0);
+           num_bits:in natural;
            y : out unsigned (11 downto 0);
-           reset: in STD_LOGIC;
-           sending_data: in STD_LOGIC;
+           reset : in STD_LOGIC;
+           fin_datos: in STD_LOGIC;
+           recibir_datos: out STD_LOGIC;
            ready: out STD_LOGIC;
            control_lineal : in STD_LOGIC;
            control_tramos : in STD_LOGIC;
@@ -69,49 +72,54 @@ component mult_config_3 is
 end component;
 
 component control_neurona is
-    Port ( control_lineal : in STD_LOGIC;
-           control_tramos : in STD_LOGIC;
-           x_in : in STD_LOGIC_VECTOR (11 downto 0);
-           sending_data:in STD_LOGIC;
-           x1: out std_logic_vector (11 downto 0); 
-           x2: out std_logic_vector (11 downto 0); 
-           control_mult : out std_logic_vector(1 downto 0);
+    Port ( s_in : in signed (11 downto 0);
+           num_bits : in natural;
            mult_ready : in STD_LOGIC;
-           sum_ready : out STD_LOGIC);
+           s_out: out signed (11 downto 0); 
+           recibir_datos : out std_logic;
+           enable_suma : out std_logic;          
+           clk: in std_logic;
+           reset:in std_logic
+           );
 end component;
 
-signal r1_reg,r1_next : signed(11 downto 0);
+signal s_out : signed(11 downto 0);
 
-signal x1,x2:std_logic_vector(11 downto 0);
+signal temp  : signed(11 downto 0);
+signal temp2 : std_logic;
+signal r2_reg,r2_next : signed(11 downto 0);
+signal r3_reg,r3_next : signed(11 downto 0);
+
 signal control_mult:std_logic_vector(1 downto 0);
-signal s_mult:std_logic_vector(11 downto 0);
+signal s_mult:std_logic_vector(23 downto 0);
 signal mult_ready:std_logic;
 signal sum_ready:std_logic;
 
 signal reset_fa:std_logic;
 signal x_final:signed(11 downto 0);
 
-signal x_in:std_logic_vector(11 downto 0);
+signal enable_suma:std_logic;
 
 begin
 
 multiplicador: mult_config_3
 port map(
-    A=>x1,
-    B=>x2,
+    A=>x,
+    B=>w,
     S=>s_mult,
     Ma=>'1',
     Mb=>'1',
     control=>control_mult,
     clk=>clk,
-    reset=>reset,
+    reset=>temp2,
     ready=>mult_ready
 );
 
 f_activacion:funcion_activacion_2
-Port map(clk=>clk,
+Port map(
+    clk=>clk,
     reset =>reset_fa,
-    x =>x_final,
+    x =>r3_reg,
     y =>y,
     control_lineal=>control_lineal,
     control_T=>control_tramos,
@@ -119,34 +127,47 @@ Port map(clk=>clk,
 );
 
 control:control_neurona
-port map( control_lineal=>control_lineal,
-    control_tramos =>control_tramos,
-    x_in =>x_in,
-    sending_data=>sending_data,
-    x1=>x1,
-    x2=>x2,
-    control_mult=>control_mult,
+Port map(
+    s_in=>temp,
+    num_bits=>num_bits,
     mult_ready=>mult_ready,
-    sum_ready=>sum_ready
+    s_out=>s_out,
+    enable_suma=>enable_suma,
+    recibir_datos=>temp2,
+    clk=>clk,
+    reset=>reset
 );
-
 process(clk,reset)
 begin
     if(reset='1') then
-        r1_reg<=(others=>'0');
+        r2_reg<=(others=>'0');
+        r3_reg<=(others=>'0');
     elsif(rising_edge(clk)) then
-        r1_reg<=r1_next;
+        if enable_suma='1' then
+            r2_reg<=r2_next;
+        end if;
+        if fin_datos='1' then 
+            r3_reg<=r3_next;
+        end if;
     end if;
 
 end process;
 
 --sumador
-r1_next<=signed(s_mult) + r1_reg;
+temp<=signed(s_mult(s_mult'left)&s_mult(10 downto 0));
+r2_next<= s_out + r2_reg;
 
 --multiplexores
+with num_bits select control_mult<=
+    "00" when 8,
+    "01" when 4,
+    "10" when 2,
+    "11" when others;
+    
 reset_fa<= not(sum_ready);
-x_final<=r1_next when sum_ready='1' else
-        (others=>'0');
+r3_next<=r2_reg when sum_ready='1' else
+        r3_reg;
         
         
+ recibir_datos<=temp2;       
 end Behavioral;

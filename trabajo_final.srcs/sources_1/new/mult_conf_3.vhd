@@ -22,14 +22,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
+--control
+--  si 11 => 1 multiplicador 12x12
+--  si 00 => 1 multiplicador 8x8
+--  si 01 => 3 multiplicadores 4x4
+--``si 10 => 6 multiplicadores 2x2
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+
 
 entity mult_config_3 is
     Port ( A : in STD_LOGIC_VECTOR (11 downto 0);

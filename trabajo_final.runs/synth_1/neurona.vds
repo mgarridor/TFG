@@ -2,15 +2,15 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Apr  5 21:14:32 2021
-# Process ID: 31959
+# Start of session at: Tue May  4 21:43:30 2021
+# Process ID: 47208
 # Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
-# Command line: vivado -log funcion_activacion_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion_2.tcl
-# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_activacion_2.vds
+# Command line: vivado -log neurona.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source neurona.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/neurona.vds
 # Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source funcion_activacion_2.tcl -notrace
-Command: synth_design -top funcion_activacion_2 -part xc7a100tcsg324-1 -directive AreaOptimized_high -max_dsp 0
+source neurona.tcl -notrace
+Command: synth_design -top neurona -part xc7a100tcsg324-1 -directive AreaOptimized_high -max_dsp 0
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
@@ -18,14 +18,12 @@ INFO: [Vivado_Tcl 4-287] User specified maximum number of block DSP allowed in d
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 32001
+INFO: [Synth 8-7075] Helper process launched with PID 47257
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2286.219 ; gain = 0.000 ; free physical = 152 ; free virtual = 5767
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2286.215 ; gain = 0.000 ; free physical = 459 ; free virtual = 6018
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'funcion_activacion_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:49]
-INFO: [Synth 8-3491] module 'funcion_lineal_2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:26' bound to instance 'funcion_lineal' of component 'funcion_lineal_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:200]
-INFO: [Synth 8-638] synthesizing module 'funcion_lineal_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:37]
-INFO: [Synth 8-3491] module 'mult_config_3' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:34' bound to instance 'multiplicador' of component 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'neurona' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/neurona.vhd:48]
+INFO: [Synth 8-3491] module 'mult_config_3' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:34' bound to instance 'multiplicador' of component 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/neurona.vhd:105]
 INFO: [Synth 8-638] synthesizing module 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:47]
 INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp1' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:115]
 INFO: [Synth 8-638] synthesizing module 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:54]
@@ -48,25 +46,44 @@ INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/un
 INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp5' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:200]
 INFO: [Synth 8-3491] module 'FAB_mini' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd:34' bound to instance 'comp6' of component 'FAB_mini' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:221]
 INFO: [Synth 8-256] done synthesizing module 'mult_config_3' (5#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:47]
+INFO: [Synth 8-3491] module 'funcion_activacion_2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:36' bound to instance 'f_activacion' of component 'funcion_activacion_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/neurona.vhd:118]
+INFO: [Synth 8-638] synthesizing module 'funcion_activacion_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:47]
+INFO: [Synth 8-3491] module 'funcion_lineal_2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:26' bound to instance 'funcion_lineal' of component 'funcion_lineal_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:198]
+INFO: [Synth 8-638] synthesizing module 'funcion_lineal_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:37]
+INFO: [Synth 8-3491] module 'mult_config_3' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:34' bound to instance 'multiplicador' of component 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:72]
 INFO: [Synth 8-256] done synthesizing module 'funcion_lineal_2' (6#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd:37]
-INFO: [Synth 8-3491] module 'funcion_cuadratica_2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd:26' bound to instance 'funcion_cuadratica' of component 'funcion_cuadratica_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:212]
+INFO: [Synth 8-3491] module 'funcion_cuadratica_2' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd:26' bound to instance 'funcion_cuadratica' of component 'funcion_cuadratica_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:210]
 INFO: [Synth 8-638] synthesizing module 'funcion_cuadratica_2' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd:38]
 INFO: [Synth 8-3491] module 'mult_config_3' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd:34' bound to instance 'multiplicador' of component 'mult_config_3' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd:73]
 INFO: [Synth 8-256] done synthesizing module 'funcion_cuadratica_2' (7#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd:38]
-INFO: [Synth 8-256] done synthesizing module 'funcion_activacion_2' (8#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'funcion_activacion_2' (8#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd:47]
+INFO: [Synth 8-3491] module 'control_neurona' declared at '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:34' bound to instance 'control' of component 'control_neurona' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/neurona.vhd:129]
+INFO: [Synth 8-638] synthesizing module 'control_neurona' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:46]
+WARNING: [Synth 8-614] signal 'num_bits' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's4_1' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_1' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's4_2' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's4_3' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_2' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_3' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_4' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_5' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+WARNING: [Synth 8-614] signal 's2_6' is read in the process but is not in the sensitivity list [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:80]
+INFO: [Synth 8-256] done synthesizing module 'control_neurona' (9#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'neurona' (10#1) [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/neurona.vhd:48]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2286.219 ; gain = 0.000 ; free physical = 936 ; free virtual = 6554
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2286.215 ; gain = 0.000 ; free physical = 1244 ; free virtual = 6804
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.219 ; gain = 0.000 ; free physical = 933 ; free virtual = 6551
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.215 ; gain = 0.000 ; free physical = 1242 ; free virtual = 6802
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.219 ; gain = 0.000 ; free physical = 933 ; free virtual = 6551
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2286.215 ; gain = 0.000 ; free physical = 1242 ; free virtual = 6802
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2286.219 ; gain = 0.000 ; free physical = 926 ; free virtual = 6544
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2286.215 ; gain = 0.000 ; free physical = 1235 ; free virtual = 6795
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -109,32 +126,33 @@ WARNING: [Vivado 12-584] No ports matched 'S[*]'. [/home/matiaspc/Escritorio/uni
 CRITICAL WARNING: [Vivado 12-4739] set_output_delay:No valid object(s) found for '-objects [get_ports {S[*]}]'. [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc:281]
 Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
 Finished Parsing XDC File [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/funcion_activacion_2_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/funcion_activacion_2_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/Nexys4DDR_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/neurona_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/neurona_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.102 ; gain = 0.000 ; free physical = 844 ; free virtual = 6463
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.098 ; gain = 0.000 ; free physical = 1147 ; free virtual = 6704
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.102 ; gain = 0.000 ; free physical = 844 ; free virtual = 6463
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.098 ; gain = 0.000 ; free physical = 1147 ; free virtual = 6704
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 913 ; free virtual = 6532
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1218 ; free virtual = 6774
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 913 ; free virtual = 6532
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1218 ; free virtual = 6774
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 913 ; free virtual = 6532
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1218 ; free virtual = 6774
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mult_config_3'
+INFO: [Synth 8-802] inferred FSM for state register 'estado_actual_reg' in module 'control_neurona'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -155,8 +173,23 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mult_
                      e84 |                   00001000000000 |                             1010
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'mult_config_3'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                      s0 |                              000 |                              000
+                     s41 |                              001 |                              001
+                     s42 |                              010 |                              010
+                     s21 |                              011 |                              011
+                     s22 |                              100 |                              100
+                     s23 |                              101 |                              101
+                     s24 |                              110 |                              110
+                  iSTATE |                              111 |                              111
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'estado_actual_reg' using encoding 'sequential' in module 'control_neurona'
+WARNING: [Synth 8-327] inferring latch for variable 'enable_suma_reg' [/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/control_neurona.vhd:89]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 903 ; free virtual = 6524
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1210 ; free virtual = 6767
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -165,35 +198,39 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input   13 Bit       Adders := 1     
 	   2 Input    8 Bit       Adders := 1     
-	   2 Input    4 Bit       Adders := 12    
+	   2 Input    4 Bit       Adders := 18    
 	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 144   
+	   2 Input      1 Bit         XORs := 216   
 +---Registers : 
 	               24 Bit    Registers := 2     
 	               13 Bit    Registers := 1     
-	                3 Bit    Registers := 12    
-	                2 Bit    Registers := 13    
-	                1 Bit    Registers := 15    
+	               12 Bit    Registers := 1     
+	                3 Bit    Registers := 18    
+	                2 Bit    Registers := 19    
+	                1 Bit    Registers := 21    
 +---Muxes : 
-	  14 Input   14 Bit        Muxes := 2     
-	   4 Input   14 Bit        Muxes := 10    
+	  14 Input   14 Bit        Muxes := 3     
+	   4 Input   14 Bit        Muxes := 15    
 	   2 Input   13 Bit        Muxes := 3     
-	   2 Input   12 Bit        Muxes := 12    
+	   2 Input   12 Bit        Muxes := 16    
 	   4 Input   12 Bit        Muxes := 1     
 	   9 Input   12 Bit        Muxes := 1     
-	   8 Input   12 Bit        Muxes := 1     
+	   8 Input   12 Bit        Muxes := 2     
 	   8 Input   11 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 4     
+	   2 Input    8 Bit        Muxes := 5     
 	   9 Input    8 Bit        Muxes := 1     
 	   8 Input    8 Bit        Muxes := 1     
 	   2 Input    7 Bit        Muxes := 1     
 	   3 Input    4 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 64    
-	   5 Input    2 Bit        Muxes := 6     
-	   3 Input    2 Bit        Muxes := 4     
-	   4 Input    2 Bit        Muxes := 8     
-	   2 Input    1 Bit        Muxes := 42    
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 97    
+	   5 Input    2 Bit        Muxes := 9     
+	   3 Input    2 Bit        Muxes := 6     
+	   4 Input    2 Bit        Muxes := 13    
+	   2 Input    1 Bit        Muxes := 62    
+	   8 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -210,25 +247,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 723 ; free virtual = 6388
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1199 ; free virtual = 6759
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 708 ; free virtual = 6373
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1078 ; free virtual = 6639
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 692 ; free virtual = 6357
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1075 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6358
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1075 ; free virtual = 6636
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -246,37 +283,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -289,44 +326,39 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |     5|
-|3     |LUT1   |     1|
-|4     |LUT2   |    21|
-|5     |LUT3   |    30|
-|6     |LUT4   |    64|
-|7     |LUT5   |    88|
-|8     |LUT6   |    96|
-|9     |MUXF7  |     1|
-|10    |FDCE   |   111|
-|11    |FDPE   |     3|
-|12    |IBUF   |    16|
-|13    |OBUF   |    13|
-+------+-------+------+
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |BUFG |     1|
+|2     |LUT2 |     4|
+|3     |LUT3 |     1|
+|4     |LUT4 |     7|
+|5     |LUT5 |     5|
+|6     |LUT6 |     6|
+|7     |FDCE |    16|
+|8     |FDPE |     2|
+|9     |IBUF |    35|
+|10    |OBUF |    14|
++------+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.102 ; gain = 31.883 ; free physical = 693 ; free virtual = 6357
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 1076 ; free virtual = 6637
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:58 ; elapsed = 00:01:01 . Memory (MB): peak = 2318.102 ; gain = 0.000 ; free physical = 746 ; free virtual = 6410
-Synthesis Optimization Complete : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 2318.109 ; gain = 31.883 ; free physical = 746 ; free virtual = 6410
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 2318.098 ; gain = 0.000 ; free physical = 1122 ; free virtual = 6683
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 2318.105 ; gain = 31.883 ; free physical = 1127 ; free virtual = 6688
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.109 ; gain = 0.000 ; free physical = 832 ; free virtual = 6496
-INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2318.105 ; gain = 0.000 ; free physical = 1211 ; free virtual = 6772
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2318.109 ; gain = 0.000 ; free physical = 780 ; free virtual = 6445
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2318.105 ; gain = 0.000 ; free physical = 1160 ; free virtual = 6721
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-50 Infos, 12 Warnings, 12 Critical Warnings and 0 Errors encountered.
+57 Infos, 23 Warnings, 12 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:11 ; elapsed = 00:01:09 . Memory (MB): peak = 2318.109 ; gain = 32.023 ; free physical = 931 ; free virtual = 6596
+synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:35 . Memory (MB): peak = 2318.105 ; gain = 32.023 ; free physical = 1301 ; free virtual = 6861
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-INFO: [Common 17-1381] The checkpoint '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_activacion_2.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file funcion_activacion_2_utilization_synth.rpt -pb funcion_activacion_2_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Apr  5 21:15:53 2021...
+INFO: [Common 17-1381] The checkpoint '/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/neurona.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file neurona_utilization_synth.rpt -pb neurona_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue May  4 21:44:16 2021...
