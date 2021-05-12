@@ -18,18 +18,32 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+--Modulo básico de multiplicador de 1 bit con varias señales de control
+--Sin signo
+
+----Definición de entradas/salidas
+--A
+--Primer operando
+
+--B
+--Segundo operando
+
+--Si
+--Tercer operando
+
+--Ci
+--Carry in
+
+--Co
+--carry out
+
+--So
+--Solución
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity basico1 is
     Port ( A : in STD_LOGIC;

@@ -18,26 +18,37 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+
+--Control de las soluciones de la multiplicación.
+--La multiplicación puede generar varias soluciones en paralelo si se utilizan pocos bits. 
+--Este módulo se encarga de serparar los valores y enviarlos de 1 en 1 para que se acumulen posteriormente. 
+--Además indica cuándo se ha terminado de acumular los valores, si se necesitan nuevos valores o si se ha terminado de acumular y se puede comenzar a hacer la función de activación
+
+
+----Definición de entradas/salidas
+
+--No está claro todavía
+
+
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
+
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity control_neurona is
-    Port ( s_in : in signed (11 downto 0);
+    Port ( s_in : in signed (23 downto 0);
            num_bits : in natural;
            mult_ready : in STD_LOGIC;
-           s_out: out signed (11 downto 0); 
+           ready_in : in std_logic;
+           s_out: out signed (23 downto 0); 
            recibir_datos : out std_logic:='1';
-           enable_suma : out std_logic;          
+           enable_suma : out std_logic;   
+           enable_fa : out std_logic;       
            clk: in std_logic;
            reset:in std_logic
            );
@@ -45,19 +56,20 @@ end control_neurona;
 
 architecture Behavioral of control_neurona is
 
-signal s4_1,s4_2,s4_3:signed(3 downto 0);
-signal s2_1,s2_2,s2_3,s2_4,s2_5,s2_6:signed(1 downto 0);
+signal s4_1,s4_2,s4_3:signed(7 downto 0);
+signal s2_1,s2_2,s2_3,s2_4,s2_5,s2_6:signed(3 downto 0);
 signal primer_valor:std_logic:='1';
 type estados is (S0, S41,S42, S21,S22,S23,S24,S25);
 signal estado_actual,estado_siguiente :estados:=S0;
+signal fin_proceso : std_logic;
+signal enProceso : std_logic:='0';
 begin
 
-
-process(clk,reset)
+process(clk,reset, ready_in)
 begin
     if(reset='1') then
         estado_actual<=S0;
-    elsif(rising_edge(clk)) then
+    elsif(rising_edge(clk) and enProceso='1') then
         estado_actual<=estado_siguiente;
     end if;
 
@@ -65,27 +77,27 @@ end process;
 
 --Separo los valores de x y w cuando tienen menos de 8 bits
 
-s4_1<=s_in(3 downto 0);
-s4_2<=s_in(7 downto 4);
-s4_3<=s_in(11 downto 8);
-s2_1<=s_in(1 downto 0);
-s2_2<=s_in(3 downto 2);
-s2_3<=s_in(5 downto 4);
-s2_4<=s_in(7 downto 6);
-s2_5<=s_in(9 downto 8);
-s2_6<=s_in(11 downto 10);
-
+s4_1<=s_in(7 downto 0);
+s4_2<=s_in(15 downto 8);
+s4_3<=s_in(23 downto 16);
+s2_1<=s_in(3 downto 0);
+s2_2<=s_in(7 downto 4);
+s2_3<=s_in(11 downto 8);
+s2_4<=s_in(15 downto 12);
+s2_5<=s_in(19 downto 16);
+s2_6<=s_in(23 downto 20);
 
 --cambio de estados y de salidas
-process (mult_ready,s_in,estado_actual,estado_siguiente)
+process (mult_ready,s_in,estado_actual,estado_siguiente,primer_valor,num_bits)
 begin
 estado_siguiente<=S0;
 s_out<=(others=>'0');
 enable_suma<='1';
+primer_valor<='0';
 if primer_valor='1' then
-    recibir_datos<='1';
+    fin_proceso<='1';
 else
-    recibir_datos<='0';
+    fin_proceso<='0';
 end if;
 case estado_actual is
     
@@ -95,71 +107,74 @@ case estado_actual is
             if (num_bits=8 or num_bits=12) then
                 estado_siguiente<=S0;
                 s_out<=s_in;
-                recibir_datos<='1';
-                primer_valor<='0';
+                fin_proceso<='1';
 
             elsif (num_bits=4) then
                 estado_siguiente<=S41;
-                s_out(11 downto 4)<=(others=>'0');  
-                s_out(3 downto 0)<=s4_1;  
-                recibir_datos<='0';
-                primer_valor<='0';
+                s_out(23 downto 8)<=(others=>'0');  
+                s_out(7 downto 0)<=s4_1;  
+                fin_proceso<='0';
             else
                 estado_siguiente<=S21;
-                s_out(11 downto 2)<=(others=>'0');
-                s_out(1 downto 0)<=s2_1;  
-                recibir_datos<='0';
-                primer_valor<='0';
+                s_out(23 downto 4)<=(others=>'0');
+                s_out(3 downto 0)<=s2_1;  
+                fin_proceso<='0';
             end if;
         else
             enable_suma<='0';
         end if;
     when S41=>
         estado_siguiente<=S42;
-        s_out(11 downto 4)<=(others=>'0');
-        s_out(3 downto 0)<=s4_2;
-        recibir_datos<='0';    
-        primer_valor<='0';   
+        s_out(23 downto 8)<=(others=>'0');  
+        s_out(7 downto 0)<=s4_2;
+        fin_proceso<='0';    
     when S42=>
         estado_siguiente<=S0;
-        s_out(11 downto 4)<=(others=>'0');
-        s_out(3 downto 0)<=s4_3;
-        recibir_datos<='1'; 
-        primer_valor<='0';
+        s_out(23 downto 8)<=(others=>'0');  
+        s_out(7 downto 0)<=s4_3;
+        fin_proceso<='1'; 
     when S21=>
         estado_siguiente<=S22;
-        s_out(11 downto 2)<=(others=>'0');
-        s_out(1 downto 0)<=s2_2;
-        recibir_datos<='0';
-        primer_valor<='0';
+        s_out(23 downto 4)<=(others=>'0');
+        s_out(3 downto 0)<=s2_2;
+        fin_proceso<='0';
     when S22=>
         estado_siguiente<=S23;
-        s_out(11 downto 2)<=(others=>'0');
-        s_out(1 downto 0)<=s2_3;
-        recibir_datos<='0';
-        primer_valor<='0';
+        s_out(23 downto 4)<=(others=>'0');
+        s_out(3 downto 0)<=s2_3;
+        fin_proceso<='0';
     when S23=>
         estado_siguiente<=S24;
-        s_out(11 downto 2)<=(others=>'0');
-        s_out(1 downto 0)<=s2_4;
-        recibir_datos<='0';
-        primer_valor<='0';
+        s_out(23 downto 4)<=(others=>'0');
+        s_out(3 downto 0)<=s2_4;
+        fin_proceso<='0';
     when S24=>
         estado_siguiente<=S25;
-        s_out(11 downto 2)<=(others=>'0');
-        s_out(1 downto 0)<=s2_5;
-        recibir_datos<='0';
-        primer_valor<='0';
+        s_out(23 downto 4)<=(others=>'0');
+        s_out(3 downto 0)<=s2_5;
+        fin_proceso<='0';
     when others=> 
         estado_siguiente<=S0;
-        s_out(11 downto 2)<=(others=>'0');
-        s_out(1 downto 0)<=s2_6;
-        recibir_datos<='1';
-        primer_valor<='0';
+        s_out(23 downto 4)<=(others=>'0');
+        s_out(3 downto 0)<=s2_6;
+        fin_proceso<='1';
     
 end case;
 
 end process;
 
-    
+--La señal enProceso indica que se está procesando valores provenientes del multiplicador
+process (fin_proceso)
+begin 
+if (rising_edge(ready_in)) then
+    enProceso<='1';
+elsif (rising_edge(fin_proceso) and ready_in='0') then
+    enProceso<='0';
+end if;
+end process;
+
+recibir_datos<=fin_proceso;
+
+enable_fa<=fin_proceso when enProceso='0' else
+            '0';    
 end Behavioral;

@@ -18,20 +18,57 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+--Modulo de función cuadrática
+--Se hace la operación cuadrática y=ax^2+bx+c
+--Las operaciones se hacen con 8 o 12 bits dependiendo del número de tramos en los que se divide la sigmoide para hacer la función.
+--Nota: Si no se ocupan todos los bits se utilizan los bits menos significativos
+
+
+----Definición de entradas/salidas
+
+--x
+--Valor de x de entrada
+
+--a
+--Valor de a de entrada
+
+--b
+--Valor de b de entrada
+
+--c
+--Valor de c de entrada
+
+--y
+--Valor de y de salida
+
+--control_T
+--Control de tramos de control.
+--Si control_T ='0'--> Las operaciones son de 8 bits
+--Si control_T ='1'--> Las operaciones son de 12 bits
+
+--clk
+--Reloj de control
+
+--reset
+--Si está a '1' se reinician los registros
+
+--ready
+--Cuando se pone a '1', la solución está lista
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity funcion_cuadratica_2 is
-    Port ( clk : in std_logic;
-           reset:in std_logic;
-           x : in signed (11 downto 0);
+    Port ( x : in signed (11 downto 0);
            a : in signed (11 downto 0);
            b : in unsigned (11 downto 0);
            c : in unsigned (11 downto 0);
            y : out unsigned (11 downto 0);
            control_T : in std_logic;
+           clk : in std_logic;
+           reset:in std_logic;
            ready: out std_logic);
 end funcion_cuadratica_2;
 

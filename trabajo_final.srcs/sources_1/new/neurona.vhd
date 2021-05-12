@@ -18,18 +18,20 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+--No está claro todavía
+
+
+----Definición de entradas/salidas
+
+--No está claro todavía
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+use IEEE.NUMERIC_STD.ALL;
 
 entity neurona is
     Port ( x : in std_logic_vector (11 downto 0);
@@ -37,9 +39,9 @@ entity neurona is
            num_bits:in natural;
            y : out unsigned (11 downto 0);
            reset : in STD_LOGIC;
-           fin_datos: in STD_LOGIC;
            recibir_datos: out STD_LOGIC;
-           ready: out STD_LOGIC;
+           ready_in : in std_logic;
+           ready_out: out STD_LOGIC;
            control_lineal : in STD_LOGIC;
            control_tramos : in STD_LOGIC;
            clk : in std_logic);
@@ -72,33 +74,34 @@ component mult_config_3 is
 end component;
 
 component control_neurona is
-    Port ( s_in : in signed (11 downto 0);
+    Port ( s_in : in signed (23 downto 0);
            num_bits : in natural;
            mult_ready : in STD_LOGIC;
-           s_out: out signed (11 downto 0); 
-           recibir_datos : out std_logic;
-           enable_suma : out std_logic;          
+           ready_in : in std_logic;
+           s_out: out signed (23 downto 0); 
+           recibir_datos : out std_logic:='1';
+           enable_suma : out std_logic;   
+           enable_fa : out std_logic;       
            clk: in std_logic;
            reset:in std_logic
            );
 end component;
 
-signal s_out : signed(11 downto 0);
+signal s_out : signed(23 downto 0);
 
-signal temp  : signed(11 downto 0);
+signal temp  : signed(23 downto 0);
 signal temp2 : std_logic;
-signal r2_reg,r2_next : signed(11 downto 0);
+signal r2_reg,r2_next : signed(23 downto 0);
 signal r3_reg,r3_next : signed(11 downto 0);
 
 signal control_mult:std_logic_vector(1 downto 0);
 signal s_mult:std_logic_vector(23 downto 0);
 signal mult_ready:std_logic;
-signal sum_ready:std_logic;
 
 signal reset_fa:std_logic;
-signal x_final:signed(11 downto 0);
-
+signal enable_fa : std_logic;
 signal enable_suma:std_logic;
+signal ready_out_final : std_logic;
 
 begin
 
@@ -123,7 +126,7 @@ Port map(
     y =>y,
     control_lineal=>control_lineal,
     control_T=>control_tramos,
-    ready=>ready
+    ready=>ready_out_final
 );
 
 control:control_neurona
@@ -131,9 +134,11 @@ Port map(
     s_in=>temp,
     num_bits=>num_bits,
     mult_ready=>mult_ready,
+    ready_in=>ready_in,
     s_out=>s_out,
     enable_suma=>enable_suma,
     recibir_datos=>temp2,
+    enable_fa=>enable_fa,
     clk=>clk,
     reset=>reset
 );
@@ -146,7 +151,7 @@ begin
         if enable_suma='1' then
             r2_reg<=r2_next;
         end if;
-        if fin_datos='1' then 
+        if enable_fa='1' and ready_out_final='1' then
             r3_reg<=r3_next;
         end if;
     end if;
@@ -154,7 +159,7 @@ begin
 end process;
 
 --sumador
-temp<=signed(s_mult(s_mult'left)&s_mult(10 downto 0));
+temp<=signed(s_mult);
 r2_next<= s_out + r2_reg;
 
 --multiplexores
@@ -164,10 +169,11 @@ with num_bits select control_mult<=
     "10" when 2,
     "11" when others;
     
-reset_fa<= not(sum_ready);
-r3_next<=r2_reg when sum_ready='1' else
-        r3_reg;
+reset_fa<= not(enable_fa and ready_out_final);
+r3_next<=r2_reg(11 downto 0);
         
         
- recibir_datos<=temp2;       
+ recibir_datos<=temp2;      
+ 
+ ready_out<=ready_out_final; 
 end Behavioral;

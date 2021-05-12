@@ -18,18 +18,45 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+--Módulo en los que se divide el multiplicador configurable.
+--Se deben implementar varios bloques de este estilo formando una matriz de 2 dimensiónes n x m,
+--siendo 2n el número de bits dwl primer operando y 2m el número de bits del segundo operando.
+
+----Definición de entradas/salidas
+--Falta completar
+--A
+--B
+--left
+--bottomL
+--bottom
+--bottom4
+--right
+--sum
+--top
+--top4
+--topR
+--Cl
+--Cr
+--Ct
+--Cb
+
+--Ma
+--Control de signo del operando A (si Ma='1' --> A es un numero con signo)
+
+--Mb
+--Control de signo del operando B (si Mb='1' --> B es un numero con signo)
+
+
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
+
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+
 
 entity FAB_mini is
     Port ( A : in STD_LOGIC_VECTOR (1 downto 0);

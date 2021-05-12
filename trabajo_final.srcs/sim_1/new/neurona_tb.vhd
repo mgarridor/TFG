@@ -43,9 +43,9 @@ component neurona is
            num_bits:in natural;
            y : out unsigned (11 downto 0);
            reset : in STD_LOGIC;
-           fin_datos: in STD_LOGIC;
            recibir_datos: out STD_LOGIC;
-           ready: out STD_LOGIC;
+           ready_in : in std_logic;
+           ready_out: out STD_LOGIC;
            control_lineal : in STD_LOGIC;
            control_tramos : in STD_LOGIC;
            clk : in std_logic);
@@ -57,7 +57,8 @@ signal y : unsigned (11 downto 0);
 signal reset : STD_LOGIC;
 signal fin_datos: STD_LOGIC:='0';
 signal recibir_datos: STD_LOGIC;
-signal ready: STD_LOGIC;
+signal ready_in : std_logic;
+signal ready_out: STD_LOGIC;
 signal control_lineal : STD_LOGIC:='0';
 signal control_tramos : STD_LOGIC:='1';
 signal clk : std_logic;
@@ -69,14 +70,13 @@ begin
 
 neuron : neurona
 port map(
-
 x=>x,
 w=>w,
 num_bits=>num_bits,
 reset=>reset,
-fin_datos=>fin_datos,
+ready_in=>ready_in,
 recibir_datos=>recibir_datos,
-ready=>ready,
+ready_out=>ready_out,
 control_lineal=>control_lineal,
 control_tramos=>control_tramos,
 clk=>clk
@@ -94,9 +94,13 @@ end process;
 process
 begin
 reset<='1';
+ready_in<='0';
 wait for 10 ns;
 reset<='0';
-wait;
+ready_in<='1';
+wait for 1000 ns;
+ready_in<='0';
+
 end process;
 --Test 1 valor
 process (clk)

@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /home/matiaspc/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 1d7e73df8fab4e408e5bee25fd65c24c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot neurona_tb_behav xil_defaultlib.neurona_tb -log elaborate.log 
+Running: /home/matiaspc/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 1d7e73df8fab4e408e5bee25fd65c24c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot mult_config_3_tb_behav xil_defaultlib.mult_config_3_tb -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -16,10 +16,5 @@ Compiling architecture behavioral of entity xil_defaultlib.basico1 [basico1_defa
 Compiling architecture behavioral of entity xil_defaultlib.basico2 [basico2_default]
 Compiling architecture behavioral of entity xil_defaultlib.FAB_mini [fab_mini_default]
 Compiling architecture behavioral of entity xil_defaultlib.mult_config_3 [mult_config_3_default]
-Compiling architecture behavioral of entity xil_defaultlib.funcion_lineal_2 [funcion_lineal_2_default]
-Compiling architecture behavioral of entity xil_defaultlib.funcion_cuadratica_2 [funcion_cuadratica_2_default]
-Compiling architecture behavioral of entity xil_defaultlib.funcion_activacion_2 [funcion_activacion_2_default]
-Compiling architecture behavioral of entity xil_defaultlib.control_neurona [control_neurona_default]
-Compiling architecture behavioral of entity xil_defaultlib.neurona [neurona_default]
-Compiling architecture behavioral of entity xil_defaultlib.neurona_tb
-Built simulation snapshot neurona_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.mult_config_3_tb
+Built simulation snapshot mult_config_3_tb_behav

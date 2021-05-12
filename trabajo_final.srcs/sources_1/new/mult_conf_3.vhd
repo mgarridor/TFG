@@ -18,15 +18,55 @@
 -- 
 ----------------------------------------------------------------------------------
 
+----Descripción del módulo
+
+--Multiplicador configurable en número de bits. 
+--Se pueden hacer las operaciones con un número de bits variable dependiendo de la señal de control. 
+--Las entradas son operandos A y B que pueden estar compuestos por:
+
+--1 número de 12 bits
+--1 número de 8 bits (Los 4 bits más significativos no se utilizan)
+--3 números de 4 bits
+--6 números de 2 bits
+
+----Definición de entradas/salidas
+
+--A 
+--Primer operando
+
+--B
+--Segundo operando
+
+--S
+--Solución
+
+--Ma
+--Control de signo del operando A (si Ma='1' --> A es un numero con signo)
+
+--Mb
+--Control de signo del operando B (si Mb='1' --> B es un numero con signo)
+
+--control
+--Controla el número de bits que utilizará el módulo
+
+--  si 11 => 1 multiplicador 12x12
+--  si 00 => 1 multiplicador 8x8
+--  si 01 => 3 multiplicadores 4x4
+--  si 10 => 6 multiplicadores 2x2
+
+--clk
+--Reloj de control
+
+--reset
+--Si está a '1' se reinician los registros
+
+--ready
+--Cuando se pone a '1', la solución está lista
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
---control
---  si 11 => 1 multiplicador 12x12
---  si 00 => 1 multiplicador 8x8
---  si 01 => 3 multiplicadores 4x4
---``si 10 => 6 multiplicadores 2x2
 use IEEE.NUMERIC_STD.ALL;
 
 
@@ -103,7 +143,6 @@ signal S3_reg,S3_next : std_logic_vector(1 downto 0);
 signal S4_reg,S4_next : std_logic_vector(1 downto 0);
 signal S5_reg,S5_next : std_logic_vector(1 downto 0);
 signal S9_reg,S9_next : std_logic_vector(1 downto 0);
-
 
 --control
 type state_type is (idle, E121,E122,E123,E124,E125,E126,E81,E82,E83,E84,E41,E42,E2);
@@ -495,6 +534,8 @@ S12<=sum_6(2 downto 1)when state=E126 else
     sum_6(2 downto 1) when state=E42 or state=E2 else
     (others=>'0');      
 
+
+
 --Ma
 Ma1<=Ma when state=E126 or state=E84 or state=E42 or state=E2 else
     '0';
@@ -554,7 +595,9 @@ ready<= '1' when (state=E126 or state=E84 or state=E42 or state=E2 )and primera_
         '0';
 
 --solucion completa   
-S<=S12 & S11 & S10 & S9_next & S8 & S7 & S6 & S5_next & S4_next & S3_next & S2_next & S1_next;
+--Añado 8 bits de signo a la izquierda cuando tengo una multiplicacion de 8x8
+S<=S8(1) & S8(1) & S8(1) & S8(1) & S8(1) & S8(1) & S8(1) & S8(1) & S8 & S7 & S6 & S5_next & S4_next & S3_next & S2_next & S1_next when control="00" else
+   S12 & S11 & S10 & S9_next & S8 & S7 & S6 & S5_next & S4_next & S3_next & S2_next & S1_next;
 
 end Behavioral;
 

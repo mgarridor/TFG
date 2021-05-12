@@ -18,15 +18,49 @@
 -- 
 ----------------------------------------------------------------------------------
 
---señales de control
+----Descripción del módulo
 
---control_lineal='1' -> función lineal
-----control_T= "0" -> 4 tramos -> 4 bits
-----control_T= "1" -> 16 tramos -> 8 bits
+--Función de activación sigmoide interpolada.
+--Este módulo contiene diferentes parámetros de distintas funciones para calcular valores de la interpolación lineal o cuadrática.
+--Por otro lado se puede escoger el numero de tramos en los que se ha dividido la sigmoide a la hora de realizar la interpolación, 
+--eso se traduce en diferente número de bits al realizar las operaciones y también distinta latencia.
 
---control_lineal='0' -> funcion cuadrática
-----control_T= "0" -> 4 tramos -> 8 bits
-----control_T= "1" -> 16 tramos -> 12 bits
+--En función de las señales de control "control_lineal" y "control_T" se escoge un numero de bits:
+
+--control_lineal='1' --> función lineal
+--control_T= "0" --> 4 bits
+--control_T= "1" --> 8 bits
+
+--control_lineal='0' --> funcion cuadrática
+--control_T= "0" --> 8 bits
+--control_T= "1" --> 12 bits
+
+----Definición de entradas/salidas
+
+--x
+--Entrada
+
+--y
+--Solución
+
+--control_lineal
+--Control de linealidad. 
+--Si control_lineal='0' --> Operación lineal
+--Si control_lineal='1' --> Operación cuadrática
+
+--control_T
+--Control de número de tramos en los que se divide la interpolación
+--Si control_T='0' --> 4 tramos
+--Si control_T='1' --> 16 tramos
+
+--clk
+--Reloj de control
+
+--reset
+--Si está a '1' se reinician los registros
+
+--ready
+--Cuando se pone a '1', la solución está lista
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -34,17 +68,23 @@ use IEEE.NUMERIC_STD.ALL;
 
 
 entity funcion_activacion_2 is
-    Port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
+    Port ( 
            x : in signed (11 downto 0);
            y : out unsigned (11 downto 0);
-           ready:out std_logic;
            control_lineal: in std_logic:='0';
-           control_T: in std_logic:='0'
+           control_T: in std_logic:='0';
+           clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           ready:out std_logic
+
            );
 end funcion_activacion_2;
 
 architecture Behavioral of funcion_activacion_2 is
+
+--Parámetros utilizados para las distintas funciones:
+--si es cuadrático la operación es ax^2+bx+c
+--si es lineal la operación es ax+b
 
 --notacion: paramx_tramos_indice
 
@@ -150,8 +190,6 @@ signal a2_final : signed (11 downto 0);
 
 signal readyLin,readyCuad:std_logic;
 
-
-
 component funcion_cuadratica_2 is
     Port ( clk : in std_logic;
            reset:in std_logic;
@@ -163,8 +201,6 @@ component funcion_cuadratica_2 is
            control_T : in std_logic;
            ready: out std_logic);
 end component;
-
-
 
 component funcion_lineal_2 is
     Port ( clk : in std_logic;
@@ -261,7 +297,8 @@ b2_16<= b2_16_1 when "000",
         b2_16_8 when others;  
 
 b2_final<=b2_4 when control_T='0' else
-            b2_16;        
+            b2_16;  
+                  
 --c2        
 with control_4T select
 c2_4<=  c2_4_1 when '0',
@@ -285,6 +322,7 @@ c2_final_16<=c2_16 when negativo='1' or c2_16="100000000000" else
 
 c2_final<=c2_final_4 when control_T='0' else
             c2_final_16;   
+            
 --a1
 with control_4T select
 a1_4<=  a1_4_1 when '0',
@@ -304,8 +342,8 @@ a1_16<= a1_16_1 when "000",
         
 a1_final<=a1_4 when control_T='0' else
             a1_16;
+            
 --b1
-
 with control_4T select
 b1_4<=  b1_4_1 when '0',
         b1_4_2 when others;
@@ -330,11 +368,10 @@ b1_final_16<=b1_16 when negativo='1' or b1_16="000010000000" else
 b1_final<=b1_final_4 when control_T='0' else
             b1_final_16;
 
---soluciones
+--solucion y ready
 y<=y_lin when control_lineal='1' else
     y_cuad;
     
-
 ready<=readyLin when control_lineal='1' else
     readyCuad;
 

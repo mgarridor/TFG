@@ -1,4 +1,4 @@
-num_tramos=16;
+num_tramos=4;
 inicio=-8;
 final=8;
 nbits=12;
@@ -54,22 +54,22 @@ for i=inicio:longitud_tramos:final-longitud_tramos
     indice=indice+1;
 end
 % 
-% sum_error_lineal=0.001/16*sum(err_lineal);
-% disp('error lineal total')
-% disp(sum_error_lineal)
-% 
-% sum_error_cuad=0.001/16*sum(err_cuad);
-% disp('error cuadratico total')
-% disp(sum_error_cuad)
-% 
-% sum_error_lineal_pf=0.001/16*sum(err_lineal_pf);
-% disp('error cuadratico total lineal con precision de punto fijo')
-% disp(sum_error_lineal_pf)
-% 
-% sum_error_cuad_pf=0.001/16*sum(err_cuad_pf);
-% disp('error cuadratico total con precision de punto fijo')
-% disp(sum_error_cuad_pf)
-% 
+sum_error_lineal=0.001/16*sum(err_lineal);
+disp('error lineal total')
+disp(sum_error_lineal)
+
+sum_error_cuad=0.001/16*sum(err_cuad);
+disp('error cuadratico total')
+disp(sum_error_cuad)
+
+sum_error_lineal_pf=0.001/16*sum(err_lineal_pf);
+disp('error cuadratico total lineal con precision de punto fijo')
+disp(sum_error_lineal_pf)
+
+sum_error_cuad_pf=0.001/16*sum(err_cuad_pf);
+disp('error cuadratico total con precision de punto fijo')
+disp(sum_error_cuad_pf)
+
 % 
 % 
 % 
