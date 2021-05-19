@@ -1,13 +1,14 @@
-
-*** Running vivado
-    with args -log funcion_activacion_2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion_2.tcl
-
-
-****** Vivado v2020.2 (64-bit)
-  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
-  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon May 17 13:52:04 2021
+# Process ID: 2471
+# Current directory: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1
+# Command line: vivado -log funcion_activacion_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion_2.tcl
+# Log file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_activacion_2.vds
+# Journal file: /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
 source funcion_activacion_2.tcl -notrace
 Command: synth_design -top funcion_activacion_2 -part xc7a100tcsg324-1 -directive AreaOptimized_high -max_dsp 0
 Starting synth_design
@@ -134,48 +135,6 @@ Start Applying 'set_property' XDC Constraints
 Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 2475 ; free virtual = 7039
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mult_config_3'
-1 unexpected non-zero reference counts
-1 unexpected non-zero reference counts
-1 unexpected non-zero reference counts
-1 unexpected non-zero reference counts
-1 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-9 unexpected non-zero reference counts
-8 unexpected non-zero reference counts
-24 unexpected non-zero reference counts
-15 unexpected non-zero reference counts
-22 unexpected non-zero reference counts
-16 unexpected non-zero reference counts
-16 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-2 unexpected non-zero reference counts
-7 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-2 unexpected non-zero reference counts
-22 unexpected non-zero reference counts
-18 unexpected non-zero reference counts
-18 unexpected non-zero reference counts
-18 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-10 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -196,22 +155,6 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'mult_
                      e84 |                   00001000000000 |                             1010
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'mult_config_3'
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-4 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-22 unexpected non-zero reference counts
-38 unexpected non-zero reference counts
-38 unexpected non-zero reference counts
-23 unexpected non-zero reference counts
-32 unexpected non-zero reference counts
-32 unexpected non-zero reference counts
-19 unexpected non-zero reference counts
 ---------------------------------------------------------------------------------
 Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 2482 ; free virtual = 7038
 ---------------------------------------------------------------------------------
@@ -267,19 +210,6 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-6 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-6 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-3 unexpected non-zero reference counts
-22 unexpected non-zero reference counts
-38 unexpected non-zero reference counts
-38 unexpected non-zero reference counts
-23 unexpected non-zero reference counts
-32 unexpected non-zero reference counts
-32 unexpected non-zero reference counts
-19 unexpected non-zero reference counts
 ---------------------------------------------------------------------------------
 Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:51 . Memory (MB): peak = 2318.098 ; gain = 31.883 ; free physical = 2407 ; free virtual = 7048
 ---------------------------------------------------------------------------------

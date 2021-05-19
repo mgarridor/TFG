@@ -194,8 +194,8 @@ end process;
 
 --funciones
 --control multiplicador
-control_mult<="00" when control_T='0' else
-                "11";
+control_mult<="11" when control_T='0' else
+                "00";
 
 
 --la señal ready solo se activa cuando ha terminado de operar

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/mult_config_3.tcl"
+  variable script "/home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.runs/synth_1/funcion_activacion_2.tcl"
   variable category "vivado_synth"
 }
 
@@ -89,15 +89,6 @@ read_vhdl -library xil_defaultlib {
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB_mini.vhd
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico1.vhd
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/basico2.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_2.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/test_mult.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_4x4.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/FAB.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_8x8.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion.vhd
-  /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_config.vhd
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/mult_conf_3.vhd
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_activacion_2.vhd
   /home/matiaspc/Escritorio/universidad/tfg/trabajo/trabajo_final/trabajo_final.srcs/sources_1/new/funcion_lineal_2.vhd
@@ -121,7 +112,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top mult_config_3 -part xc7a100tcsg324-1 -directive AreaOptimized_high -max_dsp 0
+synth_design -top funcion_activacion_2 -part xc7a100tcsg324-1 -directive AreaOptimized_high -max_dsp 0
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -131,10 +122,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef mult_config_3.dcp
+write_checkpoint -force -noxdef funcion_activacion_2.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file mult_config_3_utilization_synth.rpt -pb mult_config_3_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file funcion_activacion_2_utilization_synth.rpt -pb funcion_activacion_2_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

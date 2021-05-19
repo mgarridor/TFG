@@ -182,8 +182,8 @@ signal control_16T:std_logic_vector(2 downto 0);
 signal primerBit:natural:=11;
 
 --señales finales
-signal y_lin,y_lin_4,y_lin_16:unsigned (11 downto 0);
-signal y_cuad,y_cuad_4,y_cuad_16:unsigned (11 downto 0);
+signal y_lin:unsigned (11 downto 0);
+signal y_cuad:unsigned (11 downto 0);
 
 signal a1_final,b1_final,b2_final,c2_final: unsigned (11 downto 0);
 signal a2_final : signed (11 downto 0);

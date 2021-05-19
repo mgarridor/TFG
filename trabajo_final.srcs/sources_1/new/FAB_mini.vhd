@@ -23,32 +23,60 @@
 --Se deben implementar varios bloques de este estilo formando una matriz de 2 dimensiónes n x m,
 --siendo 2n el número de bits dwl primer operando y 2m el número de bits del segundo operando.
 
+--Los diferentes módulos se conectan con sus vecinos de la matriz y las señales de control Cl, Cb, Cr y Ct 
+--indican si hay módulos en cada sentido
+
 ----Definición de entradas/salidas
---Falta completar
 --A
+--2 bits de entrada del operando A
+
 --B
+--2 bits de entrada del operando A
+
 --left
+--bits de entrada del módulo de la izquierda
+
 --bottomL
+--bit de entrada del módulo de debajo a la izquierda
+
 --bottom
+--bits de entrada del módulo de debajo
+
 --bottom4
+--bit de salida hacia el módulo de debajo
+
 --right
+--Bit de salida hacia el módulo de la izquierda
+
 --sum
+--Bits de suma de A+B
+
 --top
+--Bits de salida hacia el módulo de arriba
+
 --top4
+--Bit de entrada del el módulo de arriba
+
 --topR
+--Bit de salida hacia el módulo de arriba a la derecha
+
 --Cl
+--Control que indica si hay un módulo conectado a la izquierda
+
 --Cr
+--Control que indica si hay un módulo conectado a la derecha
+
 --Ct
+--Control que indica si hay un módulo conectado arriba
+
 --Cb
+--Control que indica si hay un módulo conectado debajo
 
 --Ma
 --Control de signo del operando A (si Ma='1' --> A es un numero con signo)
 
 --Mb
 --Control de signo del operando B (si Mb='1' --> B es un numero con signo)
-
-
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

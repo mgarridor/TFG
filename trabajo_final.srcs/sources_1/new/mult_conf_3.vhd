@@ -21,13 +21,24 @@
 ----Descripción del módulo
 
 --Multiplicador configurable en número de bits. 
---Se pueden hacer las operaciones con un número de bits variable dependiendo de la señal de control. 
+
+--Se compone de 6 bloques configurables que se reutilizan en cada ciclo de reloj para lograr una mejora de pipeline.
+
+--Se pueden hacer las operaciones con un número de bits variable dependiendo de la señal de control.
+--Las operaciones pueden ser con o sin signo, aunque en este proyecto solo se utilizarán operaciones con signo.
 --Las entradas son operandos A y B que pueden estar compuestos por:
 
 --1 número de 12 bits
 --1 número de 8 bits (Los 4 bits más significativos no se utilizan)
 --3 números de 4 bits
 --6 números de 2 bits
+
+--Dependiendo del número de bits, la latencia total será distinta.
+
+--Multiplicación de 12 bits --> 6 Ciclos de clk
+--Multiplicación de 12 bits --> 4 Ciclos de clk
+--Multiplicaciones de 4 bits --> 2 Ciclos de clk
+--Multiplicaciones de 2 bits --> 1 Ciclo de clk
 
 ----Definición de entradas/salidas
 
@@ -146,7 +157,7 @@ signal S9_reg,S9_next : std_logic_vector(1 downto 0);
 
 --control
 type state_type is (idle, E121,E122,E123,E124,E125,E126,E81,E82,E83,E84,E41,E42,E2);
-signal state, next_state : state_type;
+signal state, next_state : state_type:=idle;
 
 begin
 
@@ -277,6 +288,64 @@ port map(
     Ma=>Ma6,
     Mb=>Mb
 );
+----registro de entrada
+--process(clk,reset)
+--begin
+--reset asincrono
+
+--    if (rising_edge(clk))then
+--        if(reset = '1')then
+                   
+--            left_1<= (others=>'0');
+--            left_2<= (others=>'0');
+--            left_3<= (others=>'0');
+--            left_4<= (others=>'0');
+--            left_5<= (others=>'0');
+--            left_6<= (others=>'0');
+            
+--            bottomL_1<= '0';
+--            bottomL_2<= '0';
+--            bottomL_3<= '0';
+--            bottomL_4<= '0';
+--            bottomL_5<= '0';
+            
+--            S1_reg<=(others=>'0');
+--            S2_reg<=(others=>'0');
+--            S3_reg<=(others=>'0');
+--            S4_reg<=(others=>'0');
+--            S5_reg<=(others=>'0');
+--            S9_reg<=(others=>'0');
+            
+--            state<=idle;
+--            primera_cuenta<='1';
+--        else
+    
+--            left_1<= right_1;
+--            left_2<= right_2;
+--            left_3<= right_3;
+--            left_4<= right_4;
+--            left_5<= right_5;
+--            left_6<= right_6;
+            
+--            bottomL_1<= topR_2;
+--            bottomL_2<= topR_3;
+--            bottomL_3<= topR_4;
+--            bottomL_4<= topR_5;
+--            bottomL_5<= topR_6;
+            
+--            S1_reg<=S1_next;
+--            S2_reg<=S2_next;
+--            S3_reg<=S3_next;
+--            S4_reg<=S4_next;
+--            S5_reg<=S5_next;
+--            S9_reg<=S9_next;
+            
+--            state<=next_state;
+--            primera_cuenta<='0';  
+--        end if;
+--    end if;
+--end process;
+
 --registro de entrada
 process(clk,reset)
 begin

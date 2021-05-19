@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log mult_config_3.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mult_config_3.tcl
+EAStep vivado -log funcion_activacion_2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source funcion_activacion_2.tcl

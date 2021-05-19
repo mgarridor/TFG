@@ -61,16 +61,20 @@ signal s2_1,s2_2,s2_3,s2_4,s2_5,s2_6:signed(3 downto 0);
 signal primer_valor:std_logic:='1';
 type estados is (S0, S41,S42, S21,S22,S23,S24,S25);
 signal estado_actual,estado_siguiente :estados:=S0;
+--Se activa cuando ha terminado de procesar los datos
 signal fin_proceso : std_logic;
+--Se activa cuando se siguen procesando los datos.
 signal enProceso : std_logic:='0';
 begin
 
-process(clk,reset, ready_in)
+process(clk,reset)
 begin
     if(reset='1') then
         estado_actual<=S0;
+        primer_valor<='1';
     elsif(rising_edge(clk) and enProceso='1') then
         estado_actual<=estado_siguiente;
+        primer_valor<='0';
     end if;
 
 end process;
@@ -88,12 +92,12 @@ s2_5<=s_in(19 downto 16);
 s2_6<=s_in(23 downto 20);
 
 --cambio de estados y de salidas
-process (mult_ready,s_in,estado_actual,estado_siguiente,primer_valor,num_bits)
+process (mult_ready,s_in,estado_actual,estado_siguiente,primer_valor,num_bits,s4_1,s4_2,s4_3,s2_1,s2_2,s2_3,s2_4,s2_5,s2_6)
 begin
 estado_siguiente<=S0;
 s_out<=(others=>'0');
 enable_suma<='1';
-primer_valor<='0';
+--primer_valor<='0';
 if primer_valor='1' then
     fin_proceso<='1';
 else
@@ -163,8 +167,8 @@ end case;
 
 end process;
 
---La señal enProceso indica que se está procesando valores provenientes del multiplicador
-process (fin_proceso)
+--La señal enProceso indica que se están procesando valores provenientes del multiplicador
+process (fin_proceso,ready_in)
 begin 
 if (rising_edge(ready_in)) then
     enProceso<='1';
@@ -173,8 +177,11 @@ elsif (rising_edge(fin_proceso) and ready_in='0') then
 end if;
 end process;
 
+--Cuando se terminan de procesar datos, se piden datos nuevos
 recibir_datos<=fin_proceso;
 
-enable_fa<=fin_proceso when enProceso='0' else
-            '0';    
+--Se activa un pulso despues de procesar todos los datos
+--enable_fa<=fin_proceso when enProceso='0' else
+--            '0';
+enable_fa<=not(enProceso);                
 end Behavioral;

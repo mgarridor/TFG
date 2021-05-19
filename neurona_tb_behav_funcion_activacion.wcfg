@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="neurona_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="neurona_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="3000001fs"></ZoomEndTime>
+      <Cursor1Time time="5000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="267"></NameColumnWidth>
+      <ValueColumnWidth column_width="114"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject type="array" fp_name="/neurona_tb/x">
+      <obj_property name="ElementShortName">x[11:0]</obj_property>
+      <obj_property name="ObjectShortName">x[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/w">
+      <obj_property name="ElementShortName">w[11:0]</obj_property>
+      <obj_property name="ObjectShortName">w[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/y">
+      <obj_property name="ElementShortName">y[11:0]</obj_property>
+      <obj_property name="ObjectShortName">y[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/fin_datos">
+      <obj_property name="ElementShortName">fin_datos</obj_property>
+      <obj_property name="ObjectShortName">fin_datos</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/recibir_datos">
+      <obj_property name="ElementShortName">recibir_datos</obj_property>
+      <obj_property name="ObjectShortName">recibir_datos</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/ready_out">
+      <obj_property name="ElementShortName">ready_out</obj_property>
+      <obj_property name="ObjectShortName">ready_out</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/control_lineal">
+      <obj_property name="ElementShortName">control_lineal</obj_property>
+      <obj_property name="ObjectShortName">control_lineal</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/control_tramos">
+      <obj_property name="ElementShortName">control_tramos</obj_property>
+      <obj_property name="ObjectShortName">control_tramos</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/neuron/f_activacion/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/neuron/f_activacion/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/neuron/f_activacion/y_cuad">
+      <obj_property name="ElementShortName">y_cuad[11:0]</obj_property>
+      <obj_property name="ObjectShortName">y_cuad[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/neurona_tb/neuron/f_activacion/readyCuad">
+      <obj_property name="ElementShortName">readyCuad</obj_property>
+      <obj_property name="ObjectShortName">readyCuad</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/neuron/f_activacion/funcion_cuadratica/y">
+      <obj_property name="ElementShortName">y[11:0]</obj_property>
+      <obj_property name="ObjectShortName">y[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/neuron/f_activacion/funcion_cuadratica/r1_reg">
+      <obj_property name="ElementShortName">r1_reg[23:0]</obj_property>
+      <obj_property name="ObjectShortName">r1_reg[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/neuron/f_activacion/funcion_cuadratica/r2_reg">
+      <obj_property name="ElementShortName">r2_reg[12:0]</obj_property>
+      <obj_property name="ObjectShortName">r2_reg[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/neurona_tb/neuron/f_activacion/funcion_cuadratica/y">
+      <obj_property name="ElementShortName">y[11:0]</obj_property>
+      <obj_property name="ObjectShortName">y[11:0]</obj_property>
+   </wvobject>
+</wave_config>

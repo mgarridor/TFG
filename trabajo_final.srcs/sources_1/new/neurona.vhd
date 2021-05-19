@@ -37,7 +37,7 @@ entity neurona is
     Port ( x : in std_logic_vector (11 downto 0);
            w : in std_logic_vector (11 downto 0);
            num_bits:in natural;
-           y : out unsigned (11 downto 0);
+           y : out unsigned (11 downto 0):=(others=>'0');
            reset : in STD_LOGIC;
            recibir_datos: out STD_LOGIC;
            ready_in : in std_logic;
@@ -114,7 +114,7 @@ port map(
     Mb=>'1',
     control=>control_mult,
     clk=>clk,
-    reset=>temp2,
+    reset=>reset,
     ready=>mult_ready
 );
 
@@ -151,7 +151,9 @@ begin
         if enable_suma='1' then
             r2_reg<=r2_next;
         end if;
-        if enable_fa='1' and ready_out_final='1' then
+        if enable_fa='1' then
+--        if enable_fa='1' and ready_out_final='1' then
+
             r3_reg<=r3_next;
         end if;
     end if;
@@ -169,8 +171,11 @@ with num_bits select control_mult<=
     "10" when 2,
     "11" when others;
     
-reset_fa<= not(enable_fa and ready_out_final);
-r3_next<=r2_reg(11 downto 0);
+--reset_fa<= not(enable_fa and ready_out_final);
+reset_fa<= not(enable_fa);
+
+-------------------Mirar codificacion
+r3_next<=signed(r2_reg(23) & r2_reg(18 downto 8));
         
         
  recibir_datos<=temp2;      

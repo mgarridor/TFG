@@ -60,9 +60,9 @@ signal recibir_datos: STD_LOGIC;
 signal ready_in : std_logic;
 signal ready_out: STD_LOGIC;
 signal control_lineal : STD_LOGIC:='0';
-signal control_tramos : STD_LOGIC:='1';
+signal control_tramos : STD_LOGIC:='0';
 signal clk : std_logic;
-signal num_bits: natural:=12;
+signal num_bits: natural:=8;
 constant clk_period : time := 100 ns; 
 signal num_entradas : natural :=4;
 
@@ -72,6 +72,7 @@ neuron : neurona
 port map(
 x=>x,
 w=>w,
+y=>y,
 num_bits=>num_bits,
 reset=>reset,
 ready_in=>ready_in,
@@ -98,13 +99,14 @@ ready_in<='0';
 wait for 10 ns;
 reset<='0';
 ready_in<='1';
-wait for 1000 ns;
+wait for 1850 ns;
 ready_in<='0';
-
+wait;
 end process;
 --Test 1 valor
 process (clk)
 begin
+    if rising_edge(clk) then
         if recibir_datos='1' and num_entradas>0 then
             case num_bits is
                 when 2 =>   
@@ -135,13 +137,14 @@ begin
                     w(11 downto 8)<=(others=>'0');
                     w(7 downto 0)<="00010000"; --x=2
                 when others => 
-                    x<="000010000000"; --x=2
-                    w<="000010000000"; --x=2
+                    x<="000001000000"; --x=2
+                    w<="000001000000"; --x=2
             end case;
             num_entradas<=num_entradas-1;
         elsif num_entradas=0 then
                 fin_datos<='1';
         end if;
+    end if;
 --    if control_lineal='1' then
 --        if control_tramos='0' then
 --            x(11 downto 2)<=(others=>'0');
