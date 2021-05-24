@@ -19,13 +19,55 @@
 ----------------------------------------------------------------------------------
 
 ----Descripción del módulo
---No está claro todavía
+--Neurona configurable.
 
+--En primer lugar se puede elegir el número de bits con la que se hace la multiplicación
+--En segundo lugar se puede elegir la precisión de la función de activación
+
+--El protocolo de este módulo se define de la siguiente manera:
+--Se requieren unas entradas (x_i) y el peso de cada entrada (w_i) que pueden ser:
+--    1 numero de 12 bits
+--    1 numero de 8 bits (colocados en los bits menos significativos
+--    3 numeros de 4 bits
+--    6 numeros de 2 bits
+--Mientras se estén enviando datos nuevos la señal 'ready_in' estará activa, cuando se envíen los últimos datos se desactivará
+--Si hay más entradas deberán esperar y cada vez que la señal 'recibir_datos' se actualizarán con datos nuevos.
+--Cuando la señal 'ready_out' se active, el resultado estará listo.
 
 ----Definición de entradas/salidas
 
---No está claro todavía
+--x
+--Entrada/as de la neurona que puede ser:
 
+--w
+--Pesos de cada entrada
+
+--num_bits
+--numero de bits utilizados en la multipliacacion
+
+--y
+--Solución total de la neurona
+
+--reset
+--reset total, se ponen todos los registros a 0
+
+--recibir_datos
+--Señal por la cual se cambian los valores de entrada 
+
+--ready_in
+--Señal activa cuando nuevos datos están llegando, se desactiva cuando se han completado todos los datos
+
+--ready_out
+--Señal de salida que se activa cuando el resultado está listo
+
+--control_lineal
+--Señal de control, activa cuando se quiere una interpolación lineal, si es '0' se hará una interpolación cuadrática
+
+--control_tramos
+--Señal de control, activa cuando se quiere una interpolación dividida en 16 tramos, si es '0' se hará una división en 4 tramos
+
+--clk
+--Señal de reloj
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -90,7 +132,9 @@ end component;
 signal s_out : signed(23 downto 0);
 
 signal temp  : signed(23 downto 0);
-signal temp2 : std_logic;
+signal recibir_datos_signal : std_logic;
+
+signal r1_reg,r1_next : signed(23 downto 0);
 signal r2_reg,r2_next : signed(23 downto 0);
 signal r3_reg,r3_next : signed(11 downto 0);
 
@@ -103,6 +147,8 @@ signal enable_fa : std_logic;
 signal enable_suma:std_logic;
 signal ready_out_final : std_logic;
 
+
+signal signo : std_logic :='0';
 begin
 
 multiplicador: mult_config_3
@@ -131,37 +177,38 @@ Port map(
 
 control:control_neurona
 Port map(
-    s_in=>temp,
+    s_in=>r1_next,
     num_bits=>num_bits,
     mult_ready=>mult_ready,
     ready_in=>ready_in,
     s_out=>s_out,
     enable_suma=>enable_suma,
-    recibir_datos=>temp2,
+    recibir_datos=>recibir_datos_signal,
     enable_fa=>enable_fa,
     clk=>clk,
     reset=>reset
 );
-process(clk,reset)
+process(clk,reset,enable_fa,enable_suma)
 begin
     if(reset='1') then
+        r1_reg<=(others=>'0');
         r2_reg<=(others=>'0');
         r3_reg<=(others=>'0');
     elsif(rising_edge(clk)) then
         if enable_suma='1' then
             r2_reg<=r2_next;
         end if;
-        if enable_fa='1' then
---        if enable_fa='1' and ready_out_final='1' then
 
+            r1_reg<=r1_next;
             r3_reg<=r3_next;
-        end if;
     end if;
 
 end process;
 
+r1_next<=signed(s_mult) when recibir_datos_signal='1' else
+        r1_reg;
+        
 --sumador
-temp<=signed(s_mult);
 r2_next<= s_out + r2_reg;
 
 --multiplexores
@@ -171,14 +218,33 @@ with num_bits select control_mult<=
     "10" when 2,
     "11" when others;
     
---reset_fa<= not(enable_fa and ready_out_final);
 reset_fa<= not(enable_fa);
 
--------------------Mirar codificacion
-r3_next<=signed(r2_reg(23) & r2_reg(18 downto 8));
-        
-        
- recibir_datos<=temp2;      
+--Se elige la codificación acorde al control deseado
+signo<=r2_reg(7) when num_bits=4 else
+        r2_reg(23);
+
+r3_next<=
+--12 bits para las multiplicaciones y 12 bits para la FA
+        signed(signo & r2_reg(18 downto 8))                                                         when enable_fa='0' and control_lineal='0' and control_tramos='1' and num_bits=12 else
+--12 bits para las multiplicaciones y 8 bits para la FA
+        signed(signo&signo&signo&signo&signo & r2_reg(18 downto 12))                                when enable_fa='0' and ((control_lineal='0' and control_tramos='0') or (control_lineal='1' and control_tramos='1')) and num_bits=12 else
+--12 bits para las multiplicaciones y 4 bits para la FA
+        signed(signo&signo&signo&signo&signo&signo&signo&signo&signo & r2_reg(18 downto 16))        when enable_fa='0' and control_lineal='1' and control_tramos='0' and num_bits=12 else      
+--8 bits para las multiplicaciones y 8 bits para la FA
+        signed(signo&signo&signo&signo&signo & r2_reg(10 downto 4))                                 when enable_fa='0' and ((control_lineal='0' and control_tramos='0') or (control_lineal='1' and control_tramos='1')) and num_bits=8 else
+--8 bits para las multiplicaciones y 12 bits para la FA
+        signed(signo & r2_reg(10 downto 0))                                                         when enable_fa='0' and control_lineal='0' and control_tramos='1' and num_bits=8 else 
+--8 bits para las multiplicaciones y 4 bits para la FA
+        signed(signo&signo&signo&signo&signo&signo&signo&signo&signo & r2_reg(10 downto 8))         when enable_fa='0' and control_lineal='1' and control_tramos='0' and num_bits=8 else    
+--4 bits para las multiplicaciones y 4 bits para la FA
+        signed(signo&signo&signo&signo&signo&signo&signo&signo&signo & r2_reg(2 downto 0))          when enable_fa='0' and control_lineal='1' and control_tramos='0' and num_bits=4 else 
+--2 bits para las multiplicaciones y 4 bits para la FA  ---Cambiar
+        signed(signo&signo&signo&signo&signo&signo&signo&signo&signo & r2_reg(2 downto 0))          when enable_fa='0' and control_lineal='1' and control_tramos='0' and num_bits=2 else 
+--Se mantiene el valor sin actualizarse
+        r3_next;
+                
+recibir_datos<=recibir_datos_signal;      
  
- ready_out<=ready_out_final; 
+ready_out<=ready_out_final; 
 end Behavioral;

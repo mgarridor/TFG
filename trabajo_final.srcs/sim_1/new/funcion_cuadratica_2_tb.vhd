@@ -44,7 +44,7 @@ component funcion_cuadratica_2 is
            b : in unsigned (11 downto 0);
            c : in unsigned (11 downto 0);
            y : out unsigned (11 downto 0);
-           control_T : in std_logic_vector(1 downto 0);
+           control_T : in std_logic;
            ready: out std_logic);
 end component;
 
@@ -55,7 +55,7 @@ signal a : signed (11 downto 0);
 signal b : unsigned (11 downto 0);
 signal c : unsigned (11 downto 0);
 signal y : unsigned (11 downto 0);
-signal control_T : std_logic_vector(1 downto 0):="00";
+signal control_T : std_logic:='1';
 signal ready: std_logic;
 
 constant clk_period : time := 100 ns; 
@@ -88,7 +88,7 @@ end process;
 process
 begin
 
-if control_T="00" then
+if control_T='0' then
     x(11 downto 8)<=(others=>'0');
     x(7 downto 0)<="00010000";
     a(11 downto 8)<=(others=>'0');
@@ -98,7 +98,7 @@ if control_T="00" then
     c(11 downto 8)<=(others=>'0');
     c(7 downto 0)<="10000000";
  else
-    x<="010000000000";
+    x<="000011000000";
     a<="010000000000";
     b<="010000000000";   
     c<="010000000000";

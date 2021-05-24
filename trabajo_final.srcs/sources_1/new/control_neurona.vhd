@@ -27,18 +27,39 @@
 
 
 ----Definición de entradas/salidas
+--s_in
+--Señal de entrada, son las soluciónes del multiplicador configurable
 
---No está claro todavía
+--num_bits
+--numero de bits utilizados en la multipliacacion
 
+--mult_ready
+--Señal de salida que indica que el multiplicador ha terminado
 
+--ready_in
+--Señal activa cuando nuevos datos están llegando, se desactiva cuando se han completado todos los datos
 
+--s_out
+--Salida hacia el sumador
+
+--recibir_datos
+--Señal por la cual se cambian los valores de entrada 
+
+--enable_suma
+--Señal que indica cuándo se hacen las sumas
+
+--enable_fa
+--Señal que inicia el bloque de funci'on de activación
+
+--clk
+--Señal de reloj
+
+--reset
+--reset total, se ponen todos los registros a 0
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
-
 use IEEE.NUMERIC_STD.ALL;
-
 
 entity control_neurona is
     Port ( s_in : in signed (23 downto 0);
@@ -72,9 +93,15 @@ begin
     if(reset='1') then
         estado_actual<=S0;
         primer_valor<='1';
-    elsif(rising_edge(clk) and enProceso='1') then
-        estado_actual<=estado_siguiente;
-        primer_valor<='0';
+        enable_fa<='0';
+    elsif(rising_edge(clk)) then
+        if enProceso='1' then
+            estado_actual<=estado_siguiente;
+            primer_valor<='0';
+        end if;
+        enable_fa<=not(enProceso); 
+
+
     end if;
 
 end process;
@@ -174,14 +201,11 @@ if (rising_edge(ready_in)) then
     enProceso<='1';
 elsif (rising_edge(fin_proceso) and ready_in='0') then
     enProceso<='0';
+
 end if;
 end process;
 
 --Cuando se terminan de procesar datos, se piden datos nuevos
 recibir_datos<=fin_proceso;
 
---Se activa un pulso despues de procesar todos los datos
---enable_fa<=fin_proceso when enProceso='0' else
---            '0';
-enable_fa<=not(enProceso);                
 end Behavioral;

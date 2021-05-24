@@ -1,4 +1,4 @@
-num_tramos=4;
+num_tramos=12;
 inicio=-8;
 final=8;
 nbits=12;

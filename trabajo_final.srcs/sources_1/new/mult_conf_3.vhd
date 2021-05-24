@@ -288,63 +288,6 @@ port map(
     Ma=>Ma6,
     Mb=>Mb
 );
-----registro de entrada
---process(clk,reset)
---begin
---reset asincrono
-
---    if (rising_edge(clk))then
---        if(reset = '1')then
-                   
---            left_1<= (others=>'0');
---            left_2<= (others=>'0');
---            left_3<= (others=>'0');
---            left_4<= (others=>'0');
---            left_5<= (others=>'0');
---            left_6<= (others=>'0');
-            
---            bottomL_1<= '0';
---            bottomL_2<= '0';
---            bottomL_3<= '0';
---            bottomL_4<= '0';
---            bottomL_5<= '0';
-            
---            S1_reg<=(others=>'0');
---            S2_reg<=(others=>'0');
---            S3_reg<=(others=>'0');
---            S4_reg<=(others=>'0');
---            S5_reg<=(others=>'0');
---            S9_reg<=(others=>'0');
-            
---            state<=idle;
---            primera_cuenta<='1';
---        else
-    
---            left_1<= right_1;
---            left_2<= right_2;
---            left_3<= right_3;
---            left_4<= right_4;
---            left_5<= right_5;
---            left_6<= right_6;
-            
---            bottomL_1<= topR_2;
---            bottomL_2<= topR_3;
---            bottomL_3<= topR_4;
---            bottomL_4<= topR_5;
---            bottomL_5<= topR_6;
-            
---            S1_reg<=S1_next;
---            S2_reg<=S2_next;
---            S3_reg<=S3_next;
---            S4_reg<=S4_next;
---            S5_reg<=S5_next;
---            S9_reg<=S9_next;
-            
---            state<=next_state;
---            primera_cuenta<='0';  
---        end if;
---    end if;
---end process;
 
 --registro de entrada
 process(clk,reset)
@@ -401,90 +344,84 @@ begin
     end if;
 end process;
 
-
---control
---  si 00 => 1 multiplicador 8x8
---  si 01 => 4 multiplicadores 4x4
---``si 10 => 16 multiplicadores 2x2
- 
  --control de estado           
 process (reset,state,control,A,B)
 begin
 
     case state is 
-
-    when idle =>
-        if control="00"  then
-            next_state <= E81;
-        elsif control="01" then
-            next_state<= E41;
-        elsif control="10" then
-            next_state<= E2;
-        else
-            next_state<= E121;
-        end if;
-    
-    when E121=>
-        next_state <= E122;
-    when E122=>
-        next_state <= E123;
-    when E123=>
-        next_state <= E124;
-    when E124=>
-        next_state <= E125;
-    when E125=>
-        next_state <= E126;
-    when E126=>
-        if control="00" then
-            next_state <= E81;
-        elsif control="01" then
-            next_state<= E41;
-        elsif control="10" then 
-            next_state<= E2;
-        else 
-            next_state<= E121;
-        end if;
-    when E81=>
-        next_state <= E82;
-    when E82=>        
-        next_state <= E83;
-    when E83=>     
-        next_state <= E84;
-    when E84=>
-        if control="00" then
-            next_state <= E81;
-        elsif control="01" then
-            next_state<= E41;
-        elsif control="10" then 
-            next_state<= E2;
-        else 
-            next_state<= E121;
-        end if;                  
-    when E41=>
-        next_state <= E42;
-    when E42=>
-        if control="00" then
-            next_state <= E81;
-        elsif control="01" then
-            next_state<= E41;
-        elsif control="10" then 
-            next_state<= E2;
-        else 
-            next_state<= E121;
-        end if;         
-    when others=>            
-        if control="00" then
-            next_state <= E81;
-        elsif control="01" then
-            next_state<= E41;
-        elsif control="10" then 
-            next_state<= E2;
-        else 
-            next_state<= E121;
-        end if;        
+        when idle =>
+            if control="00"  then
+                next_state <= E81;
+            elsif control="01" then
+                next_state<= E41;
+            elsif control="10" then
+                next_state<= E2;
+            else
+                next_state<= E121;
+            end if;
+        
+        when E121=>
+            next_state <= E122;
+        when E122=>
+            next_state <= E123;
+        when E123=>
+            next_state <= E124;
+        when E124=>
+            next_state <= E125;
+        when E125=>
+            next_state <= E126;
+        when E126=>
+            if control="00" then
+                next_state <= E81;
+            elsif control="01" then
+                next_state<= E41;
+            elsif control="10" then 
+                next_state<= E2;
+            else 
+                next_state<= E121;
+            end if;
+        when E81=>
+            next_state <= E82;
+        when E82=>        
+            next_state <= E83;
+        when E83=>     
+            next_state <= E84;
+        when E84=>
+            if control="00" then
+                next_state <= E81;
+            elsif control="01" then
+                next_state<= E41;
+            elsif control="10" then 
+                next_state<= E2;
+            else 
+                next_state<= E121;
+            end if;                  
+        when E41=>
+            next_state <= E42;
+        when E42=>
+            if control="00" then
+                next_state <= E81;
+            elsif control="01" then
+                next_state<= E41;
+            elsif control="10" then 
+                next_state<= E2;
+            else 
+                next_state<= E121;
+            end if;         
+        when others=>            
+            if control="00" then
+                next_state <= E81;
+            elsif control="01" then
+                next_state<= E41;
+            elsif control="10" then 
+                next_state<= E2;
+            else 
+                next_state<= E121;
+            end if;        
     end case;
 end process;    
-     
+
+
  --A 
  
  A1<=A(1 downto 0) when state=E121 or state=E81 or state=E41 or state=E2 else
@@ -602,8 +539,6 @@ S11<=sum_5(2 downto 1)when state=E126 else
 S12<=sum_6(2 downto 1)when state=E126 else
     sum_6(2 downto 1) when state=E42 or state=E2 else
     (others=>'0');      
-
-
 
 --Ma
 Ma1<=Ma when state=E126 or state=E84 or state=E42 or state=E2 else

@@ -63,7 +63,7 @@ signal reset: std_logic;
 signal x : signed (11 downto 0);
 signal y : unsigned (11 downto 0);
 signal ready:std_logic;
-signal control_lineal:std_logic:='0';
+signal control_lineal:std_logic:='1';
 signal control_T:std_logic:='0';
 
 constant clk_period : time := 100 ns; 
@@ -93,7 +93,7 @@ begin
     if control_lineal='1' then
         if control_T='0' then
             x(11 downto 4)<=(others=>'0');
-            x(3 downto 0)<="1011"; --x=2
+            x(3 downto 0)<="0011"; --x=2
         else
             x(11 downto 8)<=(others=>'0');
             x(7 downto 0)<="10111000"; --x=2
@@ -104,7 +104,7 @@ begin
             x(11 downto 8)<=(others=>'0');
             x(7 downto 0)<="10010000"; --x=2
         else
-            x<="100100000000"; --x=2
+            x<="000011000000"; --x=2
         end if;
     end if; 
     reset<='1';

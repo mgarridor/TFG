@@ -90,6 +90,7 @@ signal sumb:signed(12 downto 0):=(others=>'0');
 signal r1_reg,r1_next: std_logic_vector(23 downto 0);
 signal r2_reg,r2_next: signed(12 downto 0);
 
+signal ready_temp:std_logic;
 
 
 component mult_config_3 is
@@ -137,11 +138,18 @@ begin
             r2_reg<=r2_next;
             primer_ciclo<='0';
             control<=std_logic_vector(unsigned(control)+1);
+
 --        else
 --            r1_reg<=r1_reg;
 --            r2_reg<=r2_reg;
 --            control<=control;
         end if;
+--        if(primer_ciclo<='1' or ready_temp='1') then
+--            x_reg<=x;
+--            a_reg<=a;
+--            b_reg<=b;
+--            c_reg<=c;
+--        end if;
     end if;
 end process;
 
@@ -194,14 +202,14 @@ end process;
 
 --funciones
 --control multiplicador
-control_mult<="11" when control_T='0' else
-                "00";
+control_mult<="00" when control_T='0' else
+                "11";
 
 
 --la señal ready solo se activa cuando ha terminado de operar
-ready<='1' when control="00" and primer_ciclo='0' else
+ready_temp<='1' when control="00" and primer_ciclo='0' else
         '0';
-
+ready<=ready_temp;
 r2_next<=sumb+suma;
 
 --salida

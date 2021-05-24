@@ -66,7 +66,6 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-
 entity funcion_activacion_2 is
     Port ( 
            x : in signed (11 downto 0);
@@ -184,10 +183,10 @@ signal primerBit:natural:=11;
 --señales finales
 signal y_lin:unsigned (11 downto 0);
 signal y_cuad:unsigned (11 downto 0);
-
+signal x_reg : signed (11 downto 0);
 signal a1_final,b1_final,b2_final,c2_final: unsigned (11 downto 0);
 signal a2_final : signed (11 downto 0);
-
+signal ready_temp : std_logic;
 signal readyLin,readyCuad:std_logic;
 
 component funcion_cuadratica_2 is
@@ -372,7 +371,7 @@ b1_final<=b1_final_4 when control_T='0' else
 y<=y_lin when control_lineal='1' else
     y_cuad;
     
-ready<=readyLin when control_lineal='1' else
+ready_temp<=readyLin when control_lineal='1' else
     readyCuad;
-
+ready<=ready_temp;
 end behavioral;
