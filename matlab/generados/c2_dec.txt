@@ -1,0 +1,12 @@
+constant c2_8_1:unsigned:="2.392578e-02"; 
+constant c2_8_1:unsigned:="6.396484e-02"; 
+constant c2_8_1:unsigned:="1.572266e-01"; 
+constant c2_8_1:unsigned:="3.276367e-01"; 
+constant c2_8_1:unsigned:="4.929199e-01"; 
+constant c2_8_1:unsigned:="5.000000e-01"; 
+constant c2_8_1:unsigned:="5.000000e-01"; 
+constant c2_8_1:unsigned:="5.068359e-01"; 
+constant c2_8_1:unsigned:="6.721191e-01"; 
+constant c2_8_1:unsigned:="8.425293e-01"; 
+constant c2_8_1:unsigned:="9.357910e-01"; 
+constant c2_8_1:unsigned:="9.758301e-01"; 

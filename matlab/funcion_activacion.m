@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cmparación de la sigmoide con la función de activación de VHDL, cuyos
+% datos están en los archivos .dat
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
 interpolacion_total;
 
 %% Inicializo variables
@@ -9,20 +14,20 @@ yCuad= zeros(1,num_datos_cuad);
 
 %% Recogo los datos
 %matlab
-a1_matlab=load('a1_dec2.dat');
-b1_matlab=load('b1_dec2.dat');
+a1_matlab=load('generados/a1_dec2.dat');
+b1_matlab=load('generados/b1_dec2.dat');
 
-a2_matlab=load('a2_dec2.dat');
-b2_matlab=load('b2_dec2.dat');
-c2_matlab=load('c2_dec2.dat');
+a2_matlab=load('generados/a2_dec2.dat');
+b2_matlab=load('generados/b2_dec2.dat');
+c2_matlab=load('generados/c2_dec2.dat');
 
 %VHDL
 if num_tramos==4 
-    yLineal_VHDL=load('yLin_4.dat');
-    yCuad_VHDL=load('yCuad_4.dat');
+    yLineal_VHDL=load('VHDL/yLin_4.dat');
+    yCuad_VHDL=load('VHDL/yCuad_4.dat');
 elseif num_tramos==16
-    yLineal_VHDL=load('yLin_16.dat');
-    yCuad_VHDL=load('yCuad_16.dat');
+    yLineal_VHDL=load('VHDL/yLin_16.dat');
+    yCuad_VHDL=load('VHDL/yCuad_16.dat');
 end
 %% Hago las interpolaciones 
     %Lineal

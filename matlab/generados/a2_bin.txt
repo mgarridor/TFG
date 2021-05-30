@@ -1,0 +1,12 @@
+constant a2_8_1:signed:="000000001011"; 
+constant a2_8_1:signed:="000000101001"; 
+constant a2_8_1:signed:="000010011001"; 
+constant a2_8_1:signed:="001000000110"; 
+constant a2_8_1:signed:="010100010000"; 
+constant a2_8_1:signed:="010001010110"; 
+constant a2_8_1:signed:="101110101001"; 
+constant a2_8_1:signed:="101011101111"; 
+constant a2_8_1:signed:="110111111001"; 
+constant a2_8_1:signed:="111101100110"; 
+constant a2_8_1:signed:="111111010110"; 
+constant a2_8_1:signed:="111111110100"; 

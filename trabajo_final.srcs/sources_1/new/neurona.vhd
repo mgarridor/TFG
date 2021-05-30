@@ -71,8 +71,6 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
-
 use IEEE.NUMERIC_STD.ALL;
 
 entity neurona is
@@ -198,7 +196,6 @@ begin
         if enable_suma='1' then
             r2_reg<=r2_next;
         end if;
-
             r1_reg<=r1_next;
             r3_reg<=r3_next;
     end if;
@@ -221,7 +218,8 @@ with num_bits select control_mult<=
 reset_fa<= not(enable_fa);
 
 --Se elige la codificación acorde al control deseado
-signo<=r2_reg(7) when num_bits=4 else
+signo<= r2_reg(3) when num_bits=2 else
+        r2_reg(7) when num_bits=4 else
         r2_reg(23);
 
 r3_next<=
@@ -242,8 +240,8 @@ r3_next<=
 --2 bits para las multiplicaciones y 4 bits para la FA  ---Cambiar
         signed(signo&signo&signo&signo&signo&signo&signo&signo&signo & r2_reg(2 downto 0))          when enable_fa='0' and control_lineal='1' and control_tramos='0' and num_bits=2 else 
 --Se mantiene el valor sin actualizarse
-        r3_next;
-                
+        r3_reg;
+
 recibir_datos<=recibir_datos_signal;      
  
 ready_out<=ready_out_final; 

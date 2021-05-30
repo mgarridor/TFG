@@ -1,3 +1,8 @@
+
+%%%%%%%%%%%%%%%%%
+% Convierte los parámetros de una interpolación en un número con la
+% recisión de punto fijo con un número de bits impuesto por los argumentos.
+%%%%%%%%%%%%%%%%%
 function [a1_pf,b1_pf,a2_pf,b2_pf,c2_pf]=punto_fijo(a1,b1,a2,b2,c2,bitslin,bitscuad)
 
 

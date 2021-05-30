@@ -1,4 +1,11 @@
+%%%%%%%%%%%%%%
+% Dibuja los parámetros de las interpolaciones, además se puede descomentar
+% ciertas partes para ver los pasos que se hacen en VHDL
+%%%%%%%%%%%%%%
+
 function dibujo_2(a1,b1,a2,b2,c2)
+
+
     precision=0.001;
     ntramos=length(a1);
 
@@ -69,9 +76,6 @@ function dibujo_2(a1,b1,a2,b2,c2)
         plot(x,c2_temp,'magenta')
         title('c_2')
 
-%     plot (x,y_cuad,'blue')
-%     plot(x,y_lineal,'green')    
-%     plot (x,y,'red')
     hold off
 
 

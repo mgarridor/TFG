@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%%
+% Cálculo de errores, a partir de 3 puntos y un número de bits específico
+% calcula el eror cuadrático medio entre las interpolaciónes y la función
+% sigmoide. Además también calcula el error si se utiliza un número
+% determinado de bits. 
+%%%%%%%%%%%%%%
+
+
+
 function [err_lineal,err_cuad,err_cuad_pf,err_lineal_pf]= errores(x1,x2,x3,nbits,bitslin,bitscuad)
 %% funcion sigmoide
 

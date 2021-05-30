@@ -124,7 +124,6 @@ begin
 estado_siguiente<=S0;
 s_out<=(others=>'0');
 enable_suma<='1';
---primer_valor<='0';
 if primer_valor='1' then
     fin_proceso<='1';
 else
@@ -199,7 +198,8 @@ process (fin_proceso,ready_in)
 begin 
 if (rising_edge(ready_in)) then
     enProceso<='1';
-elsif (rising_edge(fin_proceso) and ready_in='0') then
+end if;
+if (rising_edge(fin_proceso) and ready_in='0') then
     enProceso<='0';
 
 end if;

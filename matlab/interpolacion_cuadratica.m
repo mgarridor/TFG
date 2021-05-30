@@ -1,3 +1,7 @@
+%%%%%%%%%%%%
+%Interpolación lineal, a partir de 3 puntos crea una función cuadrática y
+%devuelve los parámetros de la función
+%%%%%%%%%%%%
 function [a2,b2,c2]= interpolacion_cuadratica(x1,x2,x3)
 %% funcion sigmoide
 

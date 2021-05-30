@@ -1,0 +1,12 @@
+constant b2_8_1:unsigned:="0000000101110"; 
+constant b2_8_1:unsigned:="0000010010010"; 
+constant b2_8_1:unsigned:="0000110110110"; 
+constant b2_8_1:unsigned:="0010010000000"; 
+constant b2_8_1:unsigned:="0100010000011"; 
+constant b2_8_1:unsigned:="0100001110000"; 
+constant b2_8_1:unsigned:="0100001110000"; 
+constant b2_8_1:unsigned:="0100010000011"; 
+constant b2_8_1:unsigned:="0010010000000"; 
+constant b2_8_1:unsigned:="0000110110110"; 
+constant b2_8_1:unsigned:="0000010010010"; 
+constant b2_8_1:unsigned:="0000000101110"; 

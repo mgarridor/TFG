@@ -10,6 +10,10 @@ vhdl xil_defaultlib  \
 "../../../../trabajo_final.srcs/sources_1/new/funcion_cuadratica_2.vhd" \
 "../../../../trabajo_final.srcs/sources_1/new/neurona.vhd" \
 "../../../../trabajo_final.srcs/sources_1/new/control_neurona.vhd" \
+"../../../../trabajo_final.srcs/sources_1/new/funcion_lineal.vhd" \
+"../../../../trabajo_final.srcs/sources_1/new/funcion_activacion.vhd" \
+"../../../../trabajo_final.srcs/sources_1/new/funcion_cuadratica.vhd" \
+"../../../../trabajo_final.srcs/sources_1/new/test_mult.vhd" \
 "../../../../trabajo_final.srcs/sim_1/new/FAB_mini_tb.vhd" \
 "../../../../trabajo_final.srcs/sim_1/new/FA_tb.vhd" \
 "../../../../trabajo_final.srcs/sim_1/new/funcion_lineal_2_tb.vhd" \

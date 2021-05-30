@@ -1,3 +1,8 @@
+%%%%%%
+% Función general, 
+% a partir de los valores impuestos por las 4 primeras constantes se genera la interpolación de la función sigmoide y se calculan los parámetrs lineales y cuadráticos
+% y se calcula el error cuadrático medio de cada una de ellas
+%%%%%%
 num_tramos=12;
 inicio=-8;
 final=8;
@@ -53,7 +58,7 @@ for i=inicio:longitud_tramos:final-longitud_tramos
 
     indice=indice+1;
 end
-% 
+
 sum_error_lineal=0.001/16*sum(err_lineal);
 disp('error lineal total')
 disp(sum_error_lineal)
@@ -70,6 +75,3 @@ sum_error_cuad_pf=0.001/16*sum(err_cuad_pf);
 disp('error cuadratico total con precision de punto fijo')
 disp(sum_error_cuad_pf)
 
-% 
-% 
-% 

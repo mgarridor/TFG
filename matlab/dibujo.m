@@ -1,3 +1,9 @@
+%%%%%%%%%%%%
+% Dibuja la función sigmoide encima de las interpolaciones lineal y
+% cuadrática para poder compararlas
+%%%%%%%%%%%%
+
+
 function dibujo(a1,b1,a2,b2,c2)
     precision=0.001;
     ntramos=length(a1);

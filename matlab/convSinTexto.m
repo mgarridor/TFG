@@ -1,3 +1,9 @@
+%%%%% 
+% convierte los valores de los parámetros de interpolación en coma flotante
+% y después los pasa a decimal de nuevo para ver su precisión. Por último
+% se guardan en un archivo .dat
+%%%%% 
+
 %%%%% convierte los valores en binario y los guarda en un archivo
 numero_bits_decimales_a1=bitsLin+2;
 numero_bits_decimales_b1=bitsLin;
@@ -34,17 +40,17 @@ b2_dec=bin2num(q2b,b2_bin);
 c2_dec=bin2num(qc,c2_bin);
 
 % lo escribo en un archivo 
-fileID1a = fopen('a1_dec2.dat','w');
+fileID1a = fopen('generados/a1_dec2.dat','w');
 fprintf(fileID1a,'%d \n',a1_dec);
 
-fileID1b = fopen('b1_dec2.dat','w');
+fileID1b = fopen('generados/b1_dec2.dat','w');
 fprintf(fileID1b,'%d \n',b1_dec);
 
-fileIDa = fopen('a2_dec2.dat','w');
+fileIDa = fopen('generados/a2_dec2.dat','w');
 fprintf(fileIDa,'%d \n',a2_dec);
 
-fileIDb = fopen('b2_dec2.dat','w');
+fileIDb = fopen('generados/b2_dec2.dat','w');
 fprintf(fileIDb,'%d \n',b2_dec);
 
-fileIDc = fopen('c2_dec2.dat','w');
+fileIDc = fopen('generados/c2_dec2.dat','w');
 fprintf(fileIDc,'%d \n',c2_dec);

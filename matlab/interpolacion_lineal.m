@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%
+%Interpolación lineal, a partir de 2 puntos crea una función lineal y
+%devuelve los parámetros de la función
+%%%%%%%%%%%%%%%%
+
 function [a1,b1]= interpolacion_lineal(x1,x2)
 %% funcion sigmoide
 

@@ -46,7 +46,7 @@ component mult_config_3 is
 end component;
 
 --signal A,B:std_logic_vector(11 downto 0):=(others=>'0');
-signal A :std_logic_vector(11 downto 0):="100000000000";
+signal A :std_logic_vector(11 downto 0):="100000100000";
 signal B :std_logic_vector(11 downto 0):="010000000000";
 
 signal S : STD_LOGIC_VECTOR (23 downto 0);

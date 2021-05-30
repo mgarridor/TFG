@@ -1,0 +1,12 @@
+constant a2_8_1:signed:="3.356934e-04"; 
+constant a2_8_1:signed:="1.251221e-03"; 
+constant a2_8_1:signed:="4.669189e-03"; 
+constant a2_8_1:signed:="1.580811e-02"; 
+constant a2_8_1:signed:="3.955078e-02"; 
+constant a2_8_1:signed:="3.387451e-02"; 
+constant a2_8_1:signed:="-3.390503e-02"; 
+constant a2_8_1:signed:="-3.958130e-02"; 
+constant a2_8_1:signed:="-1.583862e-02"; 
+constant a2_8_1:signed:="-4.699707e-03"; 
+constant a2_8_1:signed:="-1.281738e-03"; 
+constant a2_8_1:signed:="-3.662109e-04"; 

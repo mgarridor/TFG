@@ -51,10 +51,10 @@ signal fin_datos: STD_LOGIC:='0';
 signal recibir_datos: STD_LOGIC;
 signal ready_in : std_logic;
 signal ready_out: STD_LOGIC;
-signal control_lineal : STD_LOGIC:='1';
-signal control_tramos : STD_LOGIC:='0';
+signal control_lineal : STD_LOGIC:='0';
+signal control_tramos : STD_LOGIC:='1';
 signal clk : std_logic;
-signal num_bits: natural:=4;
+signal num_bits: natural:=12;
 constant clk_period : time := 100 ns; 
 signal num_entradas : natural :=4;
 
@@ -70,6 +70,7 @@ constant time_2 : time := 1850 ns;
 
 signal tiempo_espera :time;
 
+signal tiempo_espera_2:time:= 4750 ns ;
 begin
 
 neuron : neurona
@@ -112,48 +113,79 @@ begin
     wait;
 end process;
 
-process (clk)
-begin
-    if rising_edge(clk) then
-        if recibir_datos='1' and num_entradas>0 then
-            case num_bits is
-                when 2 =>   
-                    x(11 downto 10)<="01"; --x=8
-                    x(9 downto 8)<="01"; --x=8
-                    x(7 downto 6)<="01"; --x=8
-                    x(5 downto 4)<="01"; --x=8
-                    x(3 downto 2)<="01"; --x=8
-                    x(1 downto 0)<="01"; --x=8
+--process (clk)
+--begin
+--    if rising_edge(clk) then
+--        if recibir_datos='1' and num_entradas>0 then
+--            case num_bits is
+--                when 2 =>   
+--                    x(11 downto 10)<="01"; --x=8
+--                    x(9 downto 8)<="01"; --x=8
+--                    x(7 downto 6)<="01"; --x=8
+--                    x(5 downto 4)<="01"; --x=8
+--                    x(3 downto 2)<="01"; --x=8
+--                    x(1 downto 0)<="01"; --x=8
                     
-                    w(11 downto 10)<="01"; --x=8
-                    w(9 downto 8)<="01"; --x=8
-                    w(7 downto 6)<="01"; --x=8
-                    w(5 downto 4)<="01"; --x=8
-                    w(3 downto 2)<="01"; --x=8
-                    w(1 downto 0)<="01"; --x=8
-                when 4 => 
-                    x(11 downto 8)<="0001"; --x=1
-                    x(7 downto 4)<="0000"; --x=0
-                    x(3 downto 0)<="1111"; --x=-1
+--                    w(11 downto 10)<="01"; --x=8
+--                    w(9 downto 8)<="01"; --x=8
+--                    w(7 downto 6)<="01"; --x=8
+--                    w(5 downto 4)<="01"; --x=8
+--                    w(3 downto 2)<="01"; --x=8
+--                    w(1 downto 0)<="01"; --x=8
+--                when 4 => 
+--                    x(11 downto 8)<="0001"; --x=1
+--                    x(7 downto 4)<="0000"; --x=0
+--                    x(3 downto 0)<="1111"; --x=-1
                     
-                    w(11 downto 8)<="0001"; --x=1
-                    w(7 downto 4)<="0001"; --x=1
-                    w(3 downto 0)<="0001"; --x=1
-                when 8 => 
-                    x(11 downto 8)<=(others=>'0');
-                    x(7 downto 0)<="00010000"; --x=1
-                    w(11 downto 8)<=(others=>'0');
-                    w(7 downto 0)<="00010010"; --x=1
-                when others => 
-                    x<="000100000000"; --x=2
-                    w<="000100000000"; --x=2
-            end case;
-            num_entradas<=num_entradas-1;
-        elsif num_entradas=0 then
-                fin_datos<='1';
-        end if;
-    end if;
+--                    w(11 downto 8)<="0001"; --x=1
+--                    w(7 downto 4)<="0001"; --x=1
+--                    w(3 downto 0)<="0001"; --x=1
+--                when 8 => 
+--                    x(11 downto 8)<=(others=>'0');
+--                    x(7 downto 0)<="00010000"; --x=1
+--                    w(11 downto 8)<=(others=>'0');
+--                    w(7 downto 0)<="00010010"; --x=1
+--                when others => 
+--                    x<="000100000000"; --x=2
+--                    w<="000100000000"; --x=2
+--            end case;
+--            num_entradas<=num_entradas-1;
+--        elsif num_entradas=0 then
+--                fin_datos<='1';
+--        end if;
+--    end if;
 
+--end process;
+
+--Test varios valores
+process
+begin
+--    reset<='1';
+--    wait for 10 ns;
+--    reset<='0';
+--    for item in 1 to num_entradas loop 
+--        if recibir_datos='1' then
+--            x<=std_logic_vector(signed(x)+128);
+--            w<=std_logic_vector(signed(w)+64);
+--        end if;
+--            wait for tiempo_espera_2;
+--    end loop;
+    
+    x<="000010000000"; --x=2
+    w<="000010000000"; --x=2
+    wait for 550 ns;
+    x<=std_logic_vector(signed(x)+32);
+    w<=std_logic_vector(signed(w)-64);
+    wait for 600 ns;
+    x<=std_logic_vector(signed(x)+16);
+    w<=std_logic_vector(signed(w)+70);
+    wait for 600 ns;
+    x<=std_logic_vector(signed(x)+32);
+    w<=std_logic_vector(signed(w)-16);
+    
+    fin_datos<='1';
+    wait;
 end process;
+
 
 end Behavioral;
